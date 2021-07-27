@@ -1,8 +1,6 @@
 # Schmenu
 
-# Schmenu
-
-*By [Zach Yu](https://github.com/ZachMYu).
+* By [Zach Yu](https://github.com/ZachMYu).
 
 ### Satisfy your craving!
 
