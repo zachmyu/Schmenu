@@ -1,3 +1,5 @@
-from flask_sqlalchemy import SQLAlchemy
+# Commented out for testing purposes, might not need if referenced directly in all models.
 
-db = SQLAlchemy()
+# from flask_sqlalchemy import SQLAlchemy
+
+# db = SQLAlchemy()
