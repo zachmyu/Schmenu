@@ -8,7 +8,7 @@ class RestaurantForm(FlaskForm):
         message='Please add the name of the restaurant!')])
     address = TextAreaField('Address', validators=[DataRequired(
         message='Please add the address of the restaurant!')])
-    types = SelectField('Type', validators=[DataRequired(
+    restaurant_type = SelectField('Type', validators=[DataRequired(
         message='Please select the type of restaurant you are adding!')], choices=[('fd', 'Fine Dining'), ('cd', 'Casual Dining'), ('ff', 'Fast Food'), ('cf', 'Cafe'), ('bf', 'Buffett'), ('ot', 'Other')])
     description = TextAreaField('Description', validators=[
                                 DataRequired(message='Please include a description of the restaurant!')])
