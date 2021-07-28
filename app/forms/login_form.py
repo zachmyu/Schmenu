@@ -1,29 +1,32 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField
-from wtforms.validators import DataRequired, Email, ValidationError
+from wtforms import PasswordField
+from wtforms.validators import DataRequired, ValidationError
 from app.models import User
 
 
 def user_exists(form, field):
     # Checking if user exists
-    email = field.data
-    user = User.query.filter(User.email == email).first()
-    if not user:
+    credentials = field.data
+    emailCheck = User.query.filter(User.email == credentials).first()
+    userCheck = User.query.filter(User.username == credentials).first()
+    if not emailCheck and not userCheck:
         raise ValidationError('Email provided not found.')
 
 
 def password_matches(form, field):
     # Checking if password matches
     password = field.data
-    email = form.data['email']
-    user = User.query.filter(User.email == email).first()
-    if not user:
+    credentials = form.data['credentials']
+    emailCheck = User.query.filter(User.email == credentials).first()
+    userCheck = User.query.filter(User.username == credentials).first()
+    if not emailCheck and not userCheck:
         raise ValidationError('No such user exists.')
-    if not user.check_password(password):
+    if not emailCheck.check_password(password) and not userCheck.check_password(password):
         raise ValidationError('Password was incorrect.')
 
 
 class LoginForm(FlaskForm):
-    email = StringField('email', validators=[DataRequired(), user_exists])
-    password = StringField('password', validators=[
-                           DataRequired(), password_matches])
+    credentials = PasswordField('credentials', validators=[
+        DataRequired(), user_exists])
+    password = PasswordField('password', validators=[
+        DataRequired(), password_matches])
