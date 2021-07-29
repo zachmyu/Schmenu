@@ -1,6 +1,6 @@
 # Schmenu
 
-* By [Zach Yu](https://github.com/ZachMYu).
+-   By [Zach Yu](https://github.com/ZachMYu).
 
 ### Satisfy your craving!
 
@@ -8,13 +8,13 @@
 
 **Table of Contents**
 
-* [Schmenu at a Glance](https://github.com/zachmyu/Schmenu#Schmenu-at-a-Glance)
-* [Key Features](https://github.com/zachmyu/Schmenu#Key-Features)
-* [Technologies Used](https://github.com/zachmyu/Schmenu#Technologies-Used)
-* [Application Architecture](https://github.com/zachmyu/Schmenu#Application-Architecture)
-* [Frontend Overview](https://github.com/zachmyu/Schmenu#Frontend-Overview)
-* [Backend Overview](https://github.com/zachmyu/Schmenu#Backend-Overview)
-* [Conclusion](https://github.com/zachmyu/Schmenu#Conclusion)
+-   [Schmenu at a Glance](https://github.com/zachmyu/Schmenu#Schmenu-at-a-Glance)
+-   [Key Features](https://github.com/zachmyu/Schmenu#Key-Features)
+-   [Technologies Used](https://github.com/zachmyu/Schmenu#Technologies-Used)
+-   [Application Architecture](https://github.com/zachmyu/Schmenu#Application-Architecture)
+-   [Frontend Overview](https://github.com/zachmyu/Schmenu#Frontend-Overview)
+-   [Backend Overview](https://github.com/zachmyu/Schmenu#Backend-Overview)
+-   [Conclusion](https://github.com/zachmyu/Schmenu#Conclusion)
 
 ## Schmenu at a Glance
 
@@ -24,24 +24,25 @@ The application is made with a React frontend, and the backend is an Flask serve
 
 **Key Features**
 
-- Browse through all restaurants to check the ratings for every menu item
-- Search for any specific food item to find the restaurant that offers the best item in your area
-- Favorite a food item at any restaurant so you can easily find the ones you've tried and love
-- Add a rating and a review to let people know if they should try this menu item!
+-   Browse through all restaurants to check the ratings for every menu item
+-   Search for any specific food item to find the restaurant that offers the best item in your area
+-   Favorite a food item at any restaurant so you can easily find the ones you've tried and love
+-   Add a rating and a review to let people know if they should try this menu item!
 
 ![Schmenu mini-demo](/readme-assets/mini-demo.gif)
 
 ## Technologies Used
 
-- Frontend
-  - React / Redux / Thunk
-  - Javascript
-  - CSS
-- Backend
-  - Flask
-  - SQLAlchemy
-  - Python
-  - Heroku deployment
+-   Frontend
+    -   React / Redux / Thunk
+    -   Javascript
+    -   CSS
+-   Backend
+    -   Flask
+    -   SQLAlchemy
+    -   Python
+    -   Heroku deployment
+    -   AWS (Credits to Juliet Shafto and her amazing AWS [Walkthrough](https://hackmd.io/@jpshafto/SyWY45KGu)!)
 
 ## Application Architecture
 
@@ -67,8 +68,10 @@ Here's an example of the recommendations home page.
 
 ## Backend Overview
 
-
-
 ## Conclusion
 
 {Schmenu Conclusion}
+
+## Credits
+
+[Juliet Shafto - AWS Walkthrough](https://hackmd.io/@jpshafto/SyWY45KGu)
