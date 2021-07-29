@@ -1,13 +1,15 @@
-from flask import Blueprint, jsonify, session, request
-from app.models import User, db
+from flask import Blueprint, request
+from app.models import User
 from app.forms import LoginForm
 from app.forms import SignUpForm
-from flask_login import current_user, login_user, logout_user, login_required
+from flask_login import current_user, login_user, logout_user
+from flask_sqlalchemy import SQLAlchemy
+db = SQLAlchemy()
 
 auth_routes = Blueprint('auth', __name__)
 
 
-def validation_errors_to_error_messages(validation_errors):
+def validation_err_msgs(validation_errors):
     """
     Simple function that turns the WTForms validation errors into a simple list
     """
@@ -42,7 +44,7 @@ def login():
         user = User.query.filter(User.email == form.data['email']).first()
         login_user(user)
         return user.to_dict()
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+    return {'errors': validation_err_msgs(form.errors)}, 401
 
 
 @auth_routes.route('/logout')
@@ -54,6 +56,7 @@ def logout():
     return {'message': 'User logged out'}
 
 
+# CREATE = User
 @auth_routes.route('/signup', methods=['POST'])
 def sign_up():
     """
@@ -71,7 +74,7 @@ def sign_up():
         db.session.commit()
         login_user(user)
         return user.to_dict()
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+    return {'errors': validation_err_msgs(form.errors)}, 401
 
 
 @auth_routes.route('/unauthorized')
