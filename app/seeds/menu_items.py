@@ -1,12 +1,20 @@
 from app.models import Menu_item
+from faker import Faker
 from flask_sqlalchemy import SQLAlchemy
+
 db = SQLAlchemy()
+fake = Faker()
 
 
 def seed_menu_items():
-    num1 = Menu_item(user_id=1, venue_id=1)
-
-    db.session.add(num1)
+    for _ in range(1000):
+        fakerMenu = Menu_item(creator_id=fake.random_int(min=0, max=99),
+                              restaurant_id=fake.random_int(min=0, max=99),
+                              food_name=fake.bs(),
+                              price=fake.numerify(text='##.99'),
+                              description=fake.paragraph(nb_sentences=5),
+                              food_pix='https://i.imgur.com/WSiGBku.jpg')
+        db.session.add(fakerMenu)
 
     db.session.commit()
 

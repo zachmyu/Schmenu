@@ -1,12 +1,16 @@
 from app.models import Save
+from faker import Faker
 from flask_sqlalchemy import SQLAlchemy
+
 db = SQLAlchemy()
+fake = Faker()
 
 
 def seed_saves():
-    num1 = Save(user_id=1, venue_id=1)
-
-    db.session.add(num1)
+    for _ in range(500):
+        fakerSave = Save(user_id=fake.random_int(min=13, max=99),
+                         menu_item_id=fake.random_int(min=1, max=999))
+        db.session.add(fakerSave)
 
     db.session.commit()
 

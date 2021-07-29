@@ -1,12 +1,18 @@
 from app.models import Rating
+from faker import Faker
 from flask_sqlalchemy import SQLAlchemy
+
 db = SQLAlchemy()
+fake = Faker()
 
 
 def seed_ratings():
-    num1 = Rating(user_id=1, venue_id=1)
-
-    db.session.add(num1)
+    for _ in range(1000):
+        fakeRatings = Rating(user_id=fake.random_int(min=13, max=99),
+                             menu_item_id=fake.random_int(min=1, max=950),
+                             rating=fake.random_int(min=1, max=5),
+                             review=fake.paragraph(nb_sentences=3))
+        db.session.add(fakeRatings)
 
     db.session.commit()
 

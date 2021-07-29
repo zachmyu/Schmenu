@@ -8,7 +8,7 @@ class Menu_item(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     restaurant_id = db.Column(db.Integer, db.ForeignKey('restaurants.id'))
-    food_name = db.Column(db.String(40), nullable=False, unique=True)
+    food_name = db.Column(db.String(40), nullable=False)
     price = db.Column(db.Float, nullable=False)
     description = db.Column(db.Text(), nullable=False, unique=True)
     food_pix = db.Column(db.String(1000), nullable=True)
