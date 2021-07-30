@@ -16,17 +16,15 @@ def validation_err_msgs(validation_errors):
             errorMessages.append(f'{field} : {error}')
     return errorMessages
 
-# READ ALL = Menu_items
 
-
+# READ ALL = Menu_items (Can we limit this?)
 @menu_item_routes.route('/')
 def menu_items():
     menu_items = Menu_item.query.all()
     return {'menu_items': [menu_item.to_dict() for menu_item in menu_items]}
 
+
 # READ ONE = Menu_item
-
-
 @menu_item_routes.route('/<int:id>')
 def menu_item(id):
     menu_item = Menu_item.query.get(id)

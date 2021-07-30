@@ -14,16 +14,16 @@ def validation_err_msgs(validation_errors):
             errorMessages.append(f'{field} : {error}')
     return errorMessages
 
-#READ ALL = Ratings
-@rating_routes.route('/')
-@login_required
-def ratings():
-    ratings = Rating.query.all()
-    return {'ratings': [rating.to_dict() for rating in ratings]}
+
+# # READ ALL = Ratings (Too many to list)
+# @rating_routes.route('/')
+# def ratings():
+#     ratings = Rating.query.all()
+#     return {'ratings': [rating.to_dict() for rating in ratings]}
+
 
 # READ ONE = rating
 @rating_routes.route('/<int:id>')
-@login_required
 def rating(id):
     ratings = Rating.query.get(id)
     return ratings.to_dict()

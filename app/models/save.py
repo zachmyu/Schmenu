@@ -16,5 +16,5 @@ class Save(db.Model, UserMixin):
         return {
             'id': self.id,
             'user_id': self.user_id,
-            'venue_id': self.venue_id
+            'menu_item_id': self.menu_item_id
         }

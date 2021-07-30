@@ -17,12 +17,12 @@ def validation_err_msgs(validation_errors):
     return errorMessages
 
 
-# READ ALL = Users
-@user_routes.route('/')
-@login_required
-def users():
-    users = User.query.all()
-    return {'users': [user.to_dict() for user in users]}
+# READ ALL = Users (Too many to list)
+# @user_routes.route('/')
+# @login_required
+# def users():
+#     users = User.query.all()
+#     return {'users': [user.to_dict() for user in users]}
 
 
 # READ ONE = User

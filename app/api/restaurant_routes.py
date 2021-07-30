@@ -16,7 +16,7 @@ def validation_err_msgs(validation_errors):
     return errorMessages
 
 
-# READ ALL = Restaurants
+# READ ALL = Restaurants (can we limit this?)
 @restaurant_routes.route('/')
 def restaurants():
     restaurants = Restaurant.query.all()

@@ -21,6 +21,4 @@ class Rating(db.Model, UserMixin):
             'menu_item_id': self.menu_item_id,
             'rating': self.rating,
             'review': self.review,
-            'user': self.user,
-            'menu_item': self.menu_item,
         }

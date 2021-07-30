@@ -21,13 +21,12 @@ class Menu_item(db.Model, UserMixin):
     def to_dict(self):
         return {
             'id': self.id,
+            'creator_id': self.creator_id,
             'restaurant_id': self.restaurant_id,
             'food_name': self.food_name,
             'price': self.price,
             'description': self.description,
             'food_pix': self.food_pix,
-            'users': self.users,
-            'restaurants': self.restaurants,
             "ratings": {rating.id: rating.to_dict() for rating in self.ratings},
             "saves": {save.id: save.to_dict() for save in self.saves}
         }
