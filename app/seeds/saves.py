@@ -1,8 +1,6 @@
-from app.models import Save
+from app.models import db, Save
 from faker import Faker
-from flask_sqlalchemy import SQLAlchemy
 
-db = SQLAlchemy()
 fake = Faker()
 
 

@@ -1,8 +1,6 @@
-from app.models import Restaurant
+from app.models import db, Restaurant
 from faker import Faker
-from flask_sqlalchemy import SQLAlchemy
 
-db = SQLAlchemy()
 fake = Faker()
 
 

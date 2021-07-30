@@ -1,11 +1,10 @@
 from flask import Blueprint, request, jsonify
-from flask_sqlalchemy import SQLAlchemy
-from app.models import Menu_item
+from app.models import db, Menu_item
 from app.forms import MenuItemForm
 from flask_login import login_required
 # from app.s3_helpers import (
 #     upload_file_to_s3, allowed_file, get_unique_filename)
-db = SQLAlchemy()
+
 
 menu_item_routes = Blueprint('menu_items', __name__)
 
@@ -29,7 +28,7 @@ def menu_items():
 
 
 @menu_item_routes.route('/<int:id>')
-def menu_items(id):
+def menu_item(id):
     menu_item = Menu_item.query.get(id)
     return menu_item.to_dict()
 
@@ -37,11 +36,12 @@ def menu_items(id):
 # CREATE = Menu_item
 @menu_item_routes.route('/', methods=['POST'])
 @login_required
-def menu_items_add(restaurant_id):
+def menu_items_add(creator_id, restaurant_id):
     form = MenuItemForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         menu_item = Menu_item(
+            creator_id=creator_id,
             restaurant_id=restaurant_id,
             food_name=form.data['food_name'],
             price=form.data['price'],

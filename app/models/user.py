@@ -1,7 +1,7 @@
+from app.models import menu_item
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_sqlalchemy import SQLAlchemy
-db = SQLAlchemy()
+from .db import db
 
 
 class User(db.Model, UserMixin):
@@ -10,7 +10,7 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(50), nullable=False)
     last_name = db.Column(db.String(50), nullable=False)
-    username = db.Column(db.String(40), nullable=False, unique=True)
+    username = db.Column(db.String(255), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     about = db.Column(db.Text(), nullable=True)
     profile_pix = db.Column(db.String(1000), nullable=True)
@@ -19,7 +19,8 @@ class User(db.Model, UserMixin):
 
     ratings = db.relationship('Rating', back_populates='users')
     saves = db.relationship('Save', back_populates='users')
-    restaurant = db.relationship('Restaurant', back_populates='users')
+    restaurants = db.relationship('Restaurant', back_populates='users')
+    menu_items = db.relationship('Menu_item', back_populates='users')
 
     @property
     def password(self):
@@ -43,5 +44,6 @@ class User(db.Model, UserMixin):
             'account_type': self.account_type,
             'ratings': {rating.id: rating.to_dict() for rating in self.ratings},
             'saves': {save.id: save.to_dict() for save in self.saves},
-            'restaurant': self.restaurant
+            'restaurant': self.restaurant,
+            'menu_items': {menu_item.id: menu_item.to_dict() for menu_item in self.menu_items}
         }

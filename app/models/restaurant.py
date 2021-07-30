@@ -1,6 +1,5 @@
 from flask_login import UserMixin
-from flask_sqlalchemy import SQLAlchemy
-db = SQLAlchemy()
+from .db import db
 
 
 class Restaurant(db.Model, UserMixin):
@@ -8,7 +7,7 @@ class Restaurant(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    name = db.Column(db.String(255), nullable=False, unique=True)
+    name = db.Column(db.String(255), nullable=False, unique=False)
     address = db.Column(db.String(255), nullable=False)
     restaurant_type = db.Column(db.String(255), nullable=False)
     description = db.Column(db.Text, nullable=False)
@@ -17,7 +16,7 @@ class Restaurant(db.Model, UserMixin):
     longitude = db.Column(db.Float, nullable=True)
 
     menu_items = db.relationship('Menu_item', back_populates='restaurants')
-    owner = db.relationship('User', back_populates='restaurants')
+    users = db.relationship('User', back_populates='restaurants')
 
     def to_dict(self):
         return {

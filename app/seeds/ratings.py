@@ -1,8 +1,6 @@
-from app.models import Rating
+from app.models import db, Rating
 from faker import Faker
-from flask_sqlalchemy import SQLAlchemy
 
-db = SQLAlchemy()
 fake = Faker()
 
 

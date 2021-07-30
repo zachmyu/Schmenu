@@ -1,8 +1,6 @@
 from flask import Blueprint, jsonify
-from flask_sqlalchemy import SQLAlchemy
-from app.models import Save
+from app.models import db, Save
 from flask_login import login_required
-db = SQLAlchemy()
 
 save_routes = Blueprint('saves', __name__)
 
@@ -18,7 +16,7 @@ def validation_err_msgs(validation_errors):
 # READ ALL = Saves
 @save_routes.route('/')
 @login_required
-def users(user_id):
+def userSaves(user_id):
     saves = Save.query.filter_by(user_id=user_id).all()
     return {'saves': [save.to_dict() for save in saves]}
 

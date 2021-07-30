@@ -4,6 +4,7 @@ from wtforms.validators import DataRequired
 
 
 class MenuItemForm(FlaskForm):
+    creator_id = HiddenField('creator_id')
     restaurant_id = HiddenField('restaurant_id')
     food_name = StringField('Food Name', validators=[
         DataRequired(message='Please input the name of the item!')])

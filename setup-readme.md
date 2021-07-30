@@ -27,15 +27,28 @@ This is the starter for the Flask React project.
     ```
 
     ```bash
+    flask db migrate
+    #only run on first try
+    ```
+
+    ```bash
     flask db upgrade
+    #flask db stamp head  <-- forces to look at new models>
     ```
 
     ```bash
     flask seed all
+    #flask unseed all
     ```
 
     ```bash
     flask run
+    ```
+
+    ```bash
+    #To undo:
+    flask seed undo
+    flask db downgrade
     ```
 
 6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.

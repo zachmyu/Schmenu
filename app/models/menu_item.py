@@ -1,18 +1,19 @@
 from flask_login import UserMixin
-from flask_sqlalchemy import SQLAlchemy
-db = SQLAlchemy()
+from .db import db
 
 
 class Menu_item(db.Model, UserMixin):
     __tablename__ = 'menu_items'
 
     id = db.Column(db.Integer, primary_key=True)
+    creator_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     restaurant_id = db.Column(db.Integer, db.ForeignKey('restaurants.id'))
-    food_name = db.Column(db.String(40), nullable=False)
+    food_name = db.Column(db.String(255), nullable=False)
     price = db.Column(db.Float, nullable=False)
     description = db.Column(db.Text(), nullable=False, unique=True)
     food_pix = db.Column(db.String(1000), nullable=True)
 
+    users = db.relationship('User', back_populates='menu_items')
     restaurants = db.relationship('Restaurant', back_populates='menu_items')
     ratings = db.relationship('Rating', back_populates='menu_items')
     saves = db.relationship('Save', back_populates='menu_items')
@@ -25,6 +26,7 @@ class Menu_item(db.Model, UserMixin):
             'price': self.price,
             'description': self.description,
             'food_pix': self.food_pix,
+            'users': self.users,
             'restaurants': self.restaurants,
             "ratings": {rating.id: rating.to_dict() for rating in self.ratings},
             "saves": {save.id: save.to_dict() for save in self.saves}

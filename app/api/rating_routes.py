@@ -1,9 +1,8 @@
 from flask import Blueprint, request, jsonify
-from flask_sqlalchemy import SQLAlchemy
-from app.models import Rating
+from app.models import db, Rating
 from app.forms import RatingForm
 from flask_login import login_required
-db = SQLAlchemy()
+
 
 rating_routes = Blueprint('ratings', __name__)
 
@@ -25,7 +24,7 @@ def ratings():
 # READ ONE = rating
 @rating_routes.route('/<int:id>')
 @login_required
-def ratings(id):
+def rating(id):
     ratings = Rating.query.get(id)
     return ratings.to_dict()
 

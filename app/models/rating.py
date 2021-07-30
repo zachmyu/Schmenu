@@ -1,6 +1,5 @@
 from flask_login import UserMixin
-from flask_sqlalchemy import SQLAlchemy
-db = SQLAlchemy()
+from .db import db
 
 
 class Rating(db.Model, UserMixin):
@@ -8,12 +7,12 @@ class Rating(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    menu_item_id = db.Column(db.Integer, db.ForeignKey('menu-items.id'))
+    menu_item_id = db.Column(db.Integer, db.ForeignKey('menu_items.id'))
     rating = db.Column(db.Integer, nullable=False)
     review = db.Column(db.Text(), nullable=False)
 
-    user = db.relationship('User', back_populates='ratings')
-    menu_item = db.relationship('Menu_item', back_populates='ratings')
+    users = db.relationship('User', back_populates='ratings')
+    menu_items = db.relationship('Menu_item', back_populates='ratings')
 
     def to_dict(self):
         return {

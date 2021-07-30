@@ -1,9 +1,7 @@
 from flask import Blueprint, request, jsonify
-from app.models import User
+from app.models import db, User
 from app.forms import SignUpForm
 from flask_login import login_required
-from flask_sqlalchemy import SQLAlchemy
-db = SQLAlchemy()
 
 user_routes = Blueprint('users', __name__)
 

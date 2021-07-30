@@ -1,9 +1,7 @@
-from app.models import User
+from app.models import db, User
 from faker import Faker
-from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash
 
-db = SQLAlchemy()
 fake = Faker()
 
 
@@ -19,7 +17,7 @@ def seed_users():
                     account_type="Owner", password=pw)
     BobRoss = User(first_name="Bob",
                    last_name="Ross", username="bobross",
-                   email="demo-user@demodata.com",
+                   email="bob-ross@mcdemoface.com",
                    about="Life is just a series of happy little accidents.",
                    profile_pix="https://www.ccplonline.org/wp-content/uploads/2020/09/Art-History-Snapshot-Bob-Ross-Cover-Photo.png",
                    account_type="Owner", password=pw)
@@ -378,14 +376,6 @@ def seed_users():
                     profile_pix="https://i.imgur.com/AalEoSw.png",
                     account_type="Reviewer", password=pw)
 
-    for _ in range(1, 40):
-        fakerUser = User(first_name=fake.first_name(),
-                         last_name=fake.last_name(), username=fake.username(),
-                         email=fake.email(),
-                         about=fake.text(max_nb_chars=160),
-                         profile_pix="https://i.imgur.com/AalEoSw.png",
-                         account_type="Reviewer", password=pw)
-
     db.session.add(DemoUser)
     db.session.add(BobRoss)
     db.session.add(DemoLovato)
@@ -447,7 +437,15 @@ def seed_users():
     db.session.add(VinDiesel)
     db.session.add(WillSmith)
     db.session.add(ZacEfron)
-    db.session.add(fakerUser)
+
+    for _ in range(1, 40):
+        fakerUser = User(first_name=fake.first_name(),
+                         last_name=fake.last_name(), username=fake.user_name(),
+                         email=fake.email(),
+                         about=fake.text(max_nb_chars=160),
+                         profile_pix="https://i.imgur.com/AalEoSw.png",
+                         account_type="Reviewer", password=pw)
+        db.session.add(fakerUser)
 
     db.session.commit()
 

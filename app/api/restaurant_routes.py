@@ -1,11 +1,9 @@
 from flask import Blueprint, request, jsonify
-from flask_sqlalchemy import SQLAlchemy
-from app.models import Restaurant
+from app.models import db, Restaurant
 from app.forms import RestaurantForm
 from flask_login import login_required
 # from app.s3_helpers import (
 #     upload_file_to_s3, allowed_file, get_unique_filename)
-db = SQLAlchemy()
 
 restaurant_routes = Blueprint('restaurants', __name__)
 
