@@ -1,9 +1,20 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import session from './session'
+import users from './user'
+import restaurants from './restaurant'
+import menu_items from './menu_item'
+import ratings from './rating'
+import saves from './save'
+
 
 const rootReducer = combineReducers({
   session,
+  users,
+  restaurants,
+  menu_items,
+  ratings,
+  saves
 });
 
 
