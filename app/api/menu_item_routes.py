@@ -17,13 +17,6 @@ def validation_err_msgs(validation_errors):
     return errorMessages
 
 
-# READ ALL = Menu_items (Can we limit this?)
-@menu_item_routes.route('/')
-def menu_items():
-    menu_items = Menu_item.query.all()
-    return {'menu_items': [menu_item.to_dict() for menu_item in menu_items]}
-
-
 # READ ONE = Menu_item
 @menu_item_routes.route('/<int:id>')
 def menu_item(id):
@@ -31,16 +24,23 @@ def menu_item(id):
     return menu_item.to_dict()
 
 
+# READ ALL = Menu_items (Can we limit this?)
+@menu_item_routes.route('/')
+def menu_items():
+    menu_items = Menu_item.query.all()
+    return {'menu_items': [menu_item.to_dict() for menu_item in menu_items]}
+
+
 # CREATE = Menu_item
 @menu_item_routes.route('/', methods=['POST'])
 @login_required
-def menu_items_add(creator_id, restaurant_id):
+def menu_items_add():
     form = MenuItemForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         menu_item = Menu_item(
-            creator_id=creator_id,
-            restaurant_id=restaurant_id,
+            creator_id=form.data['creator_id'],
+            restaurant_id=form.data['restaurant_id'],
             food_name=form.data['food_name'],
             price=form.data['price'],
             description=form.data['description'],

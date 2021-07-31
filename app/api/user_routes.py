@@ -17,20 +17,20 @@ def validation_err_msgs(validation_errors):
     return errorMessages
 
 
-# READ ALL = Users (Too many to list)
-# @user_routes.route('/')
-# @login_required
-# def users():
-#     users = User.query.all()
-#     return {'users': [user.to_dict() for user in users]}
-
-
 # READ ONE = User
 @user_routes.route('/<int:id>')
 @login_required
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
+
+
+# READ ALL = Users (Might be too many to list)
+@user_routes.route('/')
+@login_required
+def users():
+    users = User.query.all()
+    return {'users': [user.to_dict() for user in users]}
 
 
 # UPDATE = User

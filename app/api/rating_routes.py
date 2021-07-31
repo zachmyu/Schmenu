@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from app.models import db, Rating
+from app.models import db, Rating, menu_item
 from app.forms import RatingForm
 from flask_login import login_required
 
@@ -15,30 +15,30 @@ def validation_err_msgs(validation_errors):
     return errorMessages
 
 
-# # READ ALL = Ratings (Too many to list)
-# @rating_routes.route('/')
-# def ratings():
-#     ratings = Rating.query.all()
-#     return {'ratings': [rating.to_dict() for rating in ratings]}
-
-
-# READ ONE = rating
+# READ ONE = Rating
 @rating_routes.route('/<int:id>')
 def rating(id):
     ratings = Rating.query.get(id)
     return ratings.to_dict()
 
 
+# # READ ALL = Ratings (Might be too many to list)
+@rating_routes.route('/')
+def ratings(menu_item_id):
+    ratings = Rating.query.filter_by(menu_item_id=menu_item_id).all()
+    return {'ratings': [rating.to_dict() for rating in ratings]}
+
+
 # CREATE = Rating
 @rating_routes.route('/', methods=['POST'])
 @login_required
-def rating_add(user_id, menu_item_id):
+def rating_add():
     form = RatingForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         rating = Rating(
-            user_id=user_id,
-            menu_item_id=menu_item_id,
+            user_id=form.data['user_id'],
+            menu_item_id=form.data['menu_item_id'],
             review=form.data['review'],
             rating=form.data['rating']
         )

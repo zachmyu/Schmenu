@@ -16,13 +16,6 @@ def validation_err_msgs(validation_errors):
     return errorMessages
 
 
-# READ ALL = Restaurants (can we limit this?)
-@restaurant_routes.route('/')
-def restaurants():
-    restaurants = Restaurant.query.all()
-    return {'restaurants': [restaurant.to_dict() for restaurant in restaurants]}
-
-
 # READ ONE = restaurant
 @restaurant_routes.route('/<int:id>')
 def restaurant(id):
@@ -30,15 +23,22 @@ def restaurant(id):
     return restaurant.to_dict()
 
 
+# READ ALL = Restaurants (can we limit this?)
+@restaurant_routes.route('/')
+def restaurants():
+    restaurants = Restaurant.query.all()
+    return {'restaurants': [restaurant.to_dict() for restaurant in restaurants]}
+
+
 # CREATE = Restaurant
 @restaurant_routes.route('/', methods=['POST'])
 @login_required
-def restaurants_add(owner_id):
+def restaurants_add():
     form = RestaurantForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         restaurant = Restaurant(
-            owner_id=owner_id,
+            owner_id=form.data['owner_id'],
             name=form.data['name'],
             address=form.data['address'],
             restaurant_type=form.data['restaurant_type'],

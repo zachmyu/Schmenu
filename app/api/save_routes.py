@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from app.models import db, Save
 from flask_login import login_required
 
@@ -24,10 +24,10 @@ def userSaves(user_id):
 # CREATE = Save
 @save_routes.route('/', methods=['POST'])
 @login_required
-def saves_add(user_id, menu_item_id):
+def saves_add():
     save = Save(
-        user_id=user_id,
-        menu_item_id=menu_item_id
+        user_id=request.json['user_id'],
+        menu_item_id=request.json['menu_item_id']
     )
     db.session.add(save)
     db.session.commit()
