@@ -111,7 +111,7 @@ export const deleteRating = (ratingId) => async dispatch => {
     })
 
     if (res.ok) {
-        dispatch(removeRating(data));
+        dispatch(removeRating(ratingId));
     } else {
         throw res
     }
@@ -148,7 +148,7 @@ const ratingsReducer = (state = initialState, action) => {
 
         case DELETE_RATING:
             newState = { ...state }
-            delete newState[payload.id]
+            delete newState[action.payload]
             return newState
         default:
             return state;

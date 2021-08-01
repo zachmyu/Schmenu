@@ -119,7 +119,7 @@ export const deleteRestaurant = (restaurantId) => async dispatch => {
     })
 
     if (res.ok) {
-        dispatch(removeRestaurant(data));
+        dispatch(removeRestaurant(restaurantId));
     } else {
         throw res
     }
@@ -156,7 +156,7 @@ const restaurantsReducer = (state = initialState, action) => {
 
         case DELETE_RESTAURANT:
             newState = { ...state }
-            delete newState[payload.id]
+            delete newState[action.payload]
             return newState
         default:
             return state;

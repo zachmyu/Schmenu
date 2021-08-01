@@ -1,5 +1,5 @@
 // Add user get one, edit, delete
-// const GET_ALL_USERS = '' (Not sure if all users needed)
+const READ_ALL_USERS = 'user/READ_ALL_USERS'
 const READ_SINGLE_USER = 'user/READ_SINGLE_USER'
 const UPDATE_USER = 'user/UPDATE_USER'
 const DELETE_USER = 'user/DELETE_USER'
@@ -10,9 +10,9 @@ const loadOneUser = (user) => ({
     payload: user
 });
 
-const loadAllUsers = (user) => ({
-    type: READ_SINGLE_USER,
-    payload: user
+const loadAllUsers = (users) => ({
+    type: READ_ALL_USERS,
+    payload: users
 });
 
 const changeUser = (user_id) => ({
@@ -84,7 +84,7 @@ export const deleteUser = (userId) => async dispatch => {
     })
 
     if (res.ok) {
-        dispatch(removeUser(data));
+        dispatch(removeUser(userId));
     } else {
         throw res
     }
@@ -103,7 +103,7 @@ const usersReducer = (state = initialState, action) => {
 
         case READ_ALL_USERS:
             newState = {};
-            action.payload.forEach((user) => {
+            action.payload.forEach((restaurant) => {
                 newState[restaurant.id] = restaurant;
             });
             return newState
@@ -115,7 +115,7 @@ const usersReducer = (state = initialState, action) => {
             }
         case DELETE_USER:
             newState = { ...state }
-            delete newState[payload.id]
+            delete newState[action.payload]
             return newState
         default:
             return state;

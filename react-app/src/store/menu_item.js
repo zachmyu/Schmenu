@@ -115,7 +115,7 @@ export const deleteItem = (menuItemId) => async dispatch => {
     })
 
     if (res.ok) {
-        dispatch(removeItem(data));
+        dispatch(removeItem(menuItemId));
     } else {
         throw res
     }
@@ -152,7 +152,7 @@ const menu_itemsReducer = (state = initialState, action) => {
 
         case DELETE_MENU_ITEM:
             newState = { ...state }
-            delete newState[payload.id]
+            delete newState[action.payload]
             return newState
         default:
             return state;

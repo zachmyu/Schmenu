@@ -61,7 +61,7 @@ export const deleteSave = (menuItemId) => async dispatch => {
     })
 
     if (res.ok) {
-        dispatch(removeSave(data));
+        dispatch(removeSave(menuItemId));
     } else {
         throw res
     }
@@ -92,7 +92,7 @@ const savesReducer = (state = initialState, action) => {
 
         case DELETE_SAVE:
             newState = { ...state }
-            delete newState[payload.id]
+            delete newState[action.payload]
             return newState
         default:
             return state;
