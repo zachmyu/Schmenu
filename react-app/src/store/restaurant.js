@@ -132,11 +132,9 @@ const restaurantsReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case READ_SINGLE_RESTAURANT:
-            newState = {};
-            action.payload.forEach((restaurant) => {
-                newState[restaurant.id] = restaurant;
-            });
-            return newState
+            newState = { ...state };
+            newState.current = action.payload;
+            return newState;
 
         case READ_ALL_RESTAURANTS:
             newState = {};

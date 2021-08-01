@@ -97,11 +97,9 @@ const usersReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case READ_SINGLE_USER:
-            newState = {};
-            action.payload.forEach((user) => {
-                newState[user.id] = user;
-            });
-            return newState
+            newState = { ...state };
+            newState.current = action.payload;
+            return newState;
 
         case READ_ALL_USERS:
             newState = {};

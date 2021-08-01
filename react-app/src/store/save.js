@@ -74,11 +74,9 @@ const savesReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case READ_SINGLE_SAVE:
-            newState = {};
-            action.payload.forEach((save) => {
-                newState[save.id] = save;
-            });
-            return newState
+            newState = { ...state };
+            newState.current = action.payload;
+            return newState;
 
         case READ_ALL_SAVES:
             newState = {};

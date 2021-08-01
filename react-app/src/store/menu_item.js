@@ -133,7 +133,7 @@ const menu_itemsReducer = (state = initialState, action) => {
             return newState;
 
         case READ_ALL_MENU_ITEMS:
-            newState = {};
+            newState = { ...state };
             action.payload.forEach((menu_item) => {
                 newState[menu_item.id] = menu_item;
             });
