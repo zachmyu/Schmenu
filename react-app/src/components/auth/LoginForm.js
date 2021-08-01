@@ -13,7 +13,6 @@ const LoginForm = () => {
   const onLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
-    console.log(data)
     if (data) {
       setErrors(data);
     }
