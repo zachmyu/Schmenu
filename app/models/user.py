@@ -44,6 +44,6 @@ class User(db.Model, UserMixin):
             'account_type': self.account_type,
             'ratings': {rating.id: rating.to_dict() for rating in self.ratings},
             'saves': {save.id: save.to_dict() for save in self.saves},
-            'restaurants': self.restaurants,
+            'restaurants': {restaurant.id: restaurant.to_dict() for restaurant in self.restaurants},
             'menu_items': {menu_item.id: menu_item.to_dict() for menu_item in self.menu_items}
         }
