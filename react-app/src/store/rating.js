@@ -33,7 +33,7 @@ const removeRating = (rating_id) => ({
 
 //Thunks
 export const getOneRating = (ratingId) => async dispatch => {
-    const res = await fetch(`/api/ratings/${ratingId}`)
+    const res = await fetch(`/api/ratings/${ratingId}/`)
     const data = await res.json();
 
     if (res.ok) {
@@ -43,8 +43,8 @@ export const getOneRating = (ratingId) => async dispatch => {
     }
 }
 
-export const getAllRatings = () => async dispatch => {
-    const res = await fetch(`/api/ratings`);
+export const getAllRatings = (menuItemId) => async dispatch => {
+    const res = await fetch(`/api/ratings/${menuItemId}/`);
     const data = await res.json();
 
     if (res.ok) {
@@ -57,7 +57,7 @@ export const getAllRatings = () => async dispatch => {
 export const createRating = (ratingData) => async dispatch => {
     const { userId, menuItemId, review, rating } = ratingData
 
-    const res = await fetch(`/api/ratings/create`, {
+    const res = await fetch(`/api/ratings/create/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -84,7 +84,7 @@ export const createRating = (ratingData) => async dispatch => {
 export const updateRating = (ratingData) => async dispatch => {
     const { userId, menuItemId, review, rating, ratingId } = ratingData
 
-    const res = await fetch(`/api/ratings/${ratingId}`, {
+    const res = await fetch(`/api/ratings/${ratingId}/`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -108,7 +108,7 @@ export const updateRating = (ratingData) => async dispatch => {
 }
 
 export const deleteRating = (ratingId) => async dispatch => {
-    const res = await fetch(`/api/ratings/${ratingId}`, {
+    const res = await fetch(`/api/ratings/${ratingId}/`, {
         method: 'DELETE',
     })
 
@@ -143,10 +143,11 @@ const ratingsReducer = (state = initialState, action) => {
             return newState
 
         case UPDATE_RATING:
-            return {
+            newState = {
                 ...state,
-                [action.payload.id]: action.payload
             }
+            newState.menu_items.current.ratings[action.payload.id] = action.payload
+            return newState;
 
         case DELETE_RATING:
             newState = { ...state }

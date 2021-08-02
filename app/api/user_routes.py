@@ -18,7 +18,7 @@ def validation_err_msgs(validation_errors):
 
 
 # READ ONE = User
-@user_routes.route('/<int:id>')
+@user_routes.route('/<int:id>/')
 @login_required
 def user(id):
     user = User.query.get(id)
@@ -34,7 +34,7 @@ def users():
 
 
 # UPDATE = User
-@user_routes.route('/<int:id>', methods=['PUT'])
+@user_routes.route('/<int:id>/', methods=['PUT'])
 @ login_required
 def users_edit(id):
     form = SignUpForm()
@@ -48,7 +48,7 @@ def users_edit(id):
 
 
 # DELETE = User
-@ user_routes.route('/<int:id>', methods=['DELETE'])
+@ user_routes.route('/<int:id>/', methods=['DELETE'])
 @ login_required
 def users_delete(id):
     delete_user = User.query.get(id)

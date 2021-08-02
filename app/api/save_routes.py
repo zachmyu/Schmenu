@@ -35,7 +35,7 @@ def saves_add():
 
 
 # DELETE = Save
-@save_routes.route('/<int:id>', methods=['DELETE'])
+@save_routes.route('/<int:id>/', methods=['DELETE'])
 @login_required
 def saves_delete(id):
     delete_save = Save.query.get(id)

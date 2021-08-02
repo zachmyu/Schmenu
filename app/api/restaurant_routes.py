@@ -17,7 +17,7 @@ def validation_err_msgs(validation_errors):
 
 
 # READ ONE = restaurant
-@restaurant_routes.route('/<int:id>')
+@restaurant_routes.route('/<int:id>/')
 def restaurant(id):
     restaurant = Restaurant.query.get(id)
     return restaurant.to_dict()
@@ -54,7 +54,7 @@ def restaurants_add():
 
 
 #UPDATE = Restaurant
-@restaurant_routes.route('/<int:id>', methods=['PUT'])
+@restaurant_routes.route('/<int:id>/', methods=['PUT'])
 @login_required
 def restaurants_edit(id):
     form = RestaurantForm()
@@ -68,7 +68,7 @@ def restaurants_edit(id):
 
 
 # DELETE = Restaurant
-@restaurant_routes.route('/<int:id>', methods=['DELETE'])
+@restaurant_routes.route('/<int:id>/', methods=['DELETE'])
 @login_required
 def restaurants_delete(id):
     delete_restaurant = Restaurant.query.get(id)

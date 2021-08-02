@@ -30,7 +30,7 @@ def ratings(menu_item_id):
 
 
 # CREATE = Rating
-@rating_routes.route('/create', methods=['POST'])
+@rating_routes.route('/create/', methods=['POST'])
 @login_required
 def rating_add():
     form = RatingForm()
@@ -49,7 +49,7 @@ def rating_add():
 
 
 #UPDATE = Rating
-@rating_routes.route('/<int:id>', methods=['PUT'])
+@rating_routes.route('/<int:id>/', methods=['PUT'])
 @login_required
 def rating_edit(id):
     form = RatingForm()
@@ -63,7 +63,7 @@ def rating_edit(id):
 
 
 # DELETE = Rating
-@rating_routes.route('/<int:id>', methods=['DELETE'])
+@rating_routes.route('/<int:id>/', methods=['DELETE'])
 @login_required
 def rating_delete(id):
     delete_rating = Rating.query.get(id)

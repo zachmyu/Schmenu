@@ -18,7 +18,7 @@ def validation_err_msgs(validation_errors):
 
 
 # READ ONE = Menu_item
-@menu_item_routes.route('/<int:id>')
+@menu_item_routes.route('/<int:id>/')
 def menu_item(id):
     menu_item = Menu_item.query.get(id)
     return menu_item.to_dict()
@@ -53,7 +53,7 @@ def menu_items_add():
 
 
 #UPDATE = Menu_item
-@menu_item_routes.route('/<int:id>', methods=['PUT'])
+@menu_item_routes.route('/<int:id>/', methods=['PUT'])
 @login_required
 def menu_items_edit(id):
     form = MenuItemForm()
@@ -67,7 +67,7 @@ def menu_items_edit(id):
 
 
 # DELETE = Menu_item
-@menu_item_routes.route('/<int:id>', methods=['DELETE'])
+@menu_item_routes.route('/<int:id>/', methods=['DELETE'])
 @login_required
 def menu_items_delete(id):
     delete_menu_item = Menu_item.query.get(id)

@@ -22,7 +22,7 @@ const removeSave = (save_id) => ({
 
 //Thunks
 export const getAllSaves = () => async dispatch => {
-    const res = await fetch(`api/saves`);
+    const res = await fetch(`api/saves/`);
     const data = await res.json();
 
     if (res.ok) {
@@ -35,7 +35,7 @@ export const getAllSaves = () => async dispatch => {
 export const createSave = (saveData) => async dispatch => {
     const { userId, menuItemId } = saveData
 
-    const res = await fetch(`/api/saves`, {
+    const res = await fetch(`/api/saves/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -56,7 +56,7 @@ export const createSave = (saveData) => async dispatch => {
 }
 
 export const deleteSave = (menuItemId) => async dispatch => {
-    const res = await fetch(`/api/saves/${menuItemId}`, {
+    const res = await fetch(`/api/saves/${menuItemId}/`, {
         method: 'DELETE',
     })
 
