@@ -1,14 +1,14 @@
 import React from 'react';
 import './MenuItem.css';
 import { useSelector } from 'react-redux';
-import RatingAddModal from '../RatingsPage/RatingAddModal';
+import RatingAddModal from '../RatingsModals/RatingAddModal';
 
 
 function Ratings({ ratingInfo }) {
 
 
     const currUser = useSelector(state => state?.session.user)
-    const currItem = useSelector(state => state?.menu_items?.current)
+    // const currItem = useSelector(state => state?.menu_items?.current)
 
     let sessionLinks;
     if (currUser && currUser.account_type === "Reviewer") {
