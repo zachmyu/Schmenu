@@ -30,7 +30,7 @@ def ratings(menu_item_id):
 
 
 # CREATE = Rating
-@rating_routes.route('/', methods=['POST'])
+@rating_routes.route('/create', methods=['POST'])
 @login_required
 def rating_add():
     form = RatingForm()

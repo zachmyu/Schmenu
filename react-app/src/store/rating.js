@@ -57,7 +57,7 @@ export const getAllRatings = () => async dispatch => {
 export const createRating = (ratingData) => async dispatch => {
     const { userId, menuItemId, review, rating } = ratingData
 
-    const res = await fetch(`/api/ratings`, {
+    const res = await fetch(`/api/ratings/create`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -69,7 +69,9 @@ export const createRating = (ratingData) => async dispatch => {
             rating: rating
         }),
     });
+    // console.log("OOOOO HERE IS THE DATAAA!", res)
     const data = await res.json();
+
 
     if (res.ok) {
         dispatch(addRating(data))

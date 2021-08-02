@@ -43,12 +43,6 @@ const NavBar = ({ loaded }) => {
         </div>
       </>
     );
-
-
-
-
-
-
   } else {
     sessionLinks = (
       <>
@@ -61,7 +55,6 @@ const NavBar = ({ loaded }) => {
         <div className='navbar-button-container'>
           <DemoUserModal />
         </div>
-
       </>
     );
   }

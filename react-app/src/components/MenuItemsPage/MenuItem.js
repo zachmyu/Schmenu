@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+// import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { getOneItem } from '../../store/menu_item'
 // import { updateReview, deleteReview } from '../../store/reviews'
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
+// import { useParams, useHistory } from "react-router-dom";
 // import ReviewFormModal from '../ReviewFormModal/ReviewCreateForm'
 // import { createFavorites, deleteFavorites } from '../../store/favorite'
 import './MenuItem.css'
@@ -12,17 +14,16 @@ import Ratings from "./Ratings";
 function MenuItem() {
     const { id } = useParams();
     const dispatch = useDispatch();
-    const history = useHistory();
+    // const history = useHistory();
 
     //Save button functions
-    const [buttonUnSave, setButtonUnSave] = useState('button-removeSave')
-    const [buttonAddSave, setButtonAddSave] = useState('button-addSave')
-    const [oneClickBtn, setOneClickBtn] = useState(false)
+    // const [buttonUnSave, setButtonUnSave] = useState('button-removeSave')
+    // const [buttonAddSave, setButtonAddSave] = useState('button-addSave')
+    // const [oneClickBtn, setOneClickBtn] = useState(false)
 
-    const user = useSelector(state => state?.session.user)
+    // const user = useSelector(state => state?.session.user)
     const menuItem = useSelector(state => state?.menu_items.current)
-    const userSaves = user ? Object.values(user?.saves) : null
-    console.log("HEELLLLLLLLOOOOOOOOOOOOOOOOOOOOOOO", menuItem)
+    // const userSaves = user ? Object.values(user?.saves) : null
     const ratingInfo = menuItem ? Object.values(menuItem?.ratings) : null
     // const faveFind = userSaves?.find(save => save?.menu_item_id === id)
 
@@ -57,16 +58,16 @@ function MenuItem() {
                             </div>
                             <div className='container_menuItem-details'>
                                 <div className='menuItem-details-element'>
-                                    <i class="fas fa-star"></i>
+                                    <i className="fas fa-star"></i>
                                     <span>{avgRating()}</span>
                                 </div>
                                 <div className='menuItem-details-element'>
-                                    <i class="far fa-comment-alt"> </i>
+                                    <i className="far fa-comment-alt"> </i>
 
                                     <span>{(Object.values(menuItem.ratings)).length} reviews</span>
                                 </div>
                                 <div className='menuItem-details-element'>
-                                    <i class="fas fa-money-bill-wave"></i>
+                                    <i className="fas fa-money-bill-wave"></i>
                                     <span>Price: ${menuItem.price}</span>
                                 </div>
                             </div>
