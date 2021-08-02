@@ -133,7 +133,7 @@ const ratingsReducer = (state = initialState, action) => {
         case READ_ALL_RATINGS:
             newState = { ...state };
             action.payload.forEach((rating) => {
-                newState[rating.id] = rating;
+                newState[action.rating.id] = rating;
             });
             return newState
 

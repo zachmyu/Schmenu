@@ -24,9 +24,12 @@ const RatingAddModal = () => {
         if (data) {
             console.log("Errors were logged: ", data)
         }
+        setRating(0)
+        setReview('')
+        setShowModal(false)
+
         // history.push(`/menuitems/${currItem?.id}`)
     }
-
 
     const ratingRadio = () => {
         return [1, 2, 3, 4, 5].map(i => (
@@ -44,7 +47,8 @@ const RatingAddModal = () => {
 
     return (
         <>
-            <button className="navbar-button" onClick={() => setShowModal(true)}>Add a rating!</button>
+            <button className="navbar-button"
+                onClick={() => setShowModal(true)}>Add a rating!</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <h3>Tried this dish? Tell us your thoughts!</h3>
@@ -65,7 +69,9 @@ const RatingAddModal = () => {
                         {/* <div className='review-button-container'>
                             <button className="button2" type="submit">Submit Review</button>
                         </div> */}
-                        <button type='submit' className="button3"> Submit your review! </button>
+                        <button type='submit' className="button3">
+                            Submit your review!
+                        </button>
                     </form>
                 </Modal>
             )}

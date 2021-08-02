@@ -6,10 +6,12 @@ import RatingAddModal from '../RatingsPage/RatingAddModal';
 
 function Ratings({ ratingInfo }) {
 
-    const currentUser = useSelector(state => state.session.user)
+
+    const currUser = useSelector(state => state?.session.user)
+    const currItem = useSelector(state => state?.menu_items?.current)
 
     let sessionLinks;
-    if (currentUser && currentUser.account_type === "Reviewer") {
+    if (currUser && currUser.account_type === "Reviewer") {
         sessionLinks = (
             <>
                 <div className='navbar-button'>
@@ -26,6 +28,14 @@ function Ratings({ ratingInfo }) {
         );
     }
 
+    let reviewUpdateLinks;
+    reviewUpdateLinks = (
+        <div className='navbar-button'>
+            <button>Update Your Review</button>
+            {/* <RatingAddModal /> */}
+        </div>
+    );
+
 
     return (
         <>
@@ -35,6 +45,7 @@ function Ratings({ ratingInfo }) {
                 <div className='rating-review' key={rating.id}>
                     <h3>{rating.rating}</h3>
                     <h3>{rating.review}</h3>
+                    {currUser && currUser.id === rating.user_id ? reviewUpdateLinks : null}
                 </div>
 
 
