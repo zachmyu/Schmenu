@@ -81,7 +81,7 @@ export const createRating = (ratingData) => async dispatch => {
     return data
 }
 
-export const UpdateRating = (ratingData) => async dispatch => {
+export const updateRating = (ratingData) => async dispatch => {
     const { userId, menuItemId, review, rating, ratingId } = ratingData
 
     const res = await fetch(`/api/ratings/${ratingId}`, {
