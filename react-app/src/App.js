@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import LoginForm from './components/auth/LoginForm';
-import SignUpForm from './components/auth/SignUpForm';
+import LoginFormModal from './components/auth/LoginFormModal';
+import SignUpFormModal from './components/auth/SignUpFormModal';
 import NavBar from './components/Nav/NavBar';
 import NavFooter from './components/Nav/NavFooter'
 import ProtectedRoute from './components/auth/ProtectedRoute';
@@ -31,10 +31,10 @@ function App() {
             {loaded && (
                 <Switch>
                     <Route path='/login' exact={true}>
-                        <LoginForm />
+                        <LoginFormModal />
                     </Route>
                     <Route path='/sign-up' exact={true}>
-                        <SignUpForm />
+                        <SignUpFormModal />
                     </Route>
                     {/* <ProtectedRoute path='/users' exact={true} >
                         <UsersList />
