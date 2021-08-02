@@ -13,7 +13,24 @@ const NavBar = ({ loaded }) => {
   const currentUser = useSelector(state => state.session.user)
 
   let sessionLinks;
-  if (currentUser) {
+  if (currentUser && currentUser.account_type === "Owner") {
+    sessionLinks = (
+      <>
+        <div className='navbar-button'>
+          <NavLink to={`/users/${currentUser.id}`} exact={true} className='navbar-button'>
+            "User Page"
+          </NavLink>
+        </div>
+        <div className='navbar-button'>
+          <LogoutButton />
+        </div>
+        <div className='navbar-button-container'>
+          <span>Add Restaurant Button Here</span>
+          {/* <AddRestaurantModal /> */}
+        </div>
+      </>
+    );
+  } else if (currentUser && currentUser.account_type === "Reviewer") {
     sessionLinks = (
       <>
         <div className='navbar-button'>
@@ -26,6 +43,12 @@ const NavBar = ({ loaded }) => {
         </div>
       </>
     );
+
+
+
+
+
+
   } else {
     sessionLinks = (
       <>
@@ -38,6 +61,7 @@ const NavBar = ({ loaded }) => {
         <div className='navbar-button-container'>
           <DemoUserModal />
         </div>
+
       </>
     );
   }

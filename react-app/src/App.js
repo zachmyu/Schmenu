@@ -8,6 +8,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 
 import User from './components/UsersPage/User';
 import { authenticate } from './store/session';
+import MenuItem from './components/MenuItemsPage/MenuItem';
 
 function App() {
     const [loaded, setLoaded] = useState(false);
@@ -29,12 +30,15 @@ function App() {
             <NavBar loaded={loaded} />
             {loaded && (
                 <Switch>
-                    <ProtectedRoute path='/users/:userId' exact={true} >
+                    <Route exact path='/'>
+                        <h1>My Home Page</h1>
+                    </Route>
+                    <ProtectedRoute exact path='/users/:userId'>
                         <User />
                     </ProtectedRoute>
-                    <ProtectedRoute path='/' exact={true} >
-                        <h1>My Home Page</h1>
-                    </ProtectedRoute>
+                    <Route exact path='/menuitems/:id'>
+                        <MenuItem />
+                    </Route>
                 </Switch>
             )}
             <NavFooter />
