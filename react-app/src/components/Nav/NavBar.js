@@ -2,36 +2,56 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
+import './Nav.css';
+import { useSelector } from 'react-redux';
+import LoginFormModal from '../auth/LoginFormModal';
+import SignUpFormModal from '../auth/SignUpFormModal';
+import logo from './logo.png'
+import DemoUserModal from '../auth/DemoUserModal';
 
-const NavBar = () => {
-  return (
-    <nav>
-      <ul>
-        <li>
-          <NavLink to='/' exact={true} activeClassName='active'>
-            Home
+const NavBar = ({ loaded }) => {
+  const currentUser = useSelector(state => state.session.user)
+
+  let sessionLinks;
+  if (currentUser) {
+    sessionLinks = (
+      <>
+        <div className='navbar-button'>
+          <NavLink to={`/users/${currentUser.id}`} exact={true} className='navbar-button'>
+            "User Page"
           </NavLink>
-        </li>
-        <li>
-          <NavLink to='/login' exact={true} activeClassName='active'>
-            Login
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/sign-up' exact={true} activeClassName='active'>
-            Sign Up
-          </NavLink>
-        </li>
-        <li>
-          {/* <NavLink to='/users' exact={true}  activeClassName='active'>
-            Users
-          </NavLink> */}
-        </li>
-        <li>
+        </div>
+        <div className='navbar-button'>
           <LogoutButton />
-        </li>
-      </ul>
-    </nav>
+        </div>
+      </>
+    );
+  } else {
+    sessionLinks = (
+      <>
+        <div className='navbar-button-container'>
+          <LoginFormModal />
+        </div>
+        <div className='navbar-button-container'>
+          <SignUpFormModal />
+        </div>
+        <div className='navbar-button-container'>
+          <DemoUserModal />
+        </div>
+      </>
+    );
+  }
+
+
+  return (
+    <div className='navbar__container'>
+      <NavLink className='navbar__element-logo' exact to="/">
+        <img src={logo} id='homepageLogo' alt='homepageLogo'></img>
+      </NavLink>
+      <div className='navbar__element-sessionCont'>
+        {loaded && sessionLinks}
+      </div>
+    </div >
   );
 }
 

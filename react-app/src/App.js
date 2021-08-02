@@ -30,12 +30,12 @@ function App() {
             <NavBar loaded={loaded} />
             {loaded && (
                 <Switch>
-                    <Route path='/login' exact={true}>
+                    {/* <Route path='/login' exact={true}>
                         <LoginFormModal />
-                    </Route>
-                    <Route path='/sign-up' exact={true}>
+                    </Route> */}
+                    {/* <Route path='/sign-up' exact={true}>
                         <SignUpFormModal />
-                    </Route>
+                    </Route> */}
                     {/* <ProtectedRoute path='/users' exact={true} >
                         <UsersList />
                     </ProtectedRoute> */}

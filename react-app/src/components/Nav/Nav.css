@@ -1,0 +1,59 @@
+.home-container{
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+}
+.session-container {
+    display: flex;
+    justify-content: flex-end;
+    align-content: center;
+    background-color: white;
+
+}
+.navbar__container{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: rgb(247, 247, 247) solid .5px;
+    background-color: white;
+}
+
+#homepageLogo {
+    height: 100px
+}
+
+
+
+/* janky fix, fix later */
+.logout{
+    background-color: white;
+}
+
+
+.footer-container {
+    background-color: black;
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0px 50px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    position: fixed;
+}
+
+.footer-element{
+    padding:0px 10px;
+    font-size: large;
+    font-weight: bolder;
+
+}
+
+.footer-element{
+    color: #F59320;
+    text-decoration: none;
+}
+
+.footer-element:hover{
+    color: #ffbd72;
+}
