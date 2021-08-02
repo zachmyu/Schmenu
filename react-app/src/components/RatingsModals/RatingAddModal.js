@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Modal } from '../../context/Modal'
 import { useSelector, useDispatch } from 'react-redux';
-// import { useHistory } from 'react-router-dom';
+import { Modal } from '../../context/Modal'
 import { createRating } from '../../store/rating';
 
 
@@ -9,10 +8,8 @@ const RatingAddModal = () => {
     const dispatch = useDispatch();
     const currUser = useSelector(state => state?.session?.user);
     const currItem = useSelector(state => state?.menu_items?.current);
-    // const history = useHistory()
 
     const [showModal, setShowModal] = useState(false);
-    // const [errors, setErrors] = useState([]);
     const [rating, setRating] = useState(0);
     const [review, setReview] = useState('');
 
@@ -27,8 +24,6 @@ const RatingAddModal = () => {
         setRating(0)
         setReview('')
         setShowModal(false)
-
-        // history.push(`/menuitems/${currItem?.id}`)
     }
 
     const ratingRadio = () => {
@@ -66,9 +61,6 @@ const RatingAddModal = () => {
                                 required
                             />
                         </div>
-                        {/* <div className='review-button-container'>
-                            <button className="button2" type="submit">Submit Review</button>
-                        </div> */}
                         <button type='submit' className="button3">
                             Submit your review!
                         </button>
@@ -79,6 +71,4 @@ const RatingAddModal = () => {
     )
 }
 
-
-export default RatingAddModal
-    ;
+export default RatingAddModal;

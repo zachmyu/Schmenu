@@ -16,17 +16,25 @@ def validation_err_msgs(validation_errors):
 
 
 # READ ONE = Rating
-@rating_routes.route('/<int:id>')
+@rating_routes.route('/<int:id>/')
 def rating(id):
     ratings = Rating.query.get(id)
     return ratings.to_dict()
 
 
-# # READ ALL = Ratings (Might be too many to list)
-@rating_routes.route('/')
-def ratings(menu_item_id):
-    ratings = Rating.query.filter_by(menu_item_id=menu_item_id).all()
-    return {'ratings': [rating.to_dict() for rating in ratings]}
+# READ ALL - Query by menu_items = Rating
+@rating_routes.route('/menuitems/<int:id>/')
+def ratings_by_items(id):
+    ratings = Rating.query.filter_by(menu_item_id=id).all()
+    # return {'ratings': [rating.to_dict() for rating in ratings]}
+    return {rating.id: rating.to_dict() for rating in ratings}
+
+
+# READ ALL - Query by users = Rating
+@rating_routes.route('/users/<int:user_id>/')
+def ratings_by_users(user_id):
+    ratings = Rating.query.filter_by(user_id=user_id).all()
+    return {rating.id: rating.to_dict() for rating in ratings}
 
 
 # CREATE = Rating
@@ -70,13 +78,3 @@ def rating_delete(id):
     db.session.delete(delete_rating)
     db.session.commit()
     return jsonify('Rating has been deleted!')
-
-# /ratings
-# Ratings Create / List Routes
-# GET('/') - Obtain list of Ratings
-# Query through ratings.menu_item_id or ratings.user_id
-# GET('/:id') - Obtain detail of single rating review
-# For edit/delete purposes on modal
-# POST('/') - Create a new restaurant
-# PUT('/:id') - Update restaurant information
-# DELETE('/:id') - Delete the restaurant

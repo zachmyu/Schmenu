@@ -1,34 +1,40 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal'
 import { useSelector, useDispatch } from 'react-redux';
-// import { useHistory } from 'react-router-dom';
-import { updateRating } from '../../store/rating'
+import { updateRating, deleteRating } from '../../store/rating'
 
 
 const RatingUpdateModal = ({ currRating }) => {
     const dispatch = useDispatch();
     const currUser = useSelector(state => state?.session?.user);
     const currItem = useSelector(state => state?.menu_items?.current);
-    // const history = useHistory()
 
     const [showModal, setShowModal] = useState(false);
-    // const [errors, setErrors] = useState([]);
     const [rating, setRating] = useState(currRating.rating);
     const [review, setReview] = useState(currRating.review);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const data = dispatch(updateRating({
-            userId: currUser.id, menuItemId: currItem?.id, review, rating, ratingId: currRating.id
+            userId: currUser.id,
+            menuItemId: currItem?.id,
+            review,
+            rating,
+            ratingId: currRating.id
         }))
         if (data) {
             console.log("Errors were logged: ", data)
         }
-        setRating(0)
-        setReview('')
+        setRating(currRating.rating)
+        setReview(currRating.review)
         setShowModal(false)
+    }
 
-        // history.push(`/menuitems/${currItem?.id}`)
+    const handleDelete = (e) => {
+        let alert = window.confirm('Are you sure you want to delete this review?')
+        if (alert) {
+            dispatch(deleteRating(currRating.id))
+        }
     }
 
     const ratingRadio = () => {
@@ -48,8 +54,6 @@ const RatingUpdateModal = ({ currRating }) => {
     return (
         <>
             <button className="navbar-button"
-                onClick={() => console.log('KEEEEEEEEEEEEEEEEEEEEEEEEY', currRating)}>Check stuffs!</button>
-            <button className="navbar-button"
                 onClick={() => setShowModal(true)}>Update your rating!</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
@@ -68,13 +72,13 @@ const RatingUpdateModal = ({ currRating }) => {
                                 required
                             />
                         </div>
-                        {/* <div className='review-button-container'>
-                            <button className="button2" type="submit">Submit Review</button>
-                        </div> */}
                         <button type='submit' className="button3">
                             Submit your review!
                         </button>
                     </form>
+                    <button className="button3" onClick={() => (
+                        handleDelete(currRating.id
+                        ))}>Delete rating?</button>
                 </Modal>
             )}
         </>

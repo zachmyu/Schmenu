@@ -1,40 +1,31 @@
 import React, { useEffect } from "react";
-// import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { getOneItem } from '../../store/menu_item'
-// import { updateReview, deleteReview } from '../../store/reviews'
+import { getAllItemRatings } from '../../store/rating'
 import { useParams } from "react-router-dom";
-// import { useParams, useHistory } from "react-router-dom";
-// import ReviewFormModal from '../ReviewFormModal/ReviewCreateForm'
-// import { createFavorites, deleteFavorites } from '../../store/favorite'
 import './MenuItem.css'
 import Ratings from "./Ratings";
-// import '../ReviewFormModal/ReviewForm.css'
+
 
 function MenuItem() {
     const { id } = useParams();
     const dispatch = useDispatch();
-    // const history = useHistory();
 
-    //Save button functions
-    // const [buttonUnSave, setButtonUnSave] = useState('button-removeSave')
-    // const [buttonAddSave, setButtonAddSave] = useState('button-addSave')
-    // const [oneClickBtn, setOneClickBtn] = useState(false)
-
-    // const user = useSelector(state => state?.session.user)
     const menuItem = useSelector(state => state?.menu_items.current)
-    // const userSaves = user ? Object.values(user?.saves) : null
-    const ratingInfo = menuItem ? Object.values(menuItem?.ratings) : null
-    // const faveFind = userSaves?.find(save => save?.menu_item_id === id)
+    const ratingDetails = useSelector(state => state?.ratings)
+    const ratingInfo = Object.values(ratingDetails)
 
     useEffect(() => {
         dispatch(getOneItem(id))
     }, [dispatch, id])
 
+    useEffect(() => {
+        dispatch(getAllItemRatings(id))
+    }, [dispatch, id])
+
     const avgRating = () => {
         let total = 0
         ratingInfo?.forEach(rating => total += rating?.rating)
-        // let avg = Math.round((total / ratingInfo.length) * 10) / 10
         let avg = ~~((total / ratingInfo.length) * 10) / 10
         return avg
     }
@@ -63,8 +54,7 @@ function MenuItem() {
                                 </div>
                                 <div className='menuItem-details-element'>
                                     <i className="far fa-comment-alt"> </i>
-
-                                    <span>{(Object.values(menuItem.ratings)).length} reviews</span>
+                                    <span>{ratingInfo.length} reviews</span>
                                 </div>
                                 <div className='menuItem-details-element'>
                                     <i className="fas fa-money-bill-wave"></i>
@@ -75,12 +65,9 @@ function MenuItem() {
                                 {menuItem.description}
                             </div>
                             <Ratings ratingInfo={ratingInfo} />
-                            {/* {reviewChange} */}
                         </div>
                         <div className='container_menuItem-right'>
-                            {/* <div id="menuItemElement-reservation">{makeReservation}</div> */}
-                            {/* <div id="menuItemElement-maps">Google Maps Placeholder</div> */}
-                            {/* <div id="menuItemElement-info">Various Information Placeholder</div> */}
+                            {/*sidebar stuff?*/}
                         </div>
                     </div>
                 </>

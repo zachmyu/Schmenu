@@ -43,8 +43,19 @@ export const getOneRating = (ratingId) => async dispatch => {
     }
 }
 
-export const getAllRatings = (menuItemId) => async dispatch => {
-    const res = await fetch(`/api/ratings/${menuItemId}/`);
+export const getAllUserRatings = (userId) => async dispatch => {
+    const res = await fetch(`/api/ratings/users/${userId}/`);
+    const data = await res.json();
+
+    if (res.ok) {
+        dispatch(loadAllRatings(data))
+    } else {
+        throw res
+    }
+}
+
+export const getAllItemRatings = (menuItemId) => async dispatch => {
+    const res = await fetch(`/api/ratings/menuitems/${menuItemId}/`);
     const data = await res.json();
 
     if (res.ok) {
@@ -69,12 +80,11 @@ export const createRating = (ratingData) => async dispatch => {
             rating: rating
         }),
     });
-    // console.log("OOOOO HERE IS THE DATAAA!", res)
     const data = await res.json();
 
 
     if (res.ok) {
-        dispatch(addRating(data))
+        dispatch(addRating(data.rating))
     } else {
         throw res
     }
@@ -131,10 +141,7 @@ const ratingsReducer = (state = initialState, action) => {
             return newState;
 
         case READ_ALL_RATINGS:
-            newState = { ...state };
-            action.payload.forEach((rating) => {
-                newState[action.rating.id] = rating;
-            });
+            newState = { ...action.payload };
             return newState
 
         case CREATE_RATING:
@@ -145,8 +152,8 @@ const ratingsReducer = (state = initialState, action) => {
         case UPDATE_RATING:
             newState = {
                 ...state,
+                [action.payload.id]: action.payload
             }
-            newState.menu_items.current.ratings[action.payload.id] = action.payload
             return newState;
 
         case DELETE_RATING:
