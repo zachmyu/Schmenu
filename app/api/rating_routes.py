@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from app.models import db, Rating, menu_item
+from app.models import db, Rating
 from app.forms import RatingForm
 from flask_login import login_required
 

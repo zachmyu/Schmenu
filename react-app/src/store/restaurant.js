@@ -32,8 +32,8 @@ const removeRestaurant = (restaurant_id) => ({
 });
 
 //Thunks
-export const getOneRestaurant = (id) => async dispatch => {
-    const res = await fetch(`api/restaurants/${id}/`)
+export const getOneRestaurant = (restaurantId) => async dispatch => {
+    const res = await fetch(`/api/restaurants/${restaurantId}/`)
     const data = await res.json();
 
     if (res.ok) {
@@ -44,7 +44,7 @@ export const getOneRestaurant = (id) => async dispatch => {
 }
 
 export const getAllRestaurants = () => async dispatch => {
-    const res = await fetch(`api/restaurants/`);
+    const res = await fetch(`/api/restaurants/`);
     const data = await res.json();
 
     if (res.ok) {
@@ -57,7 +57,7 @@ export const getAllRestaurants = () => async dispatch => {
 export const createRestaurant = (restaurantData) => async dispatch => {
     const { ownerId, name, address, restaurantType, description, restaurantPixUrl, latitude, longitude } = restaurantData
 
-    const res = await fetch(`api/restaurants/`, {
+    const res = await fetch(`/api/restaurants/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -86,7 +86,7 @@ export const createRestaurant = (restaurantData) => async dispatch => {
 export const UpdateRestaurant = (restaurantData) => async dispatch => {
     const { ownerId, name, address, restaurantType, description, restaurantPixUrl, latitude, longitude, restaurantId } = restaurantData
 
-    const res = await fetch(`api/restaurants/${restaurantId}/`, {
+    const res = await fetch(`/api/restaurants/${restaurantId}/`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -114,7 +114,7 @@ export const UpdateRestaurant = (restaurantData) => async dispatch => {
 }
 
 export const deleteRestaurant = (restaurantId) => async dispatch => {
-    const res = await fetch(`api/restaurants/${restaurantId}/`, {
+    const res = await fetch(`/api/restaurants/${restaurantId}/`, {
         method: 'DELETE',
     })
 

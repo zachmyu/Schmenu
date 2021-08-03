@@ -31,6 +31,13 @@ def menu_items():
     return {'menu_items': [menu_item.to_dict() for menu_item in menu_items]}
 
 
+# READ ALL = Menu_items by Restaurant
+@menu_item_routes.route('/restaurants/<int:id>/')
+def menu_items_by_restaurants(id):
+    menu_items = Menu_item.query.filter_by(restaurant_id=id).all()
+    return {menu_item.id: menu_item.to_dict() for menu_item in menu_items}
+
+
 # CREATE = Menu_item
 @menu_item_routes.route('/', methods=['POST'])
 @login_required

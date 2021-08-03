@@ -29,5 +29,4 @@ class Restaurant(db.Model, UserMixin):
             'restaurant_pix': self.restaurant_pix,
             "latitude": self.latitude,
             "longitude": self.longitude,
-            "menu_items": {menu_item.id: menu_item.to_dict() for menu_item in self.menu_items},
         }

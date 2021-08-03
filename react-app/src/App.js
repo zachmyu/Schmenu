@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { authenticate } from './store/session';
 
+import ProtectedRoute from './components/auth/ProtectedRoute';
 import NavBar from './components/Nav/NavBar';
 import NavFooter from './components/Nav/NavFooter'
-import ProtectedRoute from './components/auth/ProtectedRoute';
 
 import User from './components/UsersPage/User';
-import { authenticate } from './store/session';
 import MenuItem from './components/MenuItemsPage/MenuItem';
+import Restaurant from './components/RestaurantPage/Restaurant';
 
 function App() {
     const [loaded, setLoaded] = useState(false);
@@ -38,6 +39,9 @@ function App() {
                     </ProtectedRoute>
                     <Route exact path='/menuitems/:id'>
                         <MenuItem />
+                    </Route>
+                    <Route exact path='/restaurants/:id'>
+                        <Restaurant />
                     </Route>
                 </Switch>
             )}

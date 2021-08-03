@@ -27,7 +27,7 @@ const removeUser = (user_id) => ({
 
 //Thunks
 export const getOneUser = (userId) => async dispatch => {
-    const res = await fetch(`api/users/${userId}/`)
+    const res = await fetch(`/api/users/${userId}/`)
     const data = await res.json();
 
     if (res.ok) {
@@ -38,7 +38,7 @@ export const getOneUser = (userId) => async dispatch => {
 }
 
 export const getAllUsers = () => async dispatch => {
-    const res = await fetch(`api/users/`)
+    const res = await fetch(`/api/users/`)
     const data = await res.json();
 
     if (res.ok) {
@@ -51,7 +51,7 @@ export const getAllUsers = () => async dispatch => {
 export const UpdateUser = (userData) => async dispatch => {
     const { firstName, lastName, username, email, about, profilePixUrl, accountType, password, userId } = userData
 
-    const res = await fetch(`api/users/${userId}/`, {
+    const res = await fetch(`/api/users/${userId}/`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'

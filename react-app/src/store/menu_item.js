@@ -44,8 +44,19 @@ export const getOneItem = (menuItemId) => async dispatch => {
     }
 }
 
-export const getAllItems = () => async dispatch => {
-    const res = await fetch(`/api/menu_items/`);
+export const getAllItems = (restaurantId) => async dispatch => {
+    const res = await fetch(`/api/menu_items/restaurants/${restaurantId}/`);
+    const data = await res.json();
+
+    if (res.ok) {
+        dispatch(loadAllItems(data))
+    } else {
+        throw res
+    }
+}
+
+export const getAllRestItems = (restaurantId) => async dispatch => {
+    const res = await fetch(`/api/menu_items/restaurants/${restaurantId}/`);
     const data = await res.json();
 
     if (res.ok) {
@@ -133,10 +144,10 @@ const menu_itemsReducer = (state = initialState, action) => {
             return newState;
 
         case READ_ALL_MENU_ITEMS:
-            newState = { ...state };
-            action.payload.forEach((menu_item) => {
-                newState[menu_item.id] = menu_item;
-            });
+            newState = { ...action.payload };
+            // action.payload.forEach((menu_item) => {
+            //     newState[menu_item.id] = menu_item;
+            // });
             return newState
 
         case CREATE_MENU_ITEM:
