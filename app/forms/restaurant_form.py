@@ -9,7 +9,7 @@ class RestaurantForm(FlaskForm):
     address = TextAreaField('Address', validators=[DataRequired(
         message='Please add the address of the restaurant!')])
     restaurant_type = SelectField('Type', validators=[DataRequired(
-        message='Please select the type of restaurant you are adding!')], choices=[('fd', 'Fine Dining'), ('cd', 'Casual Dining'), ('ff', 'Fast Food'), ('cf', 'Cafe'), ('bf', 'Buffett'), ('ot', 'Other')])
+        message='Please select the type of restaurant you are adding!')], choices=[('Fine Dining'), ('Casual Dining'), ('Fast Food'), ('Cafe'), ('Buffet'), ('Other')])
     description = TextAreaField('Description', validators=[
                                 DataRequired(message='Please include a description of the restaurant!')])
     restaurant_pix = StringField('Picture of the Restaurant')

@@ -10,7 +10,8 @@ def seed_restaurants():
                                      name=fake.company(),
                                      address=fake.address(),
                                      restaurant_type=fake.random_elements(
-            elements=('fd', 'cd', 'ff', 'cf', 'bf', 'ot'),
+            elements=('Fine Dining', 'Casual Dining',
+                      'Fast Food', 'Cafe', 'Buffet', 'Other'),
             length=1),
             description=fake.paragraph(nb_sentences=5),
             restaurant_pix='https://i.imgur.com/EaFCzkW.jpg',
