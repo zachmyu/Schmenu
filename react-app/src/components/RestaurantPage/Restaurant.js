@@ -51,7 +51,7 @@ function Restaurant() {
                             </div>
                             <div className='container_Restaurant-items'>
                                 {itemInfo?.map(item => (
-                                    <a href={`/menuitems/${item?.id}`}>
+                                    <a href={`/menuitems/${item?.id}`} key={item?.id}>
                                         <h3>{item.food_name}</h3>
                                     </a>
                                 ))}
