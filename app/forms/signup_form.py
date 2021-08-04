@@ -34,7 +34,5 @@ class SignUpForm(FlaskForm):
     profile_pix = StringField('profile_pix')
     account_type = RadioField('Rating', validators=[DataRequired(message='Please choose an account type!')],
                               choices=[('Reviewer', 'Reviewer'), ('Owner', 'Owner')])
-    password = PasswordField('New Password', [DataRequired(message='Please enter a password!'), EqualTo(
-        'confirm', message='Passwords must match')])
-    confirm = PasswordField(
-        'Repeat Password', [DataRequired(message='Please enter confirm your password!')])
+    password = PasswordField(
+        'New Password', [DataRequired(message='Please enter a password!')])

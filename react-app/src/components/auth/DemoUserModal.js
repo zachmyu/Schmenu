@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
 
 const DemoUserModal = () => {
@@ -9,7 +9,6 @@ const DemoUserModal = () => {
     const [errors, setErrors] = useState([]);
     const user = useSelector(state => state.session.user);
     const dispatch = useDispatch();
-    const history = useHistory()
 
     const onLoginReviewer = async (e) => {
         e.preventDefault();
@@ -28,7 +27,9 @@ const DemoUserModal = () => {
         if (data) setErrors(data);
     };
 
-    if (user) history.push('/');
+    if (user) {
+        return <Redirect to='/' />;
+    }
 
     return (
         <>
