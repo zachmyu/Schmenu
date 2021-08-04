@@ -60,7 +60,7 @@ function MenuItem() {
                             <div className='container_menuItem-summary'>
                                 <h1 className='menuItem-title'>{menuItem.food_name}</h1>
                                 <hr />
-                                Restaurant<a href={`/restaurants/${menuItem.restaurant_id}`}>{restName}</a>
+                                Restaurant: <a href={`/restaurants/${menuItem.restaurant_id}`}>{restName}</a>
                             </div>
                             {sessionlinks}
                             <div className='container_menuItem-details'>
