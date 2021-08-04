@@ -23,7 +23,6 @@ const MenuItemUpdateModal = () => {
         const data = dispatch(updateItem({
             creatorId: currUser.id, restaurantId: restId, foodName, price, description, foodPixUrl, menuItemId: currItem.id
         }))
-        console.log('YOOOOOOOOOOOOOOOOOOOOOOO', data)
         setFoodName(currItem.food_name)
         setPrice(currItem.price)
         setDescription(currItem.description)
