@@ -2,26 +2,27 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Modal } from '../../context/Modal'
-import { createRestaurant } from '../../store/restaurant';
+import { updateRestaurant, deleteRestaurant } from '../../store/restaurant'
 
 
-const RestaurantAddModal = () => {
+const RestaurantUpdateModal = () => {
     const dispatch = useDispatch();
     const currUser = useSelector(state => state?.session?.user);
     const history = useHistory()
+    const currRestnt = useSelector(state => state?.restaurants?.current);
 
     const [showModal, setShowModal] = useState(false);
-    const [name, setName] = useState('');
-    const [address, setAddress] = useState('');
-    const [restaurantType, setRestaurantType] = useState('Fine-Dining');
-    const [description, setDescription] = useState('');
-    const [restntPixUrl, setRestntPixUrl] = useState('');
-    const [latitude, setLatitude] = useState(0);
-    const [longitude, setLongitude] = useState(0);
+    const [name, setName] = useState(currRestnt.name);
+    const [address, setAddress] = useState(currRestnt.address);
+    const [restaurantType, setRestaurantType] = useState(currRestnt.restaurant_type);
+    const [description, setDescription] = useState(currRestnt.description);
+    const [restntPixUrl, setRestntPixUrl] = useState(currRestnt.restaurant_pix);
+    const [latitude, setLatitude] = useState(currRestnt.latitude);
+    const [longitude, setLongitude] = useState(currRestnt.longitude);
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        const data = await dispatch(createRestaurant({
+        const data = dispatch(updateRestaurant({
             ownerId: currUser.id,
             name,
             address,
@@ -29,10 +30,11 @@ const RestaurantAddModal = () => {
             description,
             restntPixUrl,
             latitude,
-            longitude
+            longitude,
+            restaurantId: currRestnt.id
         }))
         if (data) {
-            console.log(data)
+            console.log("Errors were logged: ", data)
         }
         setName('')
         setAddress('')
@@ -40,16 +42,23 @@ const RestaurantAddModal = () => {
         setDescription('')
         setRestntPixUrl('')
         setShowModal(false)
-        history.push(`/restaurants/${data.restaurant.id}`)
+    }
+
+    const handleDelete = (e) => {
+        let alert = window.confirm('Are you sure you want to delete this restaurant?')
+        if (alert) {
+            dispatch(deleteRestaurant(currRestnt.id))
+        }
+        history.push(`/`)
     }
 
     return (
         <>
             <button className="navbar-button"
-                onClick={() => setShowModal(true)}>Add a new restaurant</button>
+                onClick={() => setShowModal(true)}>Update your restaurant!</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <h3>Add a new restaurant</h3>
+                    <h3>Update your restaurant details</h3>
                     <form className='ratings-container' onSubmit={handleSubmit}>
                         <div className="review-element-container">
                             <input
@@ -117,13 +126,17 @@ const RestaurantAddModal = () => {
                             />
                         </div>
                         <div className='review-button-container'>
-                            <button className="button2" type="submit">Submit New Restaurant</button>
+                            <button className="button2" type="submit">Update restaurant info</button>
                         </div>
                     </form>
+                    <button className="button3" onClick={() => (
+                        handleDelete(currRestnt.id
+                        ))}>Delete this restaurant?</button>
                 </Modal>
             )}
         </>
     )
 }
 
-export default RestaurantAddModal;
+
+export default RestaurantUpdateModal;

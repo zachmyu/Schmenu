@@ -31,8 +31,8 @@ def restaurants():
 
 
 # READ ALL BY OWNER = Restaurants (can we limit this?)
-@restaurant_routes.route('/')
-def restaurants_by_owners():
+@restaurant_routes.route('/owners/<int:id>/')
+def restaurants_by_owners(id):
     restaurants = Restaurant.query.filter_by(user_id=id).all()
     return {restaurant.id: restaurant.to_dict() for restaurant in restaurants}
 

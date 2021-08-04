@@ -11,14 +11,14 @@ import logo from './logo.png'
 import DemoUserModal from '../auth/DemoUserModal';
 
 const NavBar = ({ loaded }) => {
-  const currentUser = useSelector(state => state.session.user)
+  const currUser = useSelector(state => state.session.user)
 
   let sessionLinks;
-  if (currentUser && currentUser.account_type === "Owner") {
+  if (currUser && currUser.account_type === "Owner") {
     sessionLinks = (
       <>
         <div className='navbar-button'>
-          <NavLink to={`/users/${currentUser.id}`} exact={true} className='navbar-button'>
+          <NavLink to={`/users/${currUser.id}`} exact={true} className='navbar-button'>
             "User Page"
           </NavLink>
         </div>
@@ -26,16 +26,15 @@ const NavBar = ({ loaded }) => {
           <LogoutButton />
         </div>
         <div className='navbar-button-container'>
-          <span>Add Restaurant Button Here</span>
           <RestaurantAddModal />
         </div>
       </>
     );
-  } else if (currentUser && currentUser.account_type === "Reviewer") {
+  } else if (currUser && currUser.account_type === "Reviewer") {
     sessionLinks = (
       <>
         <div className='navbar-button'>
-          <NavLink to={`/users/${currentUser.id}`} exact={true} className='navbar-button'>
+          <NavLink to={`/users/${currUser.id}`} exact={true} className='navbar-button'>
             "User Page"
           </NavLink>
         </div>

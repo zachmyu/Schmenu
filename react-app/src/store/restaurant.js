@@ -54,6 +54,17 @@ export const getAllRestaurants = () => async dispatch => {
     }
 }
 
+export const getAllOnwerRestaurants = (ownerId) => async dispatch => {
+    const res = await fetch(`/api/restaurants/owners/${ownerId}/`);
+    const data = await res.json();
+
+    if (res.ok) {
+        dispatch(loadAllRestaurants(data))
+    } else {
+        throw res
+    }
+}
+
 export const createRestaurant = (restaurantData) => async dispatch => {
     const { ownerId, name, address, restaurantType, description, restaurantPixUrl, latitude, longitude } = restaurantData
     const res = await fetch(`/api/restaurants/create/`, {
@@ -82,7 +93,7 @@ export const createRestaurant = (restaurantData) => async dispatch => {
     return data
 }
 
-export const UpdateRestaurant = (restaurantData) => async dispatch => {
+export const updateRestaurant = (restaurantData) => async dispatch => {
     const { ownerId, name, address, restaurantType, description, restaurantPixUrl, latitude, longitude, restaurantId } = restaurantData
 
     const res = await fetch(`/api/restaurants/${restaurantId}/`, {
@@ -105,7 +116,7 @@ export const UpdateRestaurant = (restaurantData) => async dispatch => {
 
     if (res.ok) {
         dispatch(changeRestaurant(data));
-        dispatch(loadOneRestaurant(restaurantId));
+        // dispatch(loadOneRestaurant(restaurantId));
     } else {
         throw res
     };
@@ -148,10 +159,9 @@ const restaurantsReducer = (state = initialState, action) => {
             return newState
 
         case UPDATE_RESTAURANT:
-            return {
-                ...state,
-                [action.payload.id]: action.payload
-            }
+            newState = { ...state };
+            newState.current = action.payload;
+            return newState;
 
         case DELETE_RESTAURANT:
             newState = { ...state }
