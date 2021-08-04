@@ -54,10 +54,20 @@ export const getAllRestaurants = () => async dispatch => {
     }
 }
 
+export const getAllOnwerRestaurants = (ownerId) => async dispatch => {
+    const res = await fetch(`/api/restaurants/owners/${ownerId}/`);
+    const data = await res.json();
+
+    if (res.ok) {
+        dispatch(loadAllRestaurants(data))
+    } else {
+        throw res
+    }
+}
+
 export const createRestaurant = (restaurantData) => async dispatch => {
     const { ownerId, name, address, restaurantType, description, restaurantPixUrl, latitude, longitude } = restaurantData
-
-    const res = await fetch(`/api/restaurants/`, {
+    const res = await fetch(`/api/restaurants/create/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -70,7 +80,7 @@ export const createRestaurant = (restaurantData) => async dispatch => {
             description: description,
             restaurant_pix: restaurantPixUrl,
             latitude: latitude,
-            longitude: longitude,
+            longitude: longitude
         }),
     });
     const data = await res.json();
@@ -83,7 +93,7 @@ export const createRestaurant = (restaurantData) => async dispatch => {
     return data
 }
 
-export const UpdateRestaurant = (restaurantData) => async dispatch => {
+export const updateRestaurant = (restaurantData) => async dispatch => {
     const { ownerId, name, address, restaurantType, description, restaurantPixUrl, latitude, longitude, restaurantId } = restaurantData
 
     const res = await fetch(`/api/restaurants/${restaurantId}/`, {
@@ -106,7 +116,7 @@ export const UpdateRestaurant = (restaurantData) => async dispatch => {
 
     if (res.ok) {
         dispatch(changeRestaurant(data));
-        dispatch(loadOneRestaurant(restaurantId));
+        // dispatch(loadOneRestaurant(restaurantId));
     } else {
         throw res
     };
@@ -137,10 +147,7 @@ const restaurantsReducer = (state = initialState, action) => {
             return newState;
 
         case READ_ALL_RESTAURANTS:
-            newState = {};
-            action.payload.forEach((restaurant) => {
-                newState[restaurant.id] = restaurant;
-            });
+            newState = { ...action.payload };
             return newState
 
         case CREATE_RESTAURANT:

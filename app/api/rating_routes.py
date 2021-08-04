@@ -26,7 +26,6 @@ def rating(id):
 @rating_routes.route('/menuitems/<int:id>/')
 def ratings_by_items(id):
     ratings = Rating.query.filter_by(menu_item_id=id).all()
-    # return {'ratings': [rating.to_dict() for rating in ratings]}
     return {rating.id: rating.to_dict() for rating in ratings}
 
 

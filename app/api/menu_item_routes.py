@@ -28,7 +28,7 @@ def menu_item(id):
 @menu_item_routes.route('/')
 def menu_items():
     menu_items = Menu_item.query.all()
-    return {'menu_items': [menu_item.to_dict() for menu_item in menu_items]}
+    return {menu_item.id: menu_item.to_dict() for menu_item in menu_items}
 
 
 # READ ALL = Menu_items by Restaurant
@@ -39,7 +39,7 @@ def menu_items_by_restaurants(id):
 
 
 # CREATE = Menu_item
-@menu_item_routes.route('/', methods=['POST'])
+@menu_item_routes.route('/create/', methods=['POST'])
 @login_required
 def menu_items_add():
     form = MenuItemForm()
@@ -55,7 +55,7 @@ def menu_items_add():
         )
         db.session.add(menu_item)
         db.session.commit()
-        return menu_item.to_dict()
+        return {'menu_item': menu_item.to_dict()}
     return {'errors': validation_err_msgs(form.errors)}, 401
 
 
@@ -81,13 +81,3 @@ def menu_items_delete(id):
     db.session.delete(delete_menu_item)
     db.session.commit()
     return jsonify('Menu item has been deleted!')
-
-
-# /menu-items
-# Menu-items Create / List Routes
-# GET('/') - Obtain list of Menu-items, limit by number (Search?)
-# GET('/:id') - Obtain detail of single restaurant
-# Should return a list of menu-items for restaurant and reviews for restaurant
-# POST('/') - Create a new restaurant
-# PUT('/:id') - Update restaurant information
-# DELETE('/:id') - Delete the restaurant

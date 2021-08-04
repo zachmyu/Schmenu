@@ -9,9 +9,8 @@ def seed_restaurants():
         fakerRestaurant = Restaurant(owner_id=fake.random_int(min=4, max=12),
                                      name=fake.company(),
                                      address=fake.address(),
-                                     restaurant_type=fake.random_elements(
-            elements=('fd', 'cd', 'ff', 'cf', 'bf', 'ot'),
-            length=1),
+                                     restaurant_type=fake.word(
+            ext_word_list=['Fine-Dining', 'Casual-Dining', 'Fast-Food', 'Cafe', 'Buffet', 'Other']),
             description=fake.paragraph(nb_sentences=5),
             restaurant_pix='https://i.imgur.com/EaFCzkW.jpg',
             latitude=fake.latitude(), longitude=fake.longitude())

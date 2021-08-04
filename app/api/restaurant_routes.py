@@ -27,11 +27,18 @@ def restaurant(id):
 @restaurant_routes.route('/')
 def restaurants():
     restaurants = Restaurant.query.all()
-    return {'restaurants': [restaurant.to_dict() for restaurant in restaurants]}
+    return {restaurant.id: restaurant.to_dict() for restaurant in restaurants}
+
+
+# READ ALL BY OWNER = Restaurants (can we limit this?)
+@restaurant_routes.route('/owners/<int:id>/')
+def restaurants_by_owners(id):
+    restaurants = Restaurant.query.filter_by(user_id=id).all()
+    return {restaurant.id: restaurant.to_dict() for restaurant in restaurants}
 
 
 # CREATE = Restaurant
-@restaurant_routes.route('/', methods=['POST'])
+@restaurant_routes.route('/create/', methods=['POST'])
 @login_required
 def restaurants_add():
     form = RestaurantForm()
@@ -75,12 +82,3 @@ def restaurants_delete(id):
     db.session.delete(delete_restaurant)
     db.session.commit()
     return jsonify('Restaurant has been deleted!')
-
-# /restaurants
-# Restaurant Create / List Routes
-# GET('/') - Obtain list of restaurants, limit by number(Search?)
-# GET('/:id') - Obtain detail of single restaurant
-# Should return a list of menu-items for restaurant and reviews for restaurant
-# POST('/') - Create a new restaurant
-# PUT('/:id') - Update restaurant information
-# DELETE('/:id') - Delete the restaurant

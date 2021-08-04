@@ -55,11 +55,3 @@ def users_delete(id):
     db.session.delete(delete_user)
     db.session.commit()
     return jsonify('Account has been deleted!')
-
-
-# GET('/') - Obtain list of all users(Optional)
-# GET('/:id') - Obtain detail of single user
-# Should return a list of menu-items created by user, reviews by user, and saved by user
-# POST('/') - Create a new user
-# PUT('/:id') - Update user information
-# DELETE('/:id') - Delete the user account

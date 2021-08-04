@@ -42,11 +42,3 @@ def saves_delete(id):
     db.session.delete(delete_save)
     db.session.commit()
     return jsonify('Menu Item has been removed from your saved list!')
-
-
-# /saves
-# Ratings Create / List Routes
-# GET('/') - Obtain list saved
-# Query through saved.menu_item_id saved.user_id
-# POST('/') - Create a new saved
-# DELETE('/:id') - Delete the saved

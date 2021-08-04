@@ -44,8 +44,8 @@ export const getOneItem = (menuItemId) => async dispatch => {
     }
 }
 
-export const getAllItems = (restaurantId) => async dispatch => {
-    const res = await fetch(`/api/menu_items/restaurants/${restaurantId}/`);
+export const getAllItems = () => async dispatch => {
+    const res = await fetch(`/api/menu_items/`);
     const data = await res.json();
 
     if (res.ok) {
@@ -69,7 +69,7 @@ export const getAllRestItems = (restaurantId) => async dispatch => {
 export const createItem = (itemData) => async dispatch => {
     const { creatorId, restaurantId, foodName, price, description, foodPixUrl } = itemData
 
-    const res = await fetch(`/api/menu_items/`, {
+    const res = await fetch(`/api/menu_items/create/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -85,7 +85,7 @@ export const createItem = (itemData) => async dispatch => {
     });
     const data = await res.json();
     if (res.ok) {
-        dispatch(addItem(data))
+        dispatch(addItem(data.menu_item))
     } else {
         throw res
     }
