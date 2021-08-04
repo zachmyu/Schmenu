@@ -82,12 +82,3 @@ def restaurants_delete(id):
     db.session.delete(delete_restaurant)
     db.session.commit()
     return jsonify('Restaurant has been deleted!')
-
-# /restaurants
-# Restaurant Create / List Routes
-# GET('/') - Obtain list of restaurants, limit by number(Search?)
-# GET('/:id') - Obtain detail of single restaurant
-# Should return a list of menu-items for restaurant and reviews for restaurant
-# POST('/') - Create a new restaurant
-# PUT('/:id') - Update restaurant information
-# DELETE('/:id') - Delete the restaurant

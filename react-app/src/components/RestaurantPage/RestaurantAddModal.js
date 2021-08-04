@@ -19,9 +19,9 @@ const RestaurantAddModal = () => {
     const [latitude, setLatitude] = useState(0);
     const [longitude, setLongitude] = useState(0);
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
-        const data = await dispatch(createRestaurant({
+        dispatch(createRestaurant({
             ownerId: currUser.id,
             name,
             address,
@@ -31,9 +31,6 @@ const RestaurantAddModal = () => {
             latitude,
             longitude
         }))
-        if (data) {
-            console.log(data)
-        }
         setName('')
         setAddress('')
         setRestaurantType('Fine-Dining')

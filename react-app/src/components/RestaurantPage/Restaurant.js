@@ -5,6 +5,7 @@ import { getAllRestItems } from '../../store/menu_item'
 import { useParams } from "react-router-dom";
 import './Restaurant.css'
 import RestaurantUpdateModal from "./RestaurantUpdateModal";
+import MenuItemAddModal from "../MenuItemModals/MenuItemAddModal";
 
 
 function Restaurant() {
@@ -20,10 +21,6 @@ function Restaurant() {
         dispatch(getAllRestItems(id))
     }, [dispatch, id])
 
-    // useEffect(() => {
-
-    // }, [dispatch, id])
-
     let ownerLinks;
     if (currUser && currUser.id === currRestnt?.owner_id) {
         ownerLinks = (
@@ -35,6 +32,18 @@ function Restaurant() {
         ownerLinks = (null);
     }
 
+    let sessionlinks;
+    if (currUser) {
+        sessionlinks = (
+            <>
+                <div className='navbar-button'>
+                    <MenuItemAddModal />
+                </div>
+            </>
+        );
+    }
+
+
     return (
         <>
             {currRestnt &&
@@ -44,7 +53,6 @@ function Restaurant() {
                             alt={currRestnt?.name}
                             className='container__Restaurant-picture' />
                     </div>
-                    Helloooo Drew!
                     <div className='container__Restaurant'>
                         <div className='container_Restaurant-left'>
                             <div className='container_Restaurant-summary'>
@@ -65,6 +73,7 @@ function Restaurant() {
                             <div className='container_Restaurant-summary'>
                                 {currRestnt?.description}
                             </div>
+                            {sessionlinks}
                             <div className='container_Restaurant-items'>
                                 {itemInfo?.map(item => (
                                     <a href={`/menuitems/${item?.id}`} key={item?.id}>

@@ -22,7 +22,7 @@ const RestaurantUpdateModal = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const data = dispatch(updateRestaurant({
+        dispatch(updateRestaurant({
             ownerId: currUser.id,
             name,
             address,
@@ -33,9 +33,6 @@ const RestaurantUpdateModal = () => {
             longitude,
             restaurantId: currRestnt.id
         }))
-        if (data) {
-            console.log("Errors were logged: ", data)
-        }
         setName('')
         setAddress('')
         setRestaurantType('Fine-Dining')

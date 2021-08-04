@@ -147,10 +147,7 @@ const restaurantsReducer = (state = initialState, action) => {
             return newState;
 
         case READ_ALL_RESTAURANTS:
-            newState = {};
-            action.payload.forEach((restaurant) => {
-                newState[restaurant.id] = restaurant;
-            });
+            newState = { ...action.payload };
             return newState
 
         case CREATE_RESTAURANT:
@@ -159,9 +156,10 @@ const restaurantsReducer = (state = initialState, action) => {
             return newState
 
         case UPDATE_RESTAURANT:
-            newState = { ...state };
-            newState.current = action.payload;
-            return newState;
+            return {
+                ...state,
+                [action.payload.id]: action.payload
+            }
 
         case DELETE_RESTAURANT:
             newState = { ...state }

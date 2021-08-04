@@ -15,16 +15,13 @@ const RatingUpdateModal = ({ currRating }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const data = dispatch(updateRating({
+        dispatch(updateRating({
             userId: currUser.id,
             menuItemId: currItem?.id,
             review,
             rating,
             ratingId: currRating.id
         }))
-        if (data) {
-            console.log("Errors were logged: ", data)
-        }
         setRating(currRating.rating)
         setReview(currRating.review)
         setShowModal(false)
