@@ -6,6 +6,7 @@ import './Nav.css';
 import { useSelector } from 'react-redux';
 import LoginFormModal from '../auth/LoginFormModal';
 import SignUpFormModal from '../auth/SignUpFormModal';
+import RestaurantAddModal from '../RestaurantPage/RestaurantAddModal';
 import logo from './logo.png'
 import DemoUserModal from '../auth/DemoUserModal';
 
@@ -26,7 +27,7 @@ const NavBar = ({ loaded }) => {
         </div>
         <div className='navbar-button-container'>
           <span>Add Restaurant Button Here</span>
-          {/* <AddRestaurantModal /> */}
+          <RestaurantAddModal />
         </div>
       </>
     );

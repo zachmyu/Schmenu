@@ -56,8 +56,7 @@ export const getAllRestaurants = () => async dispatch => {
 
 export const createRestaurant = (restaurantData) => async dispatch => {
     const { ownerId, name, address, restaurantType, description, restaurantPixUrl, latitude, longitude } = restaurantData
-
-    const res = await fetch(`/api/restaurants/`, {
+    const res = await fetch(`/api/restaurants/create/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -70,7 +69,7 @@ export const createRestaurant = (restaurantData) => async dispatch => {
             description: description,
             restaurant_pix: restaurantPixUrl,
             latitude: latitude,
-            longitude: longitude,
+            longitude: longitude
         }),
     });
     const data = await res.json();

@@ -27,11 +27,18 @@ def restaurant(id):
 @restaurant_routes.route('/')
 def restaurants():
     restaurants = Restaurant.query.all()
-    return {'restaurants': [restaurant.to_dict() for restaurant in restaurants]}
+    return {restaurant.id: restaurant.to_dict() for restaurant in restaurants}
+
+
+# READ ALL BY OWNER = Restaurants (can we limit this?)
+@restaurant_routes.route('/')
+def restaurants_by_owners():
+    restaurants = Restaurant.query.filter_by(user_id=id).all()
+    return {restaurant.id: restaurant.to_dict() for restaurant in restaurants}
 
 
 # CREATE = Restaurant
-@restaurant_routes.route('/', methods=['POST'])
+@restaurant_routes.route('/create/', methods=['POST'])
 @login_required
 def restaurants_add():
     form = RestaurantForm()
