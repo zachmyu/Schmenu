@@ -19,9 +19,9 @@ const RestaurantAddModal = () => {
     const [latitude, setLatitude] = useState(0);
     const [longitude, setLongitude] = useState(0);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        dispatch(createRestaurant({
+        const data = await dispatch(createRestaurant({
             ownerId: currUser.id,
             name,
             address,
