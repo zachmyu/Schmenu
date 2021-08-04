@@ -15,7 +15,8 @@ class Restaurant(db.Model, UserMixin):
     latitude = db.Column(db.Float, nullable=True)
     longitude = db.Column(db.Float, nullable=True)
 
-    menu_items = db.relationship('Menu_item', back_populates='restaurants')
+    menu_items = db.relationship(
+        'Menu_item', back_populates='restaurants', cascade='all,delete')
     users = db.relationship('User', back_populates='restaurants')
 
     def to_dict(self):

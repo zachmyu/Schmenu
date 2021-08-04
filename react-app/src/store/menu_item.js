@@ -92,9 +92,8 @@ export const createItem = (itemData) => async dispatch => {
     return data
 }
 
-export const UpdateItem = (itemData) => async dispatch => {
+export const updateItem = (itemData) => async dispatch => {
     const { creatorId, restaurantId, foodName, price, description, foodPixUrl, menuItemId } = itemData
-
     const res = await fetch(`/api/menu_items/${menuItemId}/`, {
         method: 'PUT',
         headers: {
@@ -111,9 +110,10 @@ export const UpdateItem = (itemData) => async dispatch => {
     });
     const data = await res.json();
 
+
     if (res.ok) {
         dispatch(changeItem(data));
-        dispatch(loadOneItem(menuItemId));
+        // dispatch(loadOneItem(menuItemId));
     } else {
         throw res
     }
@@ -145,9 +145,6 @@ const menu_itemsReducer = (state = initialState, action) => {
 
         case READ_ALL_MENU_ITEMS:
             newState = { ...action.payload };
-            // action.payload.forEach((menu_item) => {
-            //     newState[menu_item.id] = menu_item;
-            // });
             return newState
 
         case CREATE_MENU_ITEM:
@@ -156,10 +153,9 @@ const menu_itemsReducer = (state = initialState, action) => {
             return newState
 
         case UPDATE_MENU_ITEM:
-            return {
-                ...state,
-                [action.payload.id]: action.payload
-            }
+            newState = { ...state };
+            newState.current = action.payload;
+            return newState;
 
         case DELETE_MENU_ITEM:
             newState = { ...state }

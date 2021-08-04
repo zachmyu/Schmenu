@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getOneItem } from '../../store/menu_item'
 import { getAllItemRatings } from '../../store/rating'
 import { useParams } from "react-router-dom";
+import MenuItemUpdateModal from "../MenuItemModals/MenuItemUpdateModal";
 import './MenuItem.css'
 import Ratings from "./Ratings";
 
@@ -11,6 +12,7 @@ function MenuItem() {
     const { id } = useParams();
     const dispatch = useDispatch();
 
+    const currUser = useSelector(state => state?.session?.user)
     const menuItem = useSelector(state => state?.menu_items.current)
     const ratingDetails = useSelector(state => state?.ratings)
     const ratingInfo = Object.values(ratingDetails)
@@ -30,6 +32,14 @@ function MenuItem() {
         return avg
     }
 
+    let sessionlinks;
+    if (currUser) {
+        sessionlinks = (
+            <div className='navbar-button'>
+                <MenuItemUpdateModal />
+            </div>
+        );
+    }
 
 
     return (
@@ -47,6 +57,7 @@ function MenuItem() {
                                 <h1 className='menuItem-title'>{menuItem.food_name}</h1>
                                 <hr />
                             </div>
+                            {sessionlinks}
                             <div className='container_menuItem-details'>
                                 <div className='menuItem-details-element'>
                                     <i className="fas fa-star"></i>
