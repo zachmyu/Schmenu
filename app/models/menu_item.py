@@ -15,8 +15,10 @@ class Menu_item(db.Model, UserMixin):
 
     users = db.relationship('User', back_populates='menu_items')
     restaurants = db.relationship('Restaurant', back_populates='menu_items')
-    ratings = db.relationship('Rating', back_populates='menu_items')
-    saves = db.relationship('Save', back_populates='menu_items')
+    ratings = db.relationship(
+        'Rating', back_populates='menu_items', cascade='all,delete')
+    saves = db.relationship(
+        'Save', back_populates='menu_items', cascade='all,delete')
 
     def to_dict(self):
         return {

@@ -17,10 +17,11 @@ class User(db.Model, UserMixin):
     account_type = db.Column(db.String(20), nullable=False)
     hashed_password = db.Column(db.String(255), nullable=False)
 
-    ratings = db.relationship('Rating', back_populates='users')
-    saves = db.relationship('Save', back_populates='users')
-    restaurants = db.relationship('Restaurant', back_populates='users')
-    menu_items = db.relationship('Menu_item', back_populates='users')
+    ratings = db.relationship('Rating', back_populates='users', cascade='all,delete')
+    saves = db.relationship('Save', back_populates='users', cascade='all,delete')
+    restaurants = db.relationship('Restaurant', back_populates='users', cascade='all,delete')
+    menu_items = db.relationship(
+        'Menu_item', back_populates='users', cascade='all,delete')
 
     @property
     def password(self):

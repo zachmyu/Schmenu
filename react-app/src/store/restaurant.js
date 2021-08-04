@@ -156,10 +156,9 @@ const restaurantsReducer = (state = initialState, action) => {
             return newState
 
         case UPDATE_RESTAURANT:
-            return {
-                ...state,
-                [action.payload.id]: action.payload
-            }
+            newState = { ...state };
+            newState.current = action.payload;
+            return newState;
 
         case DELETE_RESTAURANT:
             newState = { ...state }

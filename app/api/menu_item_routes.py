@@ -66,7 +66,7 @@ def menu_items_edit(id):
     form = MenuItemForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        edit_menu_item = MenuItemForm.query.get(id)
+        edit_menu_item = Menu_item.query.get(id)
         form.populate_obj(edit_menu_item)
         db.session.commit()
         return edit_menu_item.to_dict()

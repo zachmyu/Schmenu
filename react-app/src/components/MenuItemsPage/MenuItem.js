@@ -2,7 +2,9 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { getOneItem } from '../../store/menu_item'
 import { getAllItemRatings } from '../../store/rating'
+import { getOneRestaurant } from '../../store/restaurant';
 import { useParams } from "react-router-dom";
+import MenuItemUpdateModal from "../MenuItemModals/MenuItemUpdateModal";
 import './MenuItem.css'
 import Ratings from "./Ratings";
 
@@ -11,17 +13,21 @@ function MenuItem() {
     const { id } = useParams();
     const dispatch = useDispatch();
 
-    const menuItem = useSelector(state => state?.menu_items.current)
+    const currUser = useSelector(state => state?.session?.user)
+    const menuItem = useSelector(state => state?.menu_items?.current)
+    const restId = menuItem?.restaurant_id
+    const restName = useSelector(state => state?.restaurants?.current?.name)
     const ratingDetails = useSelector(state => state?.ratings)
     const ratingInfo = Object.values(ratingDetails)
 
     useEffect(() => {
         dispatch(getOneItem(id))
+        dispatch(getAllItemRatings(id))
     }, [dispatch, id])
 
     useEffect(() => {
-        dispatch(getAllItemRatings(id))
-    }, [dispatch, id])
+        dispatch(getOneRestaurant(restId))
+    }, [dispatch, restId])
 
     const avgRating = () => {
         let total = 0
@@ -30,6 +36,14 @@ function MenuItem() {
         return avg
     }
 
+    let sessionlinks;
+    if (currUser) {
+        sessionlinks = (
+            <div className='navbar-button'>
+                <MenuItemUpdateModal />
+            </div>
+        );
+    }
 
 
     return (
@@ -46,7 +60,9 @@ function MenuItem() {
                             <div className='container_menuItem-summary'>
                                 <h1 className='menuItem-title'>{menuItem.food_name}</h1>
                                 <hr />
+                                Restaurant: <a href={`/restaurants/${menuItem.restaurant_id}`}>{restName}</a>
                             </div>
+                            {sessionlinks}
                             <div className='container_menuItem-details'>
                                 <div className='menuItem-details-element'>
                                     <i className="fas fa-star"></i>
