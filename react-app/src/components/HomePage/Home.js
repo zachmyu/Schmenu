@@ -1,11 +1,16 @@
 import React from 'react';
-// import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 // import { useSelector, useDispatch } from 'react-redux'
 import "./Home.css";
-import MenuItemCards from './MenuItemCards';
+// import MenuItemCards from './MenuItemCards';
+import InfScroll from './InfScroll'
 
 function HomePage() {
+    const [pageNum, setpageNum] = useState(1)
 
+
+
+    InfScroll(pageNum)
 
 
     // const [search, setSearch] = useState('')
@@ -38,7 +43,7 @@ function HomePage() {
                     </form> */}
                 </div>
             </div>
-            <MenuItemCards />
+            {/* <MenuItemCards /> */}
         </>
 
     );

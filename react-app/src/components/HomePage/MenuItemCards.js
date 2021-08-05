@@ -9,23 +9,23 @@ function MenuItemCards() {
     const dispatch = useDispatch()
     const menuItems = useSelector(state => state?.menu_items)
     const itemsArr = Object.entries(menuItems)
-    // console.log("HHHHHHHHHHHHHHHHHEEEEEEEEEEERRRRRRRRRREEEEEEEEEE", itemsArr)
+    // console.log("HHHHHHHHHHHHHHHHHEEEEEEEEEEERRRRRRRRRREEEEEEEEEE", itemsArr[0])
 
     const [count, setCount] = useState({
         prev: 0,
         next: 10
     })
     const [hasMore, setHasMore] = useState(true);
-    const [current, setCurrent] = useState(itemsArr.slice(count.prev, count.next))
+    const [current, setCurrent] = useState(itemsArr?.slice(count.prev, count.next))
 
     const getMoreData = () => {
-        if (current.length === itemsArr.length) {
+        if (current?.length === itemsArr?.length) {
             setHasMore(false);
             return;
         }
         setTimeout(() => {
-            setCurrent(current.concat(itemsArr.slice(count.prev + 10, count.next + 10)))
-        }, 2000)
+            setCurrent(current?.concat(itemsArr?.slice(count.prev + 10, count.next + 10)))
+        }, 500)
         setCount((prevState) => ({ prev: prevState.prev + 10, next: prevState.next + 10 }))
     }
 
@@ -37,7 +37,7 @@ function MenuItemCards() {
         let total = 0
         if (ratings !== {}) {
             const singleRating = Object.values(ratings)
-            singleRating.forEach(rate => (
+            singleRating?.forEach(rate => (
                 total += rate?.rating
             ))
             let avg = ~~((total / singleRating.length) * 10) / 10
@@ -56,18 +56,19 @@ function MenuItemCards() {
     return (
         <div className='splash-venues-container'>
             <InfiniteScroll
-                dataLength={current.length}
+                dataLength={current?.length}
                 next={getMoreData}
                 hasMore={hasMore}
                 loader={<h4>Loading...</h4>}
             >
                 <div>
-                    {current && current.map(((item, idx) => (
+                    {current && current?.map(((item, idx) => (
                         < div key={idx} className="post" >
-                            {console.log("HHHHHHHHHHHHHHHHHEEEEEEEEEEERRRRRRRRRREEEEEEEEEE")}
-                            {/* {console.log("HHHHHHHHHHHHHHHHHEEEEEEEEEEERRRRRRRRRREEEEEEEEEE", current[idx][1].food_name)} */}
-                            {/* <h3>{`${item.food_name}`}</h3> */}
-                            {/* <p>{item.price}</p> */}
+                            <img src={item[1]?.food_pix} className='splash-venue-pix' alt={item[1]?.food_name} />
+                            <h3>{`${item[1]?.food_name}`}</h3>
+                            <p>{item[1]?.price}</p>
+                            <div className='splash-venue-location'>Rating:
+                                {avgRating(item[1]?.ratings)} </div>
                         </div>
                     )))
                     }
