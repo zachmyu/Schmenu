@@ -7,37 +7,36 @@ import { signUp } from '../../store/session';
 const SignUpFormModal = () => {
   const [showModal, setShowModal] = useState(false);
   const [errors, setErrors] = useState([]);
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
+  const [about, setAbout] = useState('');
+  const [profPixUrl, setProfPixUrl] = useState('');
+  const [accountType, setAccountType] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
-  const user = useSelector(state => state.session.user);
+
+  const user = useSelector(state => state?.session?.user);
   const dispatch = useDispatch();
 
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
-      if (data) {
-        setErrors(data)
+      const data = await dispatch(signUp({
+        firstName,
+        lastName,
+        username,
+        email,
+        about,
+        profPixUrl,
+        accountType,
+        password
+      }));
+      if (data.errors) {
+        setErrors(data.errors)
       }
     }
-  };
-
-  const updateUsername = (e) => {
-    setUsername(e.target.value);
-  };
-
-  const updateEmail = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const updatePassword = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const updateRepeatPassword = (e) => {
-    setRepeatPassword(e.target.value);
   };
 
   if (user) {
@@ -56,41 +55,92 @@ const SignUpFormModal = () => {
               ))}
             </div>
             <div>
+              <label>First Name</label>
+              <input
+                className="newUser-element"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                required
+              />
+            </div>
+            <div>
+              <label>Last Name</label>
+              <input
+                className="newUser-element"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                required
+              />
+            </div>
+            <div>
               <label>User Name</label>
               <input
-                type='text'
-                name='username'
-                onChange={updateUsername}
+                className="newUser-element"
                 value={username}
-              ></input>
+                onChange={(e) => setUsername(e.target.value)}
+                required
+              />
             </div>
             <div>
               <label>Email</label>
               <input
-                type='text'
-                name='email'
-                onChange={updateEmail}
+                className="newUser-element"
                 value={email}
-              ></input>
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+            <div>
+              <label>About</label>
+              <textarea
+                className="newUser-element"
+                value={about}
+                onChange={(e) => setAbout(e.target.value)}
+                required
+              />
+            </div>
+            <div>
+              <label>Profle Picture</label>
+              <input
+                className="newUser-element"
+                value={profPixUrl}
+                onChange={(e) => setProfPixUrl(e.target.value)}
+
+              />
+            </div>
+            <div className='review-radio-select' >
+              Select Account Type
+              Owner
+              <input
+                type="radio" id='ownerRadio' value={accountType} checked={"Owner" === accountType}
+                onChange={(e) => setAccountType("Owner")} onClick={() => setAccountType("Owner")}
+              />
+
+              Reviewer
+              <input
+                type="radio" id='reviewerRadio' value={accountType} checked={"Reviewer" === accountType}
+                onChange={(e) => setAccountType("Reviewer")} onClick={() => setAccountType("Reviewer")}
+              />
             </div>
             <div>
               <label>Password</label>
               <input
+                className="newUser-element"
                 type='password'
-                name='password'
-                onChange={updatePassword}
                 value={password}
-              ></input>
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
             </div>
             <div>
               <label>Repeat Password</label>
               <input
+                className="newUser-element"
                 type='password'
-                name='repeat_password'
-                onChange={updateRepeatPassword}
                 value={repeatPassword}
-                required={true}
-              ></input>
+                onChange={(e) => setRepeatPassword(e.target.value)}
+                required
+              />
             </div>
             <button type='submit'>Sign Up</button>
           </form>

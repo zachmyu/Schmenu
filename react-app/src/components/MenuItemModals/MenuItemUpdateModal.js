@@ -20,7 +20,7 @@ const MenuItemUpdateModal = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const data = dispatch(updateItem({
+        dispatch(updateItem({
             creatorId: currUser.id, restaurantId: restId, foodName, price, description, foodPixUrl, menuItemId: currItem.id
         }))
         setFoodName(currItem.food_name)
