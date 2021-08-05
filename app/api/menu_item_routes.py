@@ -28,6 +28,7 @@ def menu_item(id):
 @menu_item_routes.route('/')
 def menu_items():
     menu_items = Menu_item.query.limit(100).all()
+    # menu_items = Menu_item.query.all()
     return {menu_item.id: menu_item.to_dict() for menu_item in menu_items}
 
 

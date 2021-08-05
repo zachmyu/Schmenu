@@ -1,18 +1,12 @@
 import React from 'react';
 import { useEffect, useState } from "react";
 // import { useSelector, useDispatch } from 'react-redux'
+import MenuItemCards from './MenuItemCards';
+// import MenuCardInf from './MenuCardInf'
 import "./Home.css";
-// import MenuItemCards from './MenuItemCards';
-import InfScroll from './InfScroll'
+
 
 function HomePage() {
-    const [pageNum, setpageNum] = useState(1)
-
-
-
-    InfScroll(pageNum)
-
-
     // const [search, setSearch] = useState('')
 
     // let SearchBar = []
@@ -29,6 +23,7 @@ function HomePage() {
             <div className='splash-container'>
                 <h1 id='slogan'>What's your craving today?</h1>
                 <div className='splash-booking-container'>
+
                     {/* <form onSubmit={handleClick} className='splash-booking-form' >
                         <input
                             name='searchbar'
@@ -43,7 +38,8 @@ function HomePage() {
                     </form> */}
                 </div>
             </div>
-            {/* <MenuItemCards /> */}
+            <MenuItemCards />
+            {/* <MenuCardInf /> */}
         </>
 
     );

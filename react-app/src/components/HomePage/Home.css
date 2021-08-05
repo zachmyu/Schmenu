@@ -1,0 +1,133 @@
+.splash-container{
+    background-image: url("splash.jpg");
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 49vh;
+    transition-duration: 4s;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.splash-booking-container{
+    display: flex;
+    justify-content: center;
+    width: 900px;
+    align-items: center;
+}
+
+#slogan{
+    color: white ;
+    font-size: 60px;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+}
+
+#calender{
+    display: flex;
+    justify-items: center;
+    width: 180px;
+    margin: 0 5px;
+    margin-top: 3px;
+    background-color: white;
+    border-radius: 5px;
+    padding-left: 20px;
+    font-size: 21px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+}
+
+#dropdown{
+    margin: 0 5px;
+    margin-top: 3px;
+    width: 150px;
+}
+
+#splash-search{
+    height: 34px;
+    margin: 0 5px;
+    border-radius: 5px;
+}
+
+.splash-button {
+    width: 180px;
+    height: 40px;
+    color: #2D333F;
+    border-radius: 5px;
+    background-color: #009999;
+    font-size: large;
+    font-weight: bold;
+    margin: 0 5px;
+    margin-top: 2px;
+}
+
+.splash-button:hover {
+    background-color: #01d4d4;
+}
+
+.menus-container {
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row wrap;
+    margin:0 10%;
+    background-color: white;
+}
+
+.menu-card {
+    display: flex;
+    flex-flow: row wrap;
+    box-sizing: border-box;
+    border: lightgray solid 0.5px;
+    width: 240px;
+    height: 340px;
+    margin: 30px;
+}
+
+.menu-card:hover {
+    transition-duration: 0.3s;
+    box-shadow: 10px 5px 5px rgba(100, 100, 100, .6);
+}
+
+.menu-pix {
+    width: 100%;
+    height: 180px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    box-sizing: border-box;
+}
+
+.menu-description {
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 140px;
+    padding: 0 10px;
+}
+
+@media screen and (max-width: 960px) {
+
+    #slogan{
+    color: white ;
+    font-size: 30px;
+    }
+
+    .splash-booking-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 900px;
+        align-items: center;
+    }
+
+        .splash-booking-form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+}

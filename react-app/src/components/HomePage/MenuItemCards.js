@@ -1,33 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { getAllItems } from '../../store/menu_item'
-import InfiniteScroll from 'react-infinite-scroll-component';
 import "./Home.css";
 
-function MenuItemCards() {
 
+function MenuItemCards() {
     const dispatch = useDispatch()
     const menuItems = useSelector(state => state?.menu_items)
-    const itemsArr = Object.entries(menuItems)
-    // console.log("HHHHHHHHHHHHHHHHHEEEEEEEEEEERRRRRRRRRREEEEEEEEEE", itemsArr[0])
-
-    const [count, setCount] = useState({
-        prev: 0,
-        next: 10
-    })
-    const [hasMore, setHasMore] = useState(true);
-    const [current, setCurrent] = useState(itemsArr?.slice(count.prev, count.next))
-
-    const getMoreData = () => {
-        if (current?.length === itemsArr?.length) {
-            setHasMore(false);
-            return;
-        }
-        setTimeout(() => {
-            setCurrent(current?.concat(itemsArr?.slice(count.prev + 10, count.next + 10)))
-        }, 500)
-        setCount((prevState) => ({ prev: prevState.prev + 10, next: prevState.next + 10 }))
-    }
+    const itemsArr = Object?.entries(menuItems)
 
     useEffect(() => {
         dispatch(getAllItems())
@@ -41,56 +21,32 @@ function MenuItemCards() {
                 total += rate?.rating
             ))
             let avg = ~~((total / singleRating.length) * 10) / 10
-            if (avg === 0) return "⭐"
-            else if (avg > 0 && avg <= 2) return "⭐⭐"
-            else if (avg > 2 && avg <= 3) return "⭐⭐⭐"
-            else if (avg > 3 && avg <= 4) return "⭐⭐⭐⭐"
-            else if (avg > 4 && avg <= 5) return "⭐⭐⭐⭐⭐"
-            // return avg
-
+            if (avg === 0) return `⭐No ratings have been submitted`
+            else if (avg > 0 && avg <= 1) return `${avg}⭐`
+            else if (avg > 1 && avg <= 2) return `${avg}⭐⭐`
+            else if (avg > 2 && avg <= 3) return `${avg}⭐⭐⭐`
+            else if (avg > 3 && avg <= 4) return `${avg}⭐⭐⭐⭐`
+            else if (avg > 4 && avg <= 5) return `${avg}⭐⭐⭐⭐⭐`
         }
     }
 
-
-
     return (
-        <div className='splash-venues-container'>
-            <InfiniteScroll
-                dataLength={current?.length}
-                next={getMoreData}
-                hasMore={hasMore}
-                loader={<h4>Loading...</h4>}
-            >
-                <div>
-                    {current && current?.map(((item, idx) => (
-                        < div key={idx} className="post" >
-                            <img src={item[1]?.food_pix} className='splash-venue-pix' alt={item[1]?.food_name} />
-                            <h3>{`${item[1]?.food_name}`}</h3>
-                            <p>{item[1]?.price}</p>
-                            <div className='splash-venue-location'>Rating:
-                                {avgRating(item[1]?.ratings)} </div>
-                        </div>
-                    )))
-                    }
-                </div>
-            </InfiniteScroll>
-            {/* {itemsArr.map(item => (
-                <a href={`/menuitems/${item.id}`} key={item.id}>
-                    <div className='splash-venue-card' >
-                        <img src={item.food_pix} className='splash-venue-pix' alt={item.food_name} />
-                        <div className='splash-venue-description'>
-                            <div className='splash-venue-title'><h3>{item.food_name}</h3></div>
-                            <div className='splash-venue-location'>Cost: ${item.price}</div>
-                            <div className='splash-venue-location'>Rating:
-                                {avgRating(item.ratings)} </div>
+        <div>
+            {itemsArr.map(item => (
+                <a href={`/menuitems/${item[1].id}`} key={item[1].id}>
+                    <div className='menu-card' >
+                        <img src={item[1].food_pix} className='menu-pix'
+                            alt={item[1].food_name} />
+                        <div className='menu-description'>
+                            <div className='menu-title'><h3>{item[1].food_name}</h3></div>
+                            <div className='menu-price'>Cost: ${item[1].price}</div>
+                            <div className='menu-rating'>Rating:
+                                {avgRating(item[1].ratings)} </div>
                         </div>
                     </div>
                 </a>
-            ))} */}
-
-
-        </div >
-
+            ))}
+        </div>
     );
 }
 
