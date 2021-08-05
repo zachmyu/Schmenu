@@ -58,7 +58,7 @@ function MenuCardInf() {
             hasMore={hasMore}
             loader={<h4>Loading...</h4>}
         >
-            <div>
+            <div className='menus-container'>
                 {current && current?.map(((item, idx) => (
                     <a href={`/menuitems/${item[1].id}`} key={item[1].id}>
                         <div className='menu-card' >

@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect, useState } from "react";
 // import { useSelector, useDispatch } from 'react-redux'
 import MenuItemCards from './MenuItemCards';
-// import MenuCardInf from './MenuCardInf'
+import MenuCardInf from './MenuCardInf'
 import "./Home.css";
 
 
@@ -37,9 +37,11 @@ function HomePage() {
                         <button className='splash-button'>Let's go</button>
                     </form> */}
                 </div>
+
+
             </div>
-            <MenuItemCards />
-            {/* <MenuCardInf /> */}
+            {/* <MenuItemCards /> */}
+            <MenuCardInf />
         </>
 
     );

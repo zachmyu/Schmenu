@@ -25,24 +25,7 @@
     -webkit-text-stroke-color: black;
 }
 
-#calender{
-    display: flex;
-    justify-items: center;
-    width: 180px;
-    margin: 0 5px;
-    margin-top: 3px;
-    background-color: white;
-    border-radius: 5px;
-    padding-left: 20px;
-    font-size: 21px;
-    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
-}
-
-#dropdown{
-    margin: 0 5px;
-    margin-top: 3px;
-    width: 150px;
-}
+/*
 
 #splash-search{
     height: 34px;
@@ -64,7 +47,7 @@
 
 .splash-button:hover {
     background-color: #01d4d4;
-}
+} */
 
 .menus-container {
     display: flex;
@@ -82,6 +65,7 @@
     width: 240px;
     height: 340px;
     margin: 30px;
+    border-radius: 5px;;
 }
 
 .menu-card:hover {
