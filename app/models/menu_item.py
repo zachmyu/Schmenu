@@ -29,5 +29,6 @@ class Menu_item(db.Model, UserMixin):
             'price': self.price,
             'description': self.description,
             'food_pix': self.food_pix,
+            "ratings": {rating.id: rating.to_dict() for rating in self.ratings},
             "saves": {save.id: save.to_dict() for save in self.saves}
         }

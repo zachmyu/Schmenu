@@ -10,6 +10,7 @@ import NavFooter from './components/Nav/NavFooter'
 import User from './components/UsersPage/User';
 import MenuItem from './components/MenuItemsPage/MenuItem';
 import Restaurant from './components/RestaurantPage/Restaurant';
+import HomePage from './components/HomePage/Home';
 
 function App() {
     const [loaded, setLoaded] = useState(false);
@@ -32,7 +33,7 @@ function App() {
             {loaded && (
                 <Switch>
                     <Route exact path='/'>
-                        <h1>My Home Page</h1>
+                        <HomePage />
                     </Route>
                     <ProtectedRoute exact path='/users/:userId'>
                         <User />
