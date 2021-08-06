@@ -4,6 +4,7 @@
     border-bottom: rgb(247, 247, 247) solid .5px;
     background-color: white;
     align-items: center;
+    left: 0;
 }
 
 .navbar-element-logo{
@@ -33,7 +34,7 @@
     height: 100px;
     display: flex;
     justify-content: space-between;
-    transition: all .5s ease-in-out;
+    transition: all .25s ease-in-out;
 }
 
 .navbar-container_shrunk{
@@ -153,6 +154,19 @@
 }
 
 .footer-element:hover{
+    color: #ffbd72;
+}
+
+.footer-button{
+    background: none;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: #F59320;
+    text-decoration: none;
+}
+
+.footer-button:hover{
     color: #ffbd72;
 }
 
