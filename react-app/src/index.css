@@ -46,7 +46,7 @@ a:link {
 
 .button3 {
     width: 100px;
-    height: 35px;
+    height: 50px;
     color: #F59320;
     border-radius: 10px;
     background-color: #000000;
@@ -77,4 +77,20 @@ p{
     font-family:Helvetica;
     color: white;
     font-size: 0.8em;
+}
+
+@media screen and (max-width: 960px) {
+    .button3 {
+        width: 90px;
+        height: 30px;
+        color: #F59320;
+        border-radius: 10px;
+        background-color: #000000;
+        font-size: 12px;
+        font-weight: bold;
+        margin-right: 5px;;
+
+    }
+
+
 }

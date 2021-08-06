@@ -34,7 +34,7 @@ const LoginFormModal = () => {
 
   return (
     <>
-      <button className="button3" onClick={() => setShowModal(true)}>Log In</button>
+      <button className="navbar-button" onClick={() => setShowModal(true)}>Log In</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <form onSubmit={onLogin}>

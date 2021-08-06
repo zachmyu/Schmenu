@@ -3,6 +3,7 @@
     justify-content: space-between;
     border-bottom: rgb(247, 247, 247) solid .5px;
     background-color: white;
+    align-items: center;
 }
 
 .navbar-element-logo{
@@ -57,6 +58,17 @@
     justify-content: center;
 }
 
+.navbar-element-loggedOut{
+    display: flex;
+    width: 500px;
+    justify-content: center;
+}
+
+.navbar-button-container{
+    display: flex;
+    align-items: center;
+}
+
 .profileButton{
     background-color: black;
     margin: 20px 60px 20px 0;
@@ -98,18 +110,20 @@
 }
 
 .navbar-button {
+    background: none;
+    border: none;
+    padding: 5px 7px;
     width: 100px;
     height: 35px;
-    color: #F59320;
-    border-radius: 10px;
-    background-color: #2e2e2e;
     font-size: 18px;
     font-weight: bold;
-    margin: 10px;
+    margin: 5px 10px;
 }
 
 .navbar-button:hover {
-    background-color: #424242;
+    background-color: rgb(255, 255, 255, 0.5);
+    border-radius: 10px;
+    font-size: 22px;
 }
 
 
@@ -153,9 +167,37 @@
     }
 
     .navbar-element-sessionCont{
-    display: flex;
-    width: 300px;
-    justify-content:flex-end;
+        display: flex;
+        width: 300px;
+        justify-content:flex-end;
+    }
+
+    .navbar-element-loggedOut{
+        display: flex;
+        width: 300px;
+        justify-content: center;
+        align-items: center;
+        padding: 0px;
+    }
+
+    .navbar-button-container{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .navbar-button {
+        background: none;
+        border: none;
+        width: auto;
+        height: 25px;
+        font-size: 12px;
+        font-weight: bold;
+        margin: 0px;
+    }
+
+    .navbar-button:hover {
+        text-decoration: underline;
+        font-size: 12px;
     }
 
 }

@@ -96,13 +96,13 @@ const NavBar = ({ loaded }) => {
       <div className='navbar-element-loggedOut'>
         <div className='navbar-button-container'>
           <LoginFormModal />
-        </div>
-        <div className='navbar-button-container'>
+          {/* </div> */}
+          {/* <div className='navbar-button-container'> */}
           <SignUpFormModal />
         </div>
-        <div className='navbar-button-container'>
-          <DemoUserModal />
-        </div>
+        {/* <div className='navbar-button-container'> */}
+        <DemoUserModal />
+        {/* </div> */}
       </div>
     );
   }

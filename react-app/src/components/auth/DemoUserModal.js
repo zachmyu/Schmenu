@@ -33,7 +33,7 @@ const DemoUserModal = () => {
 
     return (
         <>
-            <button className="navbar-button" onClick={() => setShowModal(true)}>Demo Users</button>
+            <button className="button3" onClick={() => setShowModal(true)}>Demo Users</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <div className='login__demoUsers'>
