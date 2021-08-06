@@ -52,29 +52,32 @@ function MenuCardInf() {
     }
 
     return (
-        <InfiniteScroll
-            dataLength={current?.length}
-            next={getMoreData}
-            hasMore={hasMore}
-            loader={<h4>Loading...</h4>}
-        >
+        <>
+
             <div className='menus-container'>
-                {current && current?.map(((item, idx) => (
-                    <a href={`/menuitems/${item[1].id}`} key={item[1].id}>
-                        <div className='menu-card' >
-                            <img src={item[1].food_pix} className='menu-pix'
-                                alt={item[1].food_name} />
-                            <div className='menu-description'>
-                                <div className='menu-title'><h3>{item[1].food_name}</h3></div>
-                                <div className='menu-price'>Cost: ${item[1].price}</div>
-                                <div className='menu-rating'>Rating:
-                                    {avgRating(item[1].ratings)} </div>
+                <InfiniteScroll
+                    dataLength={current?.length}
+                    next={getMoreData}
+                    hasMore={hasMore}
+                    loader={<h4>Loading...</h4>}
+                >
+                    {current && current?.map(((item, idx) => (
+                        <a href={`/menuitems/${item[1].id}`} key={item[1].id}>
+                            <div className='menu-card' >
+                                <img src={item[1].food_pix} className='menu-pix'
+                                    alt={item[1].food_name} />
+                                <div className='menu-description'>
+                                    <div className='menu-title'><h3>{item[1].food_name}</h3></div>
+                                    <div className='menu-price'>Cost: ${item[1].price}</div>
+                                    <div className='menu-rating'>Rating:
+                                        {avgRating(item[1].ratings)} </div>
+                                </div>
                             </div>
-                        </div>
-                    </a>
-                )))}
+                        </a>
+                    )))}
+                </InfiniteScroll>
             </div>
-        </InfiniteScroll>
+        </>
     );
 }
 

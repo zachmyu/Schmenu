@@ -10,6 +10,7 @@ import NavFooter from './components/Nav/NavFooter'
 import User from './components/UsersPage/User';
 import MenuItem from './components/MenuItemsPage/MenuItem';
 import Restaurant from './components/RestaurantPage/Restaurant';
+import RestaurantsList from './components/RestaurantPage/RestaurantsList';
 import HomePage from './components/HomePage/Home';
 
 function App() {
@@ -40,6 +41,9 @@ function App() {
                     </ProtectedRoute>
                     <Route exact path='/menuitems/:id'>
                         <MenuItem />
+                    </Route>
+                    <Route exact path='/restaurants'>
+                        <RestaurantsList />
                     </Route>
                     <Route exact path='/restaurants/:id'>
                         <Restaurant />
