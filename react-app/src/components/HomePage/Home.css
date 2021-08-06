@@ -4,7 +4,7 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    height: 49vh;
+    height: 40vh;
     transition-duration: 4s;
     background-size: cover;
     background-position: center;
@@ -25,9 +25,8 @@
     -webkit-text-stroke-color: black;
 }
 
-/*
-
-#splash-search{
+/* Below sections for future search bar implementation*/
+/*#splash-search{
     height: 34px;
     margin: 0 5px;
     border-radius: 5px;
@@ -65,7 +64,7 @@
     width: 240px;
     height: 340px;
     margin: 30px;
-    border-radius: 5px;;
+    border-radius: 10px;;
 }
 
 .menu-card:hover {
@@ -80,6 +79,7 @@
     background-size: cover;
     background-position: center center;
     box-sizing: border-box;
+    border-radius: 10px 10px 0 0 ;
 }
 
 .menu-description {
@@ -90,6 +90,14 @@
     width: 100%;
     height: 140px;
     padding: 0 10px;
+    font-family: Helvetica;
+    font-size: 1em;
+    color: #000000;
+    text-decoration: none;
+}
+
+.menu-description:hover{
+    color: #F59320;
 }
 
 @media screen and (max-width: 960px) {

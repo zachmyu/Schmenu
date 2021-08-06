@@ -1,5 +1,80 @@
 /* TODO Add site wide styles */
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    z-index: -10;
+    padding: 0;
+    /* margin-top: 150px; */
     margin-bottom: 120px;
+}
+
+a:visited,
+a:active,
+a:link {
+    text-decoration: none;
+}
+
+
+.button1 {
+    width: 240px;
+    height: 40px;
+    color: #F59320;
+    border-radius: 10px;
+    background-color: #000000;
+    font-size: large;
+    font-weight: bold;
+    margin: 5px;
+}
+
+.button1:hover {
+    background-color: #2e2e2e;
+}
+
+.button2 {
+    width: 240px;
+    height: 40px;
+    color: #000000;
+    border-radius: 10px;
+    background-color: #ffac4e;
+    font-size: large;
+    font-weight:800 ;
+    margin: 5px;
+}
+
+.button2:hover {
+    background-color: #ffbd72;
+}
+
+.button3 {
+    width: 100px;
+    height: 35px;
+    color: #F59320;
+    border-radius: 10px;
+    background-color: #000000;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px;
+}
+
+.button3:hover {
+    background-color: #2e2e2e;
+}
+
+h1 {
+    font-family:Helvetica;
+    color: white;
+    font-weight: bold;
+    margin: 0;
+}
+
+h2 {
+    font-family:Helvetica;
+    color: white;
+    font-weight: bold;
+    margin: 0;
+}
+
+p{
+    font-family:Helvetica;
+    color: white;
+    font-size: 0.8em;
 }

@@ -42,7 +42,7 @@ const RestaurantAddModal = () => {
 
     return (
         <>
-            <button className="navbar-button"
+            <button className="button1"
                 onClick={() => setShowModal(true)}>Add a new restaurant</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
@@ -116,8 +116,8 @@ const RestaurantAddModal = () => {
                         <div className='review-button-container'>
                             <button className="button2" type="submit">Submit New Restaurant</button>
                         </div>
-                    </form>
-                </Modal>
+                    </form >
+                </Modal >
             )}
         </>
     )

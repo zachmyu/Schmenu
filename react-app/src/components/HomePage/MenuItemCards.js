@@ -31,8 +31,8 @@ function MenuItemCards() {
     }
 
     return (
-        <div>
-            {itemsArr.map(item => (
+        <div className='menus-container'>
+            {itemsArr && itemsArr.map(item => (
                 <a href={`/menuitems/${item[1].id}`} key={item[1].id}>
                     <div className='menu-card' >
                         <img src={item[1].food_pix} className='menu-pix'
