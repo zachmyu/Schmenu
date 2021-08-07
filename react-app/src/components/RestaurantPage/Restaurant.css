@@ -1,0 +1,53 @@
+.formPage-container {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 60vh;
+    background-color: rgb(61, 61, 61);
+    color: #F59320;
+    font-size: 15px;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 0;
+}
+
+.create-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    height: auto;
+    padding: 20px;
+    background-color: rgb(46, 46, 46);
+    border-radius: 10px;
+    border: #F59320 1px solid;
+}
+
+.formPage-element{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space-between;
+    width: 290px;
+    height: auto;
+    padding-top: 10px;
+    margin: 0px 10px 0 10px;
+}
+
+#newRest-address{
+    resize: none;
+    height: 60px;
+}
+
+#newRest-description{
+    resize: none;
+    height: 100px;
+}
+
+.buttonContainer {
+    display: flex;
+    align-items: center;
+    height: 80px;
+    padding: 10px;;
+}

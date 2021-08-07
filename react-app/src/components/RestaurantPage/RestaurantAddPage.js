@@ -38,34 +38,31 @@ const RestaurantAdd = () => {
         history.push(`/restaurants/${data.restaurant.id}`)
     }
 
+    if (!currUser || currUser.account_type !== 'Owner') history.push('/')
+
     return (
         <>
             {currUser &&
-                <>
+                <div className='formPage-container'>
                     <h3>Add a new restaurant</h3>
-                    <form className='ratings-container' onSubmit={handleSubmit}>
-                        <div className="review-element-container">
-                            <input
-                                className="review-element"
-                                placeholder='Name of restaurant'
-                                value={name}
+                    <form className='create-form' onSubmit={handleSubmit}>
+                        <div className='formPage-element'>
+                            <label>Name of Restaurant: </label>
+                            <input className='newRest-element' value={name}
                                 onChange={(e) => setName(e.target.value)}
-                                required
-                            />
+                                required />
                         </div>
-                        <div className="review-element-container">
-                            <textarea
-                                className="review-text-element"
+                        <div className='formPage-element'>
+                            <label>Address of Restaurant: </label>
+                            <textarea id='newRest-address'
                                 value={address}
-                                placeholder='Address of restaurant'
                                 onChange={(e) => setAddress(e.target.value)}
-                                required
-                            />
+                                required />
                         </div>
-                        <div className='reservation-element'>
-                            <span>Restaurant Type: </span>
-                            <select value={restaurantType}
-                                onChange={(e) => { setRestaurantType(e.target.value) }}>
+                        <div className='formPage-element'>
+                            <label>Restaurant Type: </label>
+                            <select className='newRest-element' value={restaurantType}
+                                onChange={(e) => setRestaurantType(e.target.value)}>
                                 <option value='Fine-Dining'>Fine Dining</option>
                                 <option value='Casual-Dining'>Casual Dining</option>
                                 <option value='Fast-Food'>Fast Food</option>
@@ -74,46 +71,38 @@ const RestaurantAdd = () => {
                                 <option value='Other'>Other</option>
                             </select>
                         </div>
-                        <div className="review-element-container">
-                            <textarea
-                                className="review-text-element"
+                        <div className='formPage-element'>
+                            <label>Description of the Restaurant: </label>
+                            <textarea id='newRest-description'
                                 value={description}
-                                placeholder='Add a description of the restaurant'
                                 onChange={(e) => setDescription(e.target.value)}
-                                required
-                            />
+                                required />
                         </div>
-                        <div className="review-element-container">
-                            <input
-                                className="review-text-element"
+                        <div className='formPage-element'>
+                            <label>URL of Restaurant Picture: </label>
+                            <input className='newRest-element'
                                 value={restntPixUrl}
-                                placeholder='Enter a url for a picture of the restaurant'
-                                onChange={(e) => setRestntPixUrl(e.target.value)}
-                            />
+                                onChange={(e) => setRestntPixUrl(e.target.value)} />
                         </div>
-                        <div className="review-element-container">
-                            <input type='number' step='0.01'
-                                className="review-text-element"
-                                value={latitude}
+                        <div className='formPage-element-hidden'>
+                            <input className='review-text-element'
+                                type='number' step='0.01'
+                                value={latitude} hidden
                                 placeholder='Latitude of restaurant location'
-                                onChange={(e) => setLatitude(e.target.value)}
-                                hidden
-                            />
+                                onChange={(e) => setLatitude(e.target.value)} />
                         </div>
-                        <div className="review-element-container">
-                            <input type='number' step='0.01'
-                                className="review-text-element"
-                                value={longitude}
+                        <div className='formPage-element-hidden'>
+                            <input className='review-text-element'
+                                type='number' step='0.01'
+                                value={longitude} hidden
                                 placeholder='Latitude of restaurant location'
-                                onChange={(e) => setLongitude(e.target.value)}
-                                hidden
-                            />
+                                onChange={(e) => setLongitude(e.target.value)} />
                         </div>
-                        <div className='review-button-container'>
-                            <button className="button2" type="submit">Submit New Restaurant</button>
+                        <div className='buttonContainer'>
+                            <button className='button2' type='submit'>Submit Restaurant</button>
                         </div>
                     </form >
-                </>
+                </div>
             }
         </>
     )
