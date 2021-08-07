@@ -39,54 +39,62 @@ function MenuItem() {
     let sessionlinks;
     if (currUser) {
         sessionlinks = (
-            <div className='navbar-button'>
-                <MenuItemUpdateModal />
-            </div>
+            <MenuItemUpdateModal />
+        );
+    } else {
+        sessionlinks = (
+            <h4>Please sign in to make changes</h4>
         );
     }
-
 
     return (
         <>
             {menuItem &&
-                <>
-                    <div className='container__menuItem-title'>
+                <div className='menuItem-container'>
+                    <div className='menuItem-container-picture'>
                         <img src={menuItem.food_pix}
                             alt={menuItem.food_name}
                             className='menuItem-picture' />
                     </div>
-                    <div className='container__menuItem'>
-                        <div className='container_menuItem-left'>
-                            <div className='container_menuItem-summary'>
-                                <h1 className='menuItem-title'>{menuItem.food_name}</h1>
-                                <hr />
-                                Restaurant: <a href={`/restaurants/${menuItem.restaurant_id}`}>{restName}</a>
-                            </div>
-                            {sessionlinks}
-                            <div className='container_menuItem-details'>
-                                <div className='menuItem-details-element'>
-                                    <i className="fas fa-star"></i>
-                                    <span>{avgRating()}</span>
-                                </div>
-                                <div className='menuItem-details-element'>
-                                    <i className="far fa-comment-alt"> </i>
-                                    <span>{ratingInfo.length} reviews</span>
-                                </div>
-                                <div className='menuItem-details-element'>
-                                    <i className="fas fa-money-bill-wave"></i>
-                                    <span>Price: ${menuItem.price}</span>
-                                </div>
-                            </div>
-                            <div className='container_menuItem-summary'>
-                                {menuItem.description}
-                            </div>
-                            <Ratings ratingInfo={ratingInfo} />
+                    <div className='menuItem-background'>
+                        <div className='container_menuItem-summary'>
+                            <h1>{menuItem.food_name}</h1>
+                            <hr />
+                            <h3>Restaurant:&nbsp;&nbsp; <a
+                                href={`/restaurants/${menuItem.restaurant_id}`}>
+                                {restName}
+                            </a></h3>
                         </div>
-                        <div className='container_menuItem-right'>
-                            {/*sidebar stuff?*/}
+                        <div className='menuItem-container-info'>
+                            <div className='menuItem-container-info-left'>
+
+                                <div className='menuItem-details-container'>
+                                    <div className='menuItem-details-element'>
+                                        <i className="fas fa-star" style={{ color: "Gold" }}></i>
+                                        <span> {avgRating()}</span>
+                                    </div>
+                                    <div className='menuItem-details-element'>
+                                        <i className="far fa-comment-alt" style={{ color: "RoyalBlue" }}> </i>
+                                        <span> {ratingInfo.length} reviews</span>
+                                    </div>
+                                    <div className='menuItem-details-element'>
+                                        <i className="fas fa-money-bill-wave" style={{ color: "ForestGreen" }}></i>
+                                        <span> Price: ${menuItem.price}</span>
+                                    </div>
+
+                                </div>
+                                <div className='container_menuItem-summary'>
+                                    {menuItem.description}
+                                </div>
+                                <Ratings ratingInfo={ratingInfo} />
+                            </div>
+                            <div className='menuItem-container-info-right'>
+                                {/*sidebar stuff?*/}
+                                {sessionlinks}
+                            </div>
                         </div>
                     </div>
-                </>
+                </div>
             }
         </>
     )

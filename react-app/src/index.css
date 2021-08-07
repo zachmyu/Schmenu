@@ -76,12 +76,6 @@ h2 {
     -webkit-text-stroke-color: #F59320;
 }
 
-p{
-    font-family:Helvetica;
-    color: white;
-    font-size: 0.8em;
-}
-
 @media screen and (max-width: 960px) {
     .button3 {
         width: 90px;
