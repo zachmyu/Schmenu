@@ -10,7 +10,6 @@ function MenuCardInf() {
     const dispatch = useDispatch()
     const menuItems = useSelector(state => state?.menu_items)
     const itemsArr = Object?.entries(menuItems)
-    console.log("HEEEEEEEEEEEEEEEEEYYYYYYYY", menuItems)
 
     useEffect(() => {
         dispatch(getAllItems())
@@ -27,7 +26,6 @@ function MenuCardInf() {
     })
     const [hasMore, setHasMore] = useState(true);
     const [current, setCurrent] = useState(itemsArr?.slice(count.prev, count.next))
-    console.log("YOOOOOOOOOOOOOOOO", current)
 
     const getMoreData = () => {
         if (current?.length === itemsArr?.length) {
