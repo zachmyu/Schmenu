@@ -33,17 +33,20 @@ const DemoUserModal = () => {
 
     return (
         <>
-            <button className="button3" onClick={() => setShowModal(true)}>Demo Users</button>
+            <button className="button3"
+                onClick={() => setShowModal(true)}>Demo Users</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <div className='login__demoUsers'>
+                    <div className='demo-container'>
                         <form onSubmit={onLoginReviewer}>
-                            <div className='form'>
+                            <div className='errors'>
                                 {errors.map((error, ind) => (
                                     <div key={ind}>{error}</div>
                                 ))}
                             </div>
-                            <button type='submit' className="button3"> Demo as Reviewer </button>
+                            <button type='submit' className="button1">
+                                Demo as Reviewer&nbsp;&nbsp;&nbsp;
+                                <i className="fas fa-users"></i></button>
                         </form>
                         <form onSubmit={onLoginOwner}>
                             <div className='form'>
@@ -51,7 +54,9 @@ const DemoUserModal = () => {
                                     <div key={ind}>{error}</div>
                                 ))}
                             </div>
-                            <button type='submit' className="button3"> Demo as Owner </button>
+                            <button type='submit' className="button1">
+                                Demo as Owner&nbsp;&nbsp;&nbsp;
+                                <i className='fas fa-user-tie'></i></button>
                         </form>
                     </div>
                 </Modal>

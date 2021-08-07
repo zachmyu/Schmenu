@@ -11,6 +11,7 @@ import User from './components/UsersPage/User';
 import MenuItem from './components/MenuItemsPage/MenuItem';
 import Restaurant from './components/RestaurantPage/Restaurant';
 import RestaurantsList from './components/RestaurantPage/RestaurantsList';
+import RestaurantAdd from './components/RestaurantPage/RestaurantAddPage';
 import HomePage from './components/HomePage/Home';
 
 function App() {
@@ -45,9 +46,13 @@ function App() {
                     <Route exact path='/restaurants'>
                         <RestaurantsList />
                     </Route>
+                    <ProtectedRoute exact path='/restaurants/createnew'>
+                        <RestaurantAdd />
+                    </ProtectedRoute>
                     <Route exact path='/restaurants/:id'>
                         <Restaurant />
                     </Route>
+
                 </Switch>
             )}
             <NavFooter />

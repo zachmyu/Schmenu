@@ -18,6 +18,30 @@
     font-weight: bold;
 }
 
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    height: 190px;
+    color: #F59320;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.demo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #F59320;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 20px;
+    background-color: rgb(61, 61, 61);
+    border-radius: 10px;
+    border: #F59320 1px solid;
+}
+
 .form-container-left{
     display: flex;
     flex-direction: column;
@@ -65,4 +89,11 @@
     display:flex;
     justify-content: space-evenly;
     width: 290px;
+}
+
+.buttonContainer {
+    display: flex;
+    align-items: center;
+    height: 80px;
+    padding: 10px;;
 }

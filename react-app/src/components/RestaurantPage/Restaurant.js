@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { getOneRestaurant } from '../../store/restaurant'
 import { getAllRestItems } from '../../store/menu_item'
-import { useParams } from "react-router-dom";
-import './Restaurant.css'
 import RestaurantUpdateModal from "./RestaurantUpdateModal";
 import MenuItemAddModal from "../MenuItemModals/MenuItemAddModal";
+import { useParams } from "react-router-dom";
+import './Restaurant.css'
 
 
 function Restaurant() {

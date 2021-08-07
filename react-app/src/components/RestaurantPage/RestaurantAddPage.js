@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { Modal } from '../../context/Modal'
 import { createRestaurant } from '../../store/restaurant';
+import './Restaurant.css'
 
 
-const RestaurantAddModal = () => {
+const RestaurantAdd = () => {
     const dispatch = useDispatch();
     const currUser = useSelector(state => state?.session?.user);
     const history = useHistory()
 
-    const [showModal, setShowModal] = useState(false);
     const [name, setName] = useState('');
     const [address, setAddress] = useState('');
     const [restaurantType, setRestaurantType] = useState('Fine-Dining');
@@ -36,16 +35,13 @@ const RestaurantAddModal = () => {
         setRestaurantType('Fine-Dining')
         setDescription('')
         setRestntPixUrl('')
-        setShowModal(false)
         history.push(`/restaurants/${data.restaurant.id}`)
     }
 
     return (
         <>
-            <button className="button1"
-                onClick={() => setShowModal(true)}>Add a new restaurant</button>
-            {showModal && (
-                <Modal onClose={() => setShowModal(false)}>
+            {currUser &&
+                <>
                     <h3>Add a new restaurant</h3>
                     <form className='ratings-container' onSubmit={handleSubmit}>
                         <div className="review-element-container">
@@ -117,10 +113,10 @@ const RestaurantAddModal = () => {
                             <button className="button2" type="submit">Submit New Restaurant</button>
                         </div>
                     </form >
-                </Modal >
-            )}
+                </>
+            }
         </>
     )
 }
 
-export default RestaurantAddModal;
+export default RestaurantAdd;

@@ -138,7 +138,9 @@ const SignUpFormModal = () => {
 								</div>
 							</div>
 						</div>
-						<button className='button1' type='submit'>Sign Up</button>
+						<div className='buttonContainer'>
+							<button className='button1' type='submit'>Sign Up</button>
+						</div>
 					</form>
 				</Modal>
 			)}

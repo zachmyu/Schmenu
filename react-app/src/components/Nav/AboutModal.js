@@ -9,7 +9,7 @@ const AboutModal = () => {
         <>
             <button className="footer-button"
                 onClick={() => setShowModal(true)}>
-                <i class="fas fa-question-circle"></i> About this app</button>
+                <i className="fas fa-question-circle"></i> About this app</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <div className='about-container'>
