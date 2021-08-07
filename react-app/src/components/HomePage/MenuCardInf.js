@@ -10,10 +10,15 @@ function MenuCardInf() {
     const dispatch = useDispatch()
     const menuItems = useSelector(state => state?.menu_items)
     const itemsArr = Object?.entries(menuItems)
+    console.log("HEEEEEEEEEEEEEEEEEYYYYYYYY", menuItems)
 
     useEffect(() => {
         dispatch(getAllItems())
     }, [dispatch])
+
+    useEffect(() => {
+        setCurrent(itemsArr?.slice(count.prev, count.next))
+    }, [menuItems, itemsArr])
 
 
     const [count, setCount] = useState({
@@ -22,6 +27,7 @@ function MenuCardInf() {
     })
     const [hasMore, setHasMore] = useState(true);
     const [current, setCurrent] = useState(itemsArr?.slice(count.prev, count.next))
+    console.log("YOOOOOOOOOOOOOOOO", current)
 
     const getMoreData = () => {
         if (current?.length === itemsArr?.length) {
@@ -53,14 +59,13 @@ function MenuCardInf() {
 
     return (
         <>
-
-            <div className='menus-container'>
-                <InfiniteScroll
-                    dataLength={current?.length}
-                    next={getMoreData}
-                    hasMore={hasMore}
-                    loader={<h4>Loading...</h4>}
-                >
+            <InfiniteScroll
+                dataLength={current?.length}
+                next={getMoreData}
+                hasMore={hasMore}
+                loader={<h4>Loading...</h4>}
+            >
+                <div className='menus-container'>
                     {current && current?.map(((item, idx) => (
                         <a href={`/menuitems/${item[1].id}`} key={item[1].id}>
                             <div className='menu-card' >
@@ -75,8 +80,8 @@ function MenuCardInf() {
                             </div>
                         </a>
                     )))}
-                </InfiniteScroll>
-            </div>
+                </div>
+            </InfiniteScroll>
         </>
     );
 }
