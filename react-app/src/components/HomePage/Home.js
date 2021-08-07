@@ -1,8 +1,8 @@
 import React from 'react';
 // import { useEffect, useState } from "react";
 // import { useSelector, useDispatch } from 'react-redux'
-// import MenuItemCards from './MenuItemCards';
-import MenuCardInf from './MenuCardInf'
+import MenuItemCards from './MenuItemCards';
+// import MenuCardInf from './MenuCardInf'
 import "./Home.css";
 
 
@@ -40,8 +40,8 @@ function HomePage() {
 
 
             </div>
-            {/* <MenuItemCards /> */}
-            <MenuCardInf />
+            <MenuItemCards />
+            {/* <MenuCardInf /> */}
         </>
 
     );

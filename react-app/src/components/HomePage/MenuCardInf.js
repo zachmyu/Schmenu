@@ -22,7 +22,7 @@ function MenuCardInf() {
 
     const [count, setCount] = useState({
         prev: 0,
-        next: 10
+        next: 29
     })
     const [hasMore, setHasMore] = useState(true);
     const [current, setCurrent] = useState(itemsArr?.slice(count.prev, count.next))
@@ -33,9 +33,9 @@ function MenuCardInf() {
             return;
         }
         setTimeout(() => {
-            setCurrent(current?.concat(itemsArr?.slice(count?.prev + 10, count?.next + 10)))
+            setCurrent(current?.concat(itemsArr?.slice(count?.prev + 30, count?.next + 30)))
         }, 1000)
-        setCount((prevState) => ({ prev: prevState?.prev + 10, next: prevState?.next + 10 }))
+        setCount((prevState) => ({ prev: prevState?.prev + 30, next: prevState?.next + 30 }))
     }
 
     const avgRating = (ratings) => {
