@@ -50,7 +50,7 @@ const RatingUpdateModal = ({ currRating }) => {
 
     return (
         <>
-            <button className="navbar-button"
+            <button className="button1"
                 onClick={() => setShowModal(true)}>Update your rating!</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>

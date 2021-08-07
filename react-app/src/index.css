@@ -12,6 +12,12 @@ a:link {
     text-decoration: none;
 }
 
+.buttonContainer {
+    display: flex;
+    align-items: center;
+    height: 80px;
+    padding: 10px;;
+}
 
 .button1 {
     width: 240px;
@@ -76,6 +82,12 @@ h2 {
     -webkit-text-stroke-color: #F59320;
 }
 
+.fa-star, .fa-star-half-alt {
+    color: gold;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+
 @media screen and (max-width: 960px) {
     .button3 {
         width: 90px;
@@ -86,12 +98,9 @@ h2 {
         font-size: 12px;
         font-weight: bold;
         margin-right: 5px;;
-
     }
 
     body {
-    margin-bottom: 70px;
-}
-
-
+        margin-bottom: 70px;
+    }
 }

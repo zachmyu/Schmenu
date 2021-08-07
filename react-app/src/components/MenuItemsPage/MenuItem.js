@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux'
+import { useParams } from "react-router-dom";
 import { getOneItem } from '../../store/menu_item'
 import { getAllItemRatings } from '../../store/rating'
 import { getOneRestaurant } from '../../store/restaurant';
-import { useParams } from "react-router-dom";
 import MenuItemUpdateModal from "../MenuItemModals/MenuItemUpdateModal";
-import './MenuItem.css'
 import Ratings from "./Ratings";
+import './MenuItem.css'
 
 
 function MenuItem() {
@@ -59,10 +59,11 @@ function MenuItem() {
                     <div className='menuItem-background'>
                         <div className='container_menuItem-summary'>
                             <h1>{menuItem.food_name}</h1>
-                            <hr />
+
                             <h3>Restaurant:&nbsp;&nbsp; <a
                                 href={`/restaurants/${menuItem.restaurant_id}`}>
                                 {restName}
+                                <hr />
                             </a></h3>
                         </div>
                         <div className='menuItem-container-info'>
@@ -84,13 +85,17 @@ function MenuItem() {
 
                                 </div>
                                 <div className='container_menuItem-summary'>
+                                    <h4>About this Schmenu item: </h4>
                                     {menuItem.description}
                                 </div>
                                 <Ratings ratingInfo={ratingInfo} />
                             </div>
                             <div className='menuItem-container-info-right'>
-                                {/*sidebar stuff?*/}
+                                <h3>Options:</h3>
                                 {sessionlinks}
+                                {/*Save Stuff*/}
+                                {/*Map of location*/}
+                                {/*Questions about this item?*/}
                             </div>
                         </div>
                     </div>

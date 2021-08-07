@@ -40,8 +40,8 @@ const MenuItemUpdateModal = () => {
 
     return (
         <>
-            <button className="navbar-button"
-                onClick={() => setShowModal(true)}>Update menu item!</button>
+            <button className="button1"
+                onClick={() => setShowModal(true)}>Update menu item</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
                     <h3>Update details for menu item</h3>

@@ -90,10 +90,3 @@
     justify-content: space-evenly;
     width: 290px;
 }
-
-.buttonContainer {
-    display: flex;
-    align-items: center;
-    height: 80px;
-    padding: 10px;;
-}

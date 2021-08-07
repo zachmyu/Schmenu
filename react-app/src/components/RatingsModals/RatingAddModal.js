@@ -38,8 +38,8 @@ const RatingAddModal = () => {
 
 
     return (
-        <>
-            <button className="navbar-button"
+        <div className='buttonContainer'>
+            <button className="button1"
                 onClick={() => setShowModal(true)}>Add a rating!</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
@@ -64,7 +64,7 @@ const RatingAddModal = () => {
                     </form>
                 </Modal>
             )}
-        </>
+        </div>
     )
 }
 
