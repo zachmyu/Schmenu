@@ -14,9 +14,17 @@ a:link {
 
 .buttonContainer {
     display: flex;
+    justify-content: center;
     align-items: center;
-    height: 80px;
-    padding: 10px;;
+    height: 100%;
+    padding: 10px;
+}
+
+.buttonContainer2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
 }
 
 .button1 {
