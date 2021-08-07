@@ -2,7 +2,7 @@
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     z-index: -10;
-    margin-bottom: 120px;
+    margin-bottom: 50px;
     background-color: rgb(255, 248, 238);
 }
 
@@ -60,16 +60,20 @@ a:link {
 
 h1 {
     font-family:Helvetica;
-    color: white;
-    font-weight: bold;
+    color: rgb(61, 61, 61);
+    font-weight: 1000;
     margin: 0;
+    -webkit-text-stroke-width: 0.7px;
+    -webkit-text-stroke-color: #F59320;
 }
 
 h2 {
     font-family:Helvetica;
-    color: white;
-    font-weight: bold;
+    color: rgb(61, 61, 61);
+    font-weight: 800;
     margin: 0;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: #F59320;
 }
 
 p{
@@ -90,6 +94,10 @@ p{
         margin-right: 5px;;
 
     }
+
+    body {
+    margin-bottom: 70px;
+}
 
 
 }
