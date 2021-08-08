@@ -68,8 +68,8 @@ function Restaurant() {
                             </div>
                             <h2>Schmenu item offered at this restaurant:</h2>
                             {itemInfo?.map(item => (
-                                <a href={`/menuitems/${item?.id}`}>
-                                    <div className='container_Restaurant-items' key={item?.id}>
+                                <a href={`/menuitems/${item?.id}`} key={item?.id}>
+                                    <div className='container_Restaurant-items'>
                                         <div className='container_Restaurant-items-details'>
                                             <img src={item.food_pix}
                                                 alt={item.food_name}

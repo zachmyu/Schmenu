@@ -173,6 +173,18 @@
     color: #ffbd72;
 }
 
+.about-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    height: auto;
+    color: #F59320;
+    background-color: rgb(61, 61, 61);
+    border-radius: 10px;
+    border: #F59320 1px solid;
+}
+
 @media screen and (max-width: 960px) {
 
     .homepageLogo {
