@@ -13,6 +13,18 @@ function Restaurant() {
         dispatch(getAllRestaurants())
     }, [dispatch])
 
+    const derpCat = (oneRest) => {
+        if (oneRest?.restaurant_pix) {
+            return <img src={oneRest?.restaurant_pix}
+                alt={oneRest?.name}
+                className="restaurant-thumbnail" />
+        } else {
+            return <img src="/images/defaultRest.png"
+                alt="derp-cat!"
+                className="restaurant-thumbnail" />
+        }
+    }
+
     return (
         <>
             {restObjs &&
@@ -22,9 +34,7 @@ function Restaurant() {
                         <div className='container-restaurant' key={restaurant?.id}>
                             <a href={`/restaurants/${restaurant?.id}`}>
                                 <div className='container-restaurants-details'>
-                                    <img src={restaurant?.restaurant_pix}
-                                        alt={restaurant?.name}
-                                        className='restaurant-thumbnail' />
+                                    {derpCat(restaurant)}
                                     <span>{restaurant?.description}</span>
                                 </div>
                                 <div className='container-restaurant-nametype'>

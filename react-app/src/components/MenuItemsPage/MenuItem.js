@@ -57,15 +57,28 @@ function MenuItem() {
         );
     }
 
+    let contentPicture;
+    if (menuItem?.food_pix) {
+        contentPicture = (
+            <img src={menuItem?.food_pix}
+                alt={menuItem?.food_name}
+                className="restaurant-picture" />
+        )
+    } else {
+        contentPicture = (
+            <img src="/images/defaultRest.png"
+                alt="derp-cat!"
+                className="restaurant-picture" />
+        )
+    }
+
 
     return (
         <>
             {menuItem &&
                 <div className='menuItem-container'>
                     <div className='menuItem-container-picture'>
-                        <img src={menuItem.food_pix}
-                            alt={menuItem.food_name}
-                            className='menuItem-picture' />
+                        {contentPicture}
                     </div>
                     <div className='menuItem-background'>
                         <div className='container_menuItem-summary'>

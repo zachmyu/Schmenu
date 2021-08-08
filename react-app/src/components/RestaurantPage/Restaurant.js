@@ -35,14 +35,27 @@ function Restaurant() {
         );
     }
 
+    let contentPicture;
+    if (currRestnt?.restaurant_pix) {
+        contentPicture = (
+            <img src={currRestnt?.restaurant_pix}
+                alt={currRestnt?.name}
+                className="restaurant-picture" />
+        )
+    } else {
+        contentPicture = (
+            <img src="/images/defaultRest.png"
+                alt="derp-cat!"
+                className="restaurant-picture" />
+        )
+    }
+
     return (
         <>
             {currRestnt &&
                 <div className='restaurant-container'>
                     <div className='restaurant-container-picture'>
-                        <img src={currRestnt?.restaurant_pix}
-                            alt={currRestnt?.name}
-                            className='restaurant-picture' />
+                        {contentPicture}
                     </div>
                     <div className='restaurant-background'>
                         <div className='restaurant-elements-container'>
