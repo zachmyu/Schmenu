@@ -66,7 +66,7 @@ function MenuItem() {
         )
     } else {
         contentPicture = (
-            <img src="/images/defaultRest.png"
+            <img src="/images/defaultFood.png"
                 alt="derp-cat!"
                 className="restaurant-picture" />
         )
