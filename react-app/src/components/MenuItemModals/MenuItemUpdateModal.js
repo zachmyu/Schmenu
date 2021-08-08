@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Modal } from '../../context/Modal'
 import { updateItem, deleteItem } from '../../store/menu_item'
+import './MenuItemModal.css'
 
 
 const MenuItemUpdateModal = () => {
@@ -41,53 +42,61 @@ const MenuItemUpdateModal = () => {
     return (
         <>
             <button className="button1"
-                onClick={() => setShowModal(true)}>Update menu item</button>
+                onClick={() => setShowModal(true)}>Update Schmenu item</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <h3>Update details for menu item</h3>
-                    <form className='ratings-container' onSubmit={handleSubmit}>
-                        <div className="review-element-container">
-                            <input
-                                className="review-element"
-                                placeholder='Name of menu item'
-                                value={foodName}
-                                onChange={(e) => setFoodName(e.target.value)}
-                                required
-                            />
-                        </div>
-                        <div className="review-element-container">
-                            <input type='number' step='0.01'
-                                className="review-text-element"
-                                value={price}
-                                placeholder='Price of item'
-                                onChange={(e) => setPrice(e.target.value)}
-                                required
-                            />
-                        </div>
-                        <div className="review-element-container">
-                            <textarea
-                                className="review-text-element"
-                                value={description}
-                                placeholder='Description of item'
-                                onChange={(e) => setDescription(e.target.value)}
-                                required
-                            />
-                        </div>
-                        <div className="review-element-container">
-                            <input
-                                className="review-element"
-                                placeholder='Add a picture of the item'
-                                value={foodPixUrl}
-                                onChange={(e) => setFoodPixUrl(e.target.value)}
-                            />
-                        </div>
-                        <button type='submit' className="button3">
-                            Submit Update
-                        </button>
-                    </form>
-                    <button className="button3" onClick={() => (
-                        handleDelete(currItem.id
-                        ))}>Delete Menu Item?</button>
+                    <div className='itemModal-container'>
+                        <h3 className='modal-header'>Update details for menu item</h3>
+                        <form className='itemModal-form' onSubmit={handleSubmit}>
+                            <div className="itemModal-element">
+                                <label>Name of menu item</label>
+                                <input
+                                    className="itemModal-input"
+                                    placeholder='Name of menu item'
+                                    value={foodName}
+                                    onChange={(e) => setFoodName(e.target.value)}
+                                    required
+                                />
+                            </div>
+                            <div className="itemModal-element">
+                                <label>Price of item</label>
+                                <input type='number' step='0.01'
+                                    className="itemModal-input"
+                                    value={price}
+                                    placeholder='Price of item'
+                                    onChange={(e) => setPrice(e.target.value)}
+                                    required
+                                />
+                            </div>
+                            <div className="itemModal-element">
+                                <label>Description of item</label>
+                                <textarea
+                                    className="itemModal-text"
+                                    value={description}
+                                    placeholder='Description of item'
+                                    onChange={(e) => setDescription(e.target.value)}
+                                    required
+                                />
+                            </div>
+                            <div className="itemModal-element">
+                                <label>Add a picture of the item</label>
+                                <input
+                                    className="itemModal-input"
+                                    placeholder='Add a picture of the item'
+                                    value={foodPixUrl}
+                                    onChange={(e) => setFoodPixUrl(e.target.value)}
+                                />
+                            </div>
+                            <div className='buttonContainer2'>
+                                <button type='submit' className="button1">
+                                    Submit Update
+                                </button>
+                                <button className="button2" onClick={() => (
+                                    handleDelete(currItem.id
+                                    ))}>Delete Menu Item?</button>
+                            </div>
+                        </form>
+                    </div>
                 </Modal>
             )}
         </>

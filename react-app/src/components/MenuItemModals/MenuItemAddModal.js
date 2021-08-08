@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Modal } from '../../context/Modal'
 import { createItem } from '../../store/menu_item';
+import './MenuItemModal.css'
 
 
 const MenuItemAddModal = () => {
@@ -29,53 +30,61 @@ const MenuItemAddModal = () => {
 
     return (
         <>
-            <button className="navbar-button"
-                onClick={() => setShowModal(true)}>Add a new menu item!</button>
+            <button className='button1'
+                onClick={() => setShowModal(true)}>Add a new menu item!
+            </button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <h3>Submit a new menu item!!</h3>
-                    <form className='ratings-container' onSubmit={handleSubmit}>
-                        <div className="review-element-container">
-                            <input
-                                className="review-element"
-                                placeholder='Name of menu item'
-                                value={foodName}
-                                onChange={(e) => setFoodName(e.target.value)}
-                                required
-                            />
-                        </div>
-                        <div className="review-element-container">
-                            <input type='number' step='0.01'
-                                className="review-text-element"
-                                value={price}
-                                placeholder='Price of item'
-                                onChange={(e) => setPrice(e.target.value)}
-                                required
-                            />
-                        </div>
-                        <div className="review-element-container">
-                            <textarea
-                                className="review-text-element"
-                                value={description}
-                                placeholder='Description of item'
-                                onChange={(e) => setDescription(e.target.value)}
-                                required
-                            />
-                        </div>
+                    <div className='itemModal-container'>
+                        <h3 className='modal-header'>Submit a new menu item!!</h3>
+                        <form className='itemModal-form' onSubmit={handleSubmit}>
+                            <div className='itemModal-element'>
+                                <label>Name of menu item</label>
+                                <input
+                                    className='itemModal-input'
+                                    placeholder='Name of menu item'
+                                    value={foodName}
+                                    onChange={(e) => setFoodName(e.target.value)}
+                                    required
+                                />
+                            </div>
+                            <div className='itemModal-element'>
+                                <label>Price of item</label>
+                                <input type='number' step='0.01'
+                                    className='itemModal-input'
+                                    value={price}
+                                    placeholder='Price of item'
+                                    onChange={(e) => setPrice(e.target.value)}
+                                    required
+                                />
+                            </div>
+                            <div className='itemModal-element'>
+                                <label>Description of item</label>
+                                <textarea
+                                    className='itemModal-text'
+                                    value={description}
+                                    placeholder='Description of item'
+                                    onChange={(e) => setDescription(e.target.value)}
+                                    required
+                                />
+                            </div>
 
-                        <div className="review-element-container">
-                            <input
-                                className="review-element"
-                                placeholder='Add a picture of the item'
-                                value={foodPix}
-                                onChange={(e) => setFoodPix(e.target.value)}
-                            />
-                        </div>
-
-                        <button type='submit' className="button3">
-                            Submit
-                        </button>
-                    </form>
+                            <div className='itemModal-element'>
+                                <label>Add a picture of the item</label>
+                                <input
+                                    className='itemModal-input'
+                                    placeholder='Add a picture of the item'
+                                    value={foodPix}
+                                    onChange={(e) => setFoodPix(e.target.value)}
+                                />
+                            </div>
+                            <div className='buttonContainer'>
+                                <button type='submit' className='button1'>
+                                    Submit
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </Modal>
             )}
         </>
