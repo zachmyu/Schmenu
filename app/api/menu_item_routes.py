@@ -24,7 +24,7 @@ def menu_item(id):
     return menu_item.to_dict()
 
 
-# READ ALL = Menu_items (Can we limit this?)
+# READ ALL = Menu_items
 @menu_item_routes.route('/')
 def menu_items():
     menu_items = Menu_item.query.limit(150).all()

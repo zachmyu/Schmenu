@@ -34,35 +34,40 @@ const LoginFormModal = () => {
 
   return (
     <>
-      <button className="navbar-button" onClick={() => setShowModal(true)}>Log In</button>
+      <button className="navbar-button"
+        onClick={() => setShowModal(true)}>Log In</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <form onSubmit={onLogin}>
-            <div>
+          <form className='form-modal' onSubmit={onLogin}>
+            <div className='errors'>
               {errors.map((error, ind) => (
                 <div key={ind}>{error}</div>
               ))}
             </div>
-            <div>
-              <label htmlFor='email'>Email</label>
-              <input
-                name='email'
-                type='text'
-                placeholder='Email'
-                value={email}
-                onChange={updateEmail}
-              />
-            </div>
-            <div>
-              <label htmlFor='password'>Password</label>
-              <input
-                name='password'
-                type='password'
-                placeholder='Password'
-                value={password}
-                onChange={updatePassword}
-              />
-              <button type='submit'>Login</button>
+            <div className='login-container'>
+              <div className='form-element'>
+                <label>Email</label>
+                <input
+                  name='email'
+                  type='text'
+                  placeholder='Email'
+                  value={email}
+                  onChange={updateEmail}
+                />
+              </div>
+              <div className='form-element'>
+                <label htmlFor='password'>Password</label>
+                <input
+                  name='password'
+                  type='password'
+                  placeholder='Password'
+                  value={password}
+                  onChange={updatePassword}
+                />
+                <div className='buttonContainer'>
+                  <button className='button1' type='submit'>Login</button>
+                </div>
+              </div>
             </div>
           </form>
         </Modal >

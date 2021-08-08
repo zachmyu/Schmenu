@@ -30,13 +30,24 @@ function MenuItemCards() {
         }
     }
 
+    const burritoCat = (oneItem) => {
+        if (oneItem?.food_pix) {
+            return <img src={oneItem?.food_pix}
+                alt={oneItem?.food_name}
+                className="menu-pix" />
+        } else {
+            return <img src="/images/defaultRest.png"
+                alt="burrito-cat!"
+                className="menu-pix" />
+        }
+    }
+
     return (
         <div className='menus-container'>
             {itemsArr && itemsArr.map(item => (
                 <a href={`/menuitems/${item[1].id}`} key={item[1].id}>
                     <div className='menu-card' >
-                        <img src={item[1].food_pix} className='menu-pix'
-                            alt={item[1].food_name} />
+                        {burritoCat(item[1])}
                         <div className='menu-description'>
                             <div className='menu-title'><h3>{item[1].food_name}</h3></div>
                             <div className='menu-price'>Cost: ${item[1].price}</div>

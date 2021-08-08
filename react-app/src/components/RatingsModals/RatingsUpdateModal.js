@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Modal } from '../../context/Modal'
 import { useSelector, useDispatch } from 'react-redux';
 import { updateRating, deleteRating } from '../../store/rating'
-
+import './RatingsModal.css'
 
 const RatingUpdateModal = ({ currRating }) => {
     const dispatch = useDispatch();
@@ -37,12 +37,12 @@ const RatingUpdateModal = ({ currRating }) => {
     const ratingRadio = () => {
         return [1, 2, 3, 4, 5].map(i => (
             <div className='review-radio-select' key={i}>
-                {i}
                 <input
-                    type="radio" id={i} value={i} checked={i === rating}
+                    type='radio' id={i} value={i} checked={i === rating}
                     onChange={(e) => setRating(i)} onClick={() => setRating(i)}
                 >
                 </input>
+                {i}⭐
             </div>
         ))
     }
@@ -50,32 +50,39 @@ const RatingUpdateModal = ({ currRating }) => {
 
     return (
         <>
-            <button className="navbar-button"
-                onClick={() => setShowModal(true)}>Update your rating!</button>
+            <button className='button1'
+                onClick={() => setShowModal(true)}>
+                Update your rating!</button>
             {showModal && (
                 <Modal onClose={() => setShowModal(false)}>
-                    <h3>Changed your mind? Update your review!</h3>
-                    <form className='ratings-container' onSubmit={handleSubmit}>
-                        <div className="review-radio-container">
-                            <h3>Rating</h3>
-                            {ratingRadio()}
-                        </div>
-                        <div className="review-element-container">
-                            <textarea
-                                className="review-text-element"
-                                value={review}
-                                placeholder='Update your review!'
-                                onChange={(e) => setReview(e.target.value)}
-                                required
-                            />
-                        </div>
-                        <button type='submit' className="button3">
-                            Submit your review!
-                        </button>
-                    </form>
-                    <button className="button3" onClick={() => (
-                        handleDelete(currRating.id
-                        ))}>Delete rating?</button>
+                    <div className='ratingsModal-container'>
+                        <h3 className='modal-header'>Changed your mind? Update your review!</h3>
+                        <form className='ratingsModal-form' onSubmit={handleSubmit}>
+                            <div className='review-radio-container'>
+                                <h3 className='modal-header'>Rating</h3>
+                                <div className='review-radio-select'>
+                                    {ratingRadio()}
+                                </div>
+                            </div>
+                            <div className='ratingsModal-element'>
+                                <textarea
+                                    className='ratingsModal-text'
+                                    value={review}
+                                    placeholder='Update your review!'
+                                    onChange={(e) => setReview(e.target.value)}
+                                    required
+                                />
+                            </div>
+                            <div className='buttonContainer2'>
+                                <button type='submit' className='button1'>
+                                    Submit your review!
+                                </button>
+                                <button className='button2' onClick={() => (
+                                    handleDelete(currRating.id
+                                    ))}>Delete rating?</button>
+                            </div>
+                        </form>
+                    </div>
                 </Modal>
             )}
         </>

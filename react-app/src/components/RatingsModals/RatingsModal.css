@@ -1,0 +1,41 @@
+.review-radio-select {
+    display: flex;
+    justify-content: space-between;
+    width: 360px;
+    padding-bottom: 15px;
+    color: #F59320;
+    font-weight:600
+}
+
+.ratingsModal-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    height: auto;
+    background-color: rgb(61, 61, 61);
+    border-radius: 10px;
+    border: #F59320 1px solid;
+    padding: 20px;
+}
+
+.review-radio-star{
+    padding-left: 16px;
+    box-sizing: border-box;
+}
+
+.modal-header{
+    color: #F59320;
+}
+
+.ratingsModal-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space-between;
+    width: 360px;
+    height: 120px;
+    padding-top: 10px;
+    margin: 0px 10px 0 10px;
+    resize: none;
+}

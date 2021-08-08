@@ -2,9 +2,8 @@
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     z-index: -10;
-    padding: 0;
-    /* margin-top: 150px; */
-    margin-bottom: 120px;
+    margin-bottom: 50px;
+    background-color: rgb(255, 248, 238);
 }
 
 a:visited,
@@ -13,6 +12,20 @@ a:link {
     text-decoration: none;
 }
 
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 10px;
+}
+
+.buttonContainer2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
 
 .button1 {
     width: 240px;
@@ -22,11 +35,11 @@ a:link {
     background-color: #000000;
     font-size: large;
     font-weight: bold;
-    margin: 5px;
+    margin: 5px 10px;
 }
 
 .button1:hover {
-    background-color: #2e2e2e;
+    background-color: #6b6b6b;
 }
 
 .button2 {
@@ -34,10 +47,10 @@ a:link {
     height: 40px;
     color: #000000;
     border-radius: 10px;
-    background-color: #ffac4e;
+    background-color: #F59320;
     font-size: large;
     font-weight:800 ;
-    margin: 5px;
+    margin: 5px 10px;
 }
 
 .button2:hover {
@@ -56,27 +69,31 @@ a:link {
 }
 
 .button3:hover {
-    background-color: #2e2e2e;
+    background-color: #6b6b6b;
 }
 
 h1 {
     font-family:Helvetica;
-    color: white;
-    font-weight: bold;
+    color: rgb(61, 61, 61);
+    font-weight: 1000;
     margin: 0;
+    -webkit-text-stroke-width: 0.7px;
+    -webkit-text-stroke-color: #F59320;
 }
 
 h2 {
     font-family:Helvetica;
-    color: white;
-    font-weight: bold;
+    color: rgb(61, 61, 61);
+    font-weight: 800;
     margin: 0;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: #F59320;
 }
 
-p{
-    font-family:Helvetica;
-    color: white;
-    font-size: 0.8em;
+.fa-star, .fa-star-half-alt {
+    color: gold;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
 }
 
 @media screen and (max-width: 960px) {
@@ -89,8 +106,9 @@ p{
         font-size: 12px;
         font-weight: bold;
         margin-right: 5px;;
-
     }
 
-
+    body {
+        margin-bottom: 70px;
+    }
 }
