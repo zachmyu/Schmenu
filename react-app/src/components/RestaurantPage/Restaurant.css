@@ -1,3 +1,4 @@
+/* Modal Stylings */
 .formPage-container {
     display: flex;
     flex-direction: column;
@@ -50,4 +51,86 @@
     align-items: center;
     height: 80px;
     padding: 10px;;
+}
+
+/* Restaurant Page Stylings */
+.restaurant-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.restaurant-container-picture{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFD09A;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.restaurant-picture{
+    height: 50vh;
+    transition-duration: 4s;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.restaurant-background {
+    display: flex;
+    justify-content: center;
+    width: 80vw;
+    background-color: rgb(255, 234, 205);
+    padding: 40px;
+}
+
+.restaurant-elements-container {
+    width: 60vw;
+}
+
+.container_restaurant-summary{
+    width: 60%;
+    box-sizing: border-box;
+}
+
+.restaurant-details-element{
+    display: flex;
+    padding: 20px 0;
+}
+
+.container_Restaurant-items{
+    border: #F59320 solid 1px;
+    background-color: #ffddb6;
+    box-sizing: border-box;
+    margin: 10px 0;
+    padding: 0 10px;
+    font-weight: 600;
+    color: #6f3c02;
+}
+
+.container_Restaurant-items:hover {
+    transition-duration: 0.3s;
+    box-shadow: 10px 5px 5px rgba(100, 100, 100, .6);
+}
+.container_Restaurant-items-details{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.menuItem-thumbnail{
+    height: 100px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-right: 30px;
+}
+
+.menuItem-names {
+    margin: 0 0 20px 0;
+    padding-left: 30px;
+    font-size: 30px;
 }

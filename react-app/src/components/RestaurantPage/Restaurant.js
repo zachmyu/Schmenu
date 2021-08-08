@@ -24,66 +24,66 @@ function Restaurant() {
     let ownerLinks;
     if (currUser && currUser.id === currRestnt?.owner_id) {
         ownerLinks = (
-            <div>
-                <RestaurantUpdateModal />
-            </div>
+            <RestaurantUpdateModal />
         );
-    } else {
-        ownerLinks = (null);
     }
 
     let sessionlinks;
     if (currUser) {
         sessionlinks = (
-            <>
-                <div className='navbar-button'>
-                    <MenuItemAddModal />
-                </div>
-            </>
+            <MenuItemAddModal />
         );
     }
-
 
     return (
         <>
             {currRestnt &&
-                <>
-                    <div className='container__container_Restaurant-title'>
+                <div className='restaurant-container'>
+                    <div className='restaurant-container-picture'>
                         <img src={currRestnt?.restaurant_pix}
                             alt={currRestnt?.name}
-                            className='container__Restaurant-picture' />
+                            className='restaurant-picture' />
                     </div>
-                    <div className='container__Restaurant'>
-                        <div className='container_Restaurant-left'>
-                            <div className='container_Restaurant-summary'>
+                    <div className='restaurant-background'>
+                        <div className='restaurant-elements-container'>
+                            <div className='container_restaurant-summary'>
                                 {ownerLinks}
-                                <h1 className='Restaurant-title'>{currRestnt?.name}</h1>
+                                <h1>{currRestnt?.name}</h1>
                                 <hr />
                             </div>
                             <div className='container_Restaurant-details'>
                                 <div className='Restaurant-details-element'>
-                                    {currRestnt?.address}
+                                    <h3>Restaurant Address:&nbsp;&nbsp;</h3>
+                                    <h4>{currRestnt?.address}</h4>
                                 </div>
                                 <div className='Restaurant-details-element'>
-                                    {currRestnt?.restaurant_type}
-                                </div>
-                                <div className='Restaurant-details-element'>
+                                    <h3>Restaurant Type:&nbsp;&nbsp;</h3>
+                                    <h4>{currRestnt?.restaurant_type}</h4>
                                 </div>
                             </div>
-                            <div className='container_Restaurant-summary'>
+                            <div className='Restaurant-details-element'>
+                                <h4>About this Restaurant: </h4>
                                 {currRestnt?.description}
+                                <hr></hr>
                             </div>
+                            <h2>Schmenu item offered at this restaurant:</h2>
+                            {itemInfo?.map(item => (
+                                <a href={`/menuitems/${item?.id}`}>
+                                    <div className='container_Restaurant-items' key={item?.id}>
+                                        <div className='container_Restaurant-items-details'>
+                                            <img src={item.food_pix}
+                                                alt={item.food_name}
+                                                className='menuItem-thumbnail' />
+                                            <span>{item?.description}</span>
+                                        </div>
+                                        <h4 className='menuItem-names'>{item?.food_name}</h4>
+                                    </div>
+                                </a>
+                            ))}
                             {sessionlinks}
-                            <div className='container_Restaurant-items'>
-                                {itemInfo?.map(item => (
-                                    <a href={`/menuitems/${item?.id}`} key={item?.id}>
-                                        <h3>{item?.food_name}</h3>
-                                    </a>
-                                ))}
-                            </div>
                         </div>
                     </div>
-                </>
+                </div>
             }
         </>
     )
