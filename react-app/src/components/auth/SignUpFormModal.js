@@ -34,8 +34,8 @@ const SignUpFormModal = () => {
 				accountType,
 				password
 			}));
-			if (data.errors) {
-				setErrors(data.errors)
+			if (data) {
+				setErrors(data)
 			}
 		}
 	};
