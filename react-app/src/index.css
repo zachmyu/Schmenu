@@ -96,6 +96,12 @@ h2 {
     -webkit-text-stroke-color: black;
 }
 
+.errors {
+    color: red;
+    font-weight: 700;
+    font-size: 1em;
+}
+
 @media screen and (max-width: 960px) {
     .button3 {
         width: 90px;

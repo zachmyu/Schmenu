@@ -25,7 +25,7 @@ function MenuItem() {
         dispatch(getAllItemRatings(id))
     }, [dispatch, id])
 
-    useEffect(() => {
+    useEffect(() => { //Creates error on initial state... how do I fix it?
         dispatch(getOneRestaurant(restId))
     }, [dispatch, restId])
 

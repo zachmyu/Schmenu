@@ -38,7 +38,6 @@ This is the starter for the Flask React project.
 
     ```bash
     flask seed all
-    #flask unseed all
     ```
 
     ```bash
@@ -117,6 +116,8 @@ There is a layer in the Dockerfile that will install psycopg2 (not binary) for u
     ```bash
     heroku run -a schmenu flask db upgrade
     heroku run -a schmenu flask seed all
+    heroku run -a schmenu flask seed undo
+    heroku run -a schmenu flask db downgrade
     ```
 
 11. Under Settings find "Config Vars" and add any additional/secret .env

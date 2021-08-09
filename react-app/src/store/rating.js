@@ -110,7 +110,7 @@ export const updateRating = (ratingData) => async dispatch => {
 
     if (res.ok) {
         dispatch(changeRating(data))
-        dispatch(loadOneRating(ratingId))
+        // dispatch(loadOneRating(ratingId))
     } else {
         throw res
     }
@@ -150,8 +150,10 @@ const ratingsReducer = (state = initialState, action) => {
             return newState
 
         case UPDATE_RATING:
-            newState = { ...state };
-            newState.current = action.payload;
+            newState = {
+                ...state,
+                [action.payload.id]: action.payload
+            }
             return newState;
 
         case DELETE_RATING:
