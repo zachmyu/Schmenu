@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from "react-router-dom";
 import { getOneItem } from '../../store/menu_item'
@@ -19,6 +19,7 @@ function MenuItem() {
     const restName = useSelector(state => state?.restaurants?.current?.name)
     const ratingDetails = useSelector(state => state?.ratings)
     const ratingInfo = Object.values(ratingDetails)
+    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
         dispatch(getOneItem(id))
@@ -26,7 +27,11 @@ function MenuItem() {
     }, [dispatch, id])
 
     useEffect(() => { //Creates error on initial state... how do I fix it?
-        dispatch(getOneRestaurant(restId))
+        if (mounted) {
+            dispatch(getOneRestaurant(restId))
+        } else {
+            setMounted(true)
+        }
     }, [dispatch, restId])
 
     const avgRating = () => {
