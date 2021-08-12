@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 function User() {
   const [user, setUser] = useState({});
-  const { userId }  = useParams();
+  const { userId } = useParams();
 
   useEffect(() => {
     if (!userId) {
@@ -31,7 +31,12 @@ function User() {
       <li>
         <strong>Email</strong> {user.email}
       </li>
+      <li> Space for owner restaurants</li>
+      <li> Space for created reviews</li>
+      <li> Update user info</li>
+
     </ul>
+
   );
 }
 export default User;
