@@ -19,7 +19,7 @@ function Restaurant() {
                 alt={oneRest?.name}
                 className="restaurant-thumbnail" />
         } else {
-            return <img src="/images/defaultRest.png"
+            return <img src="https://i.imgur.com/qK8h9Da.png"
                 alt="derp-cat!"
                 className="restaurant-thumbnail" />
         }

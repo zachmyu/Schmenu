@@ -44,7 +44,7 @@ function Restaurant() {
         )
     } else {
         contentPicture = (
-            <img src="/images/defaultRest.png"
+            <img src="https://i.imgur.com/qK8h9Da.png"
                 alt="derp-cat!"
                 className="restaurant-picture" />
         )

@@ -88,3 +88,5 @@ def unauthorized():
     Returns unauthorized JSON when flask-login authentication fails
     """
     return {'errors': ['Unauthorized']}, 401
+
+# Please check to make sure the password check is updated in the backend routes as well

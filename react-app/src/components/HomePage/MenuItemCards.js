@@ -36,8 +36,8 @@ function MenuItemCards() {
                 alt={oneItem?.food_name}
                 className="menu-pix" />
         } else {
-            return <img src="/images/defaultRest.png"
-                alt="burrito-cat!"
+            return <img src="https://i.imgur.com/qK8h9Da.png"
+                alt="derp-cat!"
                 className="menu-pix" />
         }
     }
