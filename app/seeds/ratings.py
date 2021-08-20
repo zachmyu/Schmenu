@@ -5,7 +5,7 @@ fake = Faker()
 
 
 def seed_ratings():
-    for _ in range(1000):
+    for _ in range(2000):
         fakeRatings = Rating(user_id=fake.random_int(min=13, max=99),
                              menu_item_id=fake.random_int(min=1, max=950),
                              rating=fake.random_int(min=1, max=5),
