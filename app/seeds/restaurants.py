@@ -5,7 +5,7 @@ fake = Faker()
 
 
 def seed_restaurants():
-    num1 = Restaurant(owner_id=1, name="Banh Oui",
+    num1 = Restaurant(owner_id=2, name="Banh Oui",
                       address="1552 N Cahuenga Blvd Los Angeles, CA 90028",
                       restaurant_type="cd",
                       description="There is something magical about dining where you can tell there is passion and integrity to every dish, and every component of every dish. Bahn Oui is a relatable, comfortable, and fine dining experience nestled into the bustling busy streets of Hollywood. The flavors are intense and clean, not jumbled and overpowering. The space itself is bright and quaint, yet offers seating inside and outside. It's open, you can see the dishes being prepared right in front of you, smells and joy included.",
@@ -17,7 +17,7 @@ def seed_restaurants():
                       description="The sweet and mild chicken is everyone's favorite. The tender Fired Chicken is lightly covered with Love Letter's special nutritional sweet and mild sauce, which uses 20 different vegetables as ingredients. Love Letter also specializes in pizza, but this is not your ordinary pizza. It is a fusion of the classic Italian dish with a Korean twist. Try our Sweet Potato Gold Pizza or our Bulgogi Supreme Pizza to get an idea!",
                       restaurant_pix="https://s3-media0.fl.yelpcdn.com/bphoto/gRFSIG_Q52QvaVcgPztbXA/o.jpg",
                       latitude=29.758558000158192, longitude=-95.3654791369215,)
-    num3 = Restaurant(owner_id=4, name="Anarkali Indian Restaurant",
+    num3 = Restaurant(owner_id=2, name="Anarkali Indian Restaurant",
                       address="7013 Melrose Ave Los Angeles, CA 90038",
                       restaurant_type="ot",
                       description="Welcoming staff, cute atmosphere, authentic Indian cuisine",

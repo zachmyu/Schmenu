@@ -111,7 +111,7 @@ def seed_menu_items():
     db.session.add(num20)
     db.session.add(num21)
 
-    for _ in range(200):
+    for _ in range(100):
         fakerMenu = Menu_item(creator_id=fake.random_int(min=1, max=99),
                               restaurant_id=fake.random_int(min=1, max=99),
                               food_name=fake.bs(),
