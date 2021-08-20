@@ -71,9 +71,9 @@ function MenuItem() {
         )
     } else {
         contentPicture = (
-            <img src="/images/defaultFood.png"
-                alt="derp-cat!"
-                className="restaurant-picture" />
+            <img src="https://i.imgur.com/hCO0SZp.png"
+                alt="burrito-cat!"
+                className="menu-pix" />
         )
     }
 
