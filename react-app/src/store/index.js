@@ -1,20 +1,20 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import session from './session'
-import usersReducer from './user'
-import restaurantsReducer from './restaurant'
-import menu_itemsReducer from './menu_item'
-import ratingsReducer from './rating'
-import savesReducer from './save'
+import users from './user'
+import restaurants from './restaurant'
+import menu_items from './menu_item'
+import ratings from './rating'
+import saves from './save'
 
 
 const rootReducer = combineReducers({
   session,
-  usersReducer,
-  restaurantsReducer,
-  menu_itemsReducer,
-  ratingsReducer,
-  savesReducer
+  users,
+  restaurants,
+  menu_items,
+  ratings,
+  saves
 });
 
 
