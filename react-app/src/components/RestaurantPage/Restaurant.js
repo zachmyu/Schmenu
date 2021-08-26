@@ -97,7 +97,7 @@ function Restaurant() {
                                 <a href={`/menuitems/${item?.id}`} key={item?.id}>
                                     <div className='container_Restaurant-items'>
                                         <div className='container_Restaurant-items-details'>
-                                            {burritoCat(item[1])}
+                                            {burritoCat(item)}
                                             {/* <img src={burritoCat(item[1])}
                                                 alt={item.food_name}
                                                 className='menuItem-thumbnail' /> */}
