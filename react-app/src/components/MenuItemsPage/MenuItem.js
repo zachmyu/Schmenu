@@ -62,15 +62,15 @@ function MenuItem() {
         );
     }
 
-    let contentPicture;
+    let burritoCat;
     if (menuItem?.food_pix) {
-        contentPicture = (
+        burritoCat = (
             <img src={menuItem?.food_pix}
                 alt={menuItem?.food_name}
                 className="restaurant-picture" />
         )
     } else {
-        contentPicture = (
+        burritoCat = (
             <img src="https://i.imgur.com/hCO0SZp.png"
                 alt="burrito-cat!"
                 className="menu-pix" />
@@ -83,7 +83,7 @@ function MenuItem() {
             {menuItem &&
                 <div className='menuItem-container'>
                     <div className='menuItem-container-picture'>
-                        {contentPicture}
+                        {burritoCat}
                     </div>
                     <div className='menuItem-background'>
                         <div className='container_menuItem-summary'>
