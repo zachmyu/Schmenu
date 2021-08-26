@@ -50,6 +50,19 @@ function Restaurant() {
         )
     }
 
+    const burritoCat = (oneItem) => {
+        if (oneItem?.food_pix) {
+            return <img src={oneItem?.food_pix}
+                alt={oneItem?.food_name}
+                className="menu-pix" />
+        } else {
+            return <img src="https://i.imgur.com/hCO0SZp.png"
+                alt="burrito-cat!"
+                className="menu-pix" />
+        }
+    }
+
+
     return (
         <>
             {currRestnt &&
@@ -84,7 +97,7 @@ function Restaurant() {
                                 <a href={`/menuitems/${item?.id}`} key={item?.id}>
                                     <div className='container_Restaurant-items'>
                                         <div className='container_Restaurant-items-details'>
-                                            <img src={item.food_pix}
+                                            <img src={burritoCat(item[1])}
                                                 alt={item.food_name}
                                                 className='menuItem-thumbnail' />
                                             <span>{item?.description}</span>
