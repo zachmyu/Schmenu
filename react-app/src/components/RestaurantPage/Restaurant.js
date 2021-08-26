@@ -54,11 +54,11 @@ function Restaurant() {
         if (oneItem?.food_pix) {
             return <img src={oneItem?.food_pix}
                 alt={oneItem?.food_name}
-                className="menu-pix" />
+                className="menuItem-thumbnail" />
         } else {
             return <img src="https://i.imgur.com/hCO0SZp.png"
                 alt="burrito-cat!"
-                className="menu-pix" />
+                className="menuItem-thumbnail" />
         }
     }
 
@@ -97,9 +97,10 @@ function Restaurant() {
                                 <a href={`/menuitems/${item?.id}`} key={item?.id}>
                                     <div className='container_Restaurant-items'>
                                         <div className='container_Restaurant-items-details'>
-                                            <img src={burritoCat(item[1])}
+                                            {burritoCat(item[1])}
+                                            {/* <img src={burritoCat(item[1])}
                                                 alt={item.food_name}
-                                                className='menuItem-thumbnail' />
+                                                className='menuItem-thumbnail' /> */}
                                             <span>{item?.description}</span>
                                         </div>
                                         <h4 className='menuItem-names'>{item?.food_name}</h4>
