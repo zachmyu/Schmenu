@@ -67,7 +67,7 @@ function MenuItem() {
         burritoCat = (
             <img src={menuItem?.food_pix}
                 alt={menuItem?.food_name}
-                className="restaurant-picture" />
+                className="menu-pix" />
         )
     } else {
         burritoCat = (
