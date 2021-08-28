@@ -14,10 +14,10 @@ def validation_err_msgs(validation_errors):
 
 
 # READ ALL = Saves
-@save_routes.route('/')
+@save_routes.route('/user/<int:id>')
 @login_required
-def userSaves(user_id):
-    saves = Save.query.filter_by(user_id=user_id).all()
+def userSaves(id):
+    saves = Save.query.filter_by(user_id=id).all()
     return {'saves': [save.to_dict() for save in saves]}
 
 

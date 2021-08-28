@@ -23,7 +23,7 @@ def restaurant(id):
     return restaurant.to_dict()
 
 
-# READ ALL = Restaurants (can we limit this?)
+# READ ALL = Restaurants
 @restaurant_routes.route('/')
 def restaurants():
     restaurants = Restaurant.query.all()
