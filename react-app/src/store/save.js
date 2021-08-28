@@ -32,6 +32,18 @@ export const getAllSaves = () => async dispatch => {
     }
 }
 
+export const getAllUserSaves = userId => async dispatch => {
+    const res = await fetch(`api/saves/user/${userId}`);
+    const data = await res.json();
+
+    if (res.ok) {
+        dispatch(loadAllSaves(data))
+    } else {
+        throw res
+    }
+}
+
+
 export const createSave = (saveData) => async dispatch => {
     const { userId, menuItemId } = saveData
 
