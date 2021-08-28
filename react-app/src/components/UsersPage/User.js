@@ -58,7 +58,7 @@ function User() {
 		userPage = (
 			<div className='navbar-element-sessionCont'>
 				<ul>
-					{ownerRestsuserRatesArrArr && userRatesArr?.map(rating => (
+					{userRatesArr && userRatesArr?.map(rating => (
 						rating?.rating
 					))}
 				</ul>
