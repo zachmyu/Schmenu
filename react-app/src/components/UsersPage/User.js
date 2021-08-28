@@ -38,7 +38,7 @@ function User() {
 	}
 
 	let userPage;
-	if (currUser === userId && currUser.account_type === "Owner") {
+	if (currUser.id === userId && currUser.account_type === "Owner") {
 		userPage = (
 			<div className='navbar-element-sessionCont'>
 				<ul>
@@ -54,7 +54,7 @@ function User() {
 				<button> Update user info</button>
 			</div >
 		);
-	} else if (currUser === userId && currUser.account_type === "Reviewer") {
+	} else if (currUser.id === userId && currUser.account_type === "Reviewer") {
 		userPage = (
 			<div className='navbar-element-sessionCont'>
 				<ul>
