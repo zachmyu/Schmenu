@@ -110,7 +110,6 @@
     align-items: center;
     justify-content: center;
     border-radius: 10px;
-
 }
 
 .navbar-button {
@@ -122,6 +121,7 @@
     font-size: 18px;
     font-weight: bold;
     margin: 5px 10px;
+    cursor: pointer;
 }
 
 .navbar-button:hover {
