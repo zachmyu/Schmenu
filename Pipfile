@@ -30,6 +30,8 @@ botocore = "==1.21.9"
 jmespath = "==0.10.0"
 s3transfer = "==0.5.0"
 urllib3 = "==1.26.6"
+psycopg2-binary = "*"
+Faker = "==8.10.3"
 
 [dev-packages]
 psycopg2-binary = "==2.8.6"
